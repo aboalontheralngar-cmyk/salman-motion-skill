@@ -1,0 +1,14 @@
+interface:
+  display_name: مهارة سلمان للموشن جرافيك V14
+  short_description: موشن عربي وهوية دقيقة ومشاهد شعرية ومشاريع After Effects
+  default_prompt: استخدم $salman-after-effects-motion لتصميم مشاهد عربية تخدم معنى
+    النص وتلتزم بهويتي، وتنفيذ نوع التسليم المطلوب مع مراجعة الصور والنصوص.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
