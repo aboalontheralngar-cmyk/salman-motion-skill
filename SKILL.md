@@ -1,20 +1,27 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V15: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V16: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
-  3D map dives, nasheed vocal sync and synchronized stereo SFX. Use for logo/brand animation,
-  motion storyboards, brand-consistent scene redesign and open AE project requests. Includes Styles A-F plus 17 Motalim-inspired
-  logo recipes L01-L17: line draw, handwriting, assembly, morph, geometric, liquid fill,
-  mask wipe, light sweep, connected Arabic typing, elastic, character, 3D flip, particles,
-  glitch, neon, brand hero and design canvas. Adds brand-led direction, shot handoffs,
-  AE timing curves, calm Arabic pacing, illustration grounding, brush mattes, continuous brand backgrounds,
-  camera parallax, selective glass shine, Aqleeat identity rules, verse-led human scenes,
-  Arabic review handoffs, dual-path calligraphy reveal/tracers, transient fill flashes,
-  slim shine ribbons and honest render review. Includes ES3 rules and packaging.
+  3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
+  motion storyboards, brand-consistent scene redesign and open AE project requests.
+  Includes Styles A-F, 17 logo recipes L01-L17, direction and shot handoffs, AE timing,
+  illustration grounding, brush mattes, continuous brand backgrounds, camera parallax,
+  Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
+  transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
+  verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
+  packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V15 — مسارات المخطوطات واللمعة مع حفظ الهوية)
+# Salman After Effects Motion (V16 — تنويع الأبيات ومسار I2V مع حفظ تحديثات الهوية والمخطوطات)
+
+## تنويع الأبيات وتسليم مشاهد I2V — V16
+
+عند تنويع Style D أو تجهيز مشاهد لـOmniFlash، اقرأ
+[توزيعات الأبيات ومسار I2V](references/nasheed-layout-and-i2v.md).
+اختر بين خمسة توزيعات وأربع وصفات نصية وفق المعنى والقراءة، ونوّع الإعادة الصوتية بقصد إخراجي.
+اعتبر الوصفات خططًا للتنفيذ وليست محركات جاهزة؛ أبقِ النص العربي مستقلًا عن الرسم والفيديو.
+افحص دمج الأبيض وملاءمة Multiply واستبدال Footage، ولا تصف صور I2V بأنها فيكتور قابل للتحرير.
 
 ## مسارات المخطوطات والريشة واللمعة — V15
 
@@ -349,6 +356,8 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 ---
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
+
+- [references/nasheed-layout-and-i2v.md](references/nasheed-layout-and-i2v.md): خمسة توزيعات، أربع وصفات للأبيات، تنويع التكرار الصوتي، ودليل تسليم I2V واستبدال Footage.
 
 - [references/calligraphy-dual-path-and-shine.md](references/calligraphy-dual-path-and-shine.md): فصل الكشف عن الريشة، تكييف السرعة والومضة واللمعة، ومراجعة قالب V08 المستورد وحدود إثبات التغطية والرندر.
 - `templates/salman_calligraphy_glass_shine_v08_template.jsx`: المثال الخاص بشعار سلمان من حزمة V10 المرفقة، محفوظ كما ورد للمراجعة والتكييف؛ ليس بديلًا تلقائيًا للقالب الدفاعي العام.

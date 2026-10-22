@@ -1,4 +1,4 @@
-# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V15
+# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V16
 
 هذا الملف مولّد من ملفات المصدر في المستودع. اقرأ التعليمات الأساسية أولًا، ثم المراجع والقوالب المناسبة للمشروع. يتضمن الكود النصي كاملًا، ولا يتضمن أصولًا ثنائية أو مشاريع خاصة أو إثباتًا لتشغيل After Effects.
 
@@ -14,13 +14,14 @@
 8. [references/logo-animation-gallery-ae.md](#file-8)
 9. [references/logo-animation-production.md](#file-9)
 10. [references/motion-styles-and-choreography.md](#file-10)
-11. [references/packaging-and-windows-zip-rules.md](#file-11)
-12. [templates/mp3_vocal_onset_analyzer.py](#file-12)
-13. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-13)
-14. [templates/salman_motion_starter_template.js](#file-14)
-15. [templates/stereo_wav_sfx_generator.py](#file-15)
-16. [templates/svg_to_ae_bezier_parser.py](#file-16)
-17. [scripts/validate_png_assets.py](#file-17)
+11. [references/nasheed-layout-and-i2v.md](#file-11)
+12. [references/packaging-and-windows-zip-rules.md](#file-12)
+13. [templates/mp3_vocal_onset_analyzer.py](#file-13)
+14. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-14)
+15. [templates/salman_motion_starter_template.js](#file-15)
+16. [templates/stereo_wav_sfx_generator.py](#file-16)
+17. [templates/svg_to_ae_bezier_parser.py](#file-17)
+18. [scripts/validate_png_assets.py](#file-18)
 
 ---
 
@@ -31,20 +32,27 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V15: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V16: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
-  3D map dives, nasheed vocal sync and synchronized stereo SFX. Use for logo/brand animation,
-  motion storyboards, brand-consistent scene redesign and open AE project requests. Includes Styles A-F plus 17 Motalim-inspired
-  logo recipes L01-L17: line draw, handwriting, assembly, morph, geometric, liquid fill,
-  mask wipe, light sweep, connected Arabic typing, elastic, character, 3D flip, particles,
-  glitch, neon, brand hero and design canvas. Adds brand-led direction, shot handoffs,
-  AE timing curves, calm Arabic pacing, illustration grounding, brush mattes, continuous brand backgrounds,
-  camera parallax, selective glass shine, Aqleeat identity rules, verse-led human scenes,
-  Arabic review handoffs, dual-path calligraphy reveal/tracers, transient fill flashes,
-  slim shine ribbons and honest render review. Includes ES3 rules and packaging.
+  3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
+  motion storyboards, brand-consistent scene redesign and open AE project requests.
+  Includes Styles A-F, 17 logo recipes L01-L17, direction and shot handoffs, AE timing,
+  illustration grounding, brush mattes, continuous brand backgrounds, camera parallax,
+  Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
+  transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
+  verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
+  packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V15 — مسارات المخطوطات واللمعة مع حفظ الهوية)
+# Salman After Effects Motion (V16 — تنويع الأبيات ومسار I2V مع حفظ تحديثات الهوية والمخطوطات)
+
+## تنويع الأبيات وتسليم مشاهد I2V — V16
+
+عند تنويع Style D أو تجهيز مشاهد لـOmniFlash، اقرأ
+[توزيعات الأبيات ومسار I2V](references/nasheed-layout-and-i2v.md).
+اختر بين خمسة توزيعات وأربع وصفات نصية وفق المعنى والقراءة، ونوّع الإعادة الصوتية بقصد إخراجي.
+اعتبر الوصفات خططًا للتنفيذ وليست محركات جاهزة؛ أبقِ النص العربي مستقلًا عن الرسم والفيديو.
+افحص دمج الأبيض وملاءمة Multiply واستبدال Footage، ولا تصف صور I2V بأنها فيكتور قابل للتحرير.
 
 ## مسارات المخطوطات والريشة واللمعة — V15
 
@@ -380,6 +388,8 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
 
+- [references/nasheed-layout-and-i2v.md](references/nasheed-layout-and-i2v.md): خمسة توزيعات، أربع وصفات للأبيات، تنويع التكرار الصوتي، ودليل تسليم I2V واستبدال Footage.
+
 - [references/calligraphy-dual-path-and-shine.md](references/calligraphy-dual-path-and-shine.md): فصل الكشف عن الريشة، تكييف السرعة والومضة واللمعة، ومراجعة قالب V08 المستورد وحدود إثبات التغطية والرندر.
 - `templates/salman_calligraphy_glass_shine_v08_template.jsx`: المثال الخاص بشعار سلمان من حزمة V10 المرفقة، محفوظ كما ورد للمراجعة والتكييف؛ ليس بديلًا تلقائيًا للقالب الدفاعي العام.
 
@@ -405,7 +415,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## references/PRE_DELIVERY_CHECKLIST.md
 
-# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V15)
+# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V16)
 
 قبل تسليم المشروع، افحص البنود المنطبقة أدناه. سجّل ما اختُبر برمجيًا وما اختُبر داخل AE وما لم يُختبر؛ لا تعلن نجاح بند يحتاج تشغيلًا فعليًا بناءً على فحص ساكن.
 
@@ -455,6 +465,13 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
   - فصل ألفا الشعار وWHITE_BUMP عن الريشة والفقاعات، والتحقق الفعلي من معاملات CC Glass أو تعطيله.
   - فحص خاتمة الشعار والخلفية الداكنة وترتيب طبقات اللون؛ عدم توريث ألوان مثال سلمان أو افتراضاته إلى العميل.
   - قراءة قيود قالب V08 المستورد في [مرجع المخطوطات](calligraphy-dual-path-and-shine.md) قبل إعادة استخدامه، مع إبقاء Style F الحالي ووصفات الشعارات والهوية السابقة.
+
+- [ ] **10. تنويع الأبيات وتسليم I2V (V16)**:
+  - قياس النص والرسم والهوامش في المقاس الفعلي، واختيار التوزيع ووصفة التحريك وفق المعنى ووقت القراءة.
+  - ترقيم الإعادات الصوتية وتحديد توقيتها، وتخطيط تنويعها دون مساس بالنص أو الصوت.
+  - إبقاء العربية مستقلة، وعدم وصف الصور أو الفيديو بأنها فيكتور قابل لتعديل أجزائه.
+  - فحص الأبيض والملابس وMultiply على الخلفية النهائية، وتطابق المقاس والمدة وFPS قبل Replace Footage.
+  - إرفاق دليل اللقطات والبرومبتات عند اختيار هذا المسار، وتسجيل ما شُغّل في AE أو I2V وما لم يُختبر.
 
 ---
 
@@ -1242,6 +1259,64 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 <a id="file-11"></a>
 
+## references/nasheed-layout-and-i2v.md
+
+# تنويع الأبيات والمشاهد وسير عمل I2V — V16
+
+## نطاق الاستخدام
+
+طبّق هذا المرجع على Style D عند طلب تنويع الأناشيد والقصائد أو تجهيز صور لتحريك I2V. حافظ على النص المعتمد والهوية ومزامنة الصوت وقواعد V14–V15. استعمل التوزيعات والوصفات عند خدمتها المعنى؛ لا تجعل التناوب دورة آلية تشتت القراءة.
+
+## خمسة توزيعات مكانية
+
+قِس حدود النص والرسم المرئية بـ`sourceRectAtTime`، واترك هوامش أمان ومسافة بين العنصرين. تعامل مع المراكز التالية كنقاط بداية نسبية من العرض W والارتفاع H، لا كإحداثيات مفروضة لكل مقاس. أعد ترتيب العناصر للعمودي بدل قص النسخة الأفقية.
+
+| الوضع | مركز منطقة النص التقريبي | توزيع الصورة |
+| --- | --- | --- |
+| `CENTER_ONLY` | `(0.50W, 0.46H)` | تيبوغرافي أساسًا مع زخارف هوياتية خفيفة |
+| `TEXT_LEFT` | `(0.28W, 0.45H)` | الرسم يمين الكادر |
+| `TEXT_RIGHT` | `(0.72W, 0.45H)` | الرسم يسار الكادر |
+| `TEXT_TOP` | `(0.50W, 0.22H)` | الرسم في النصف السفلي |
+| `TEXT_BOTTOM` | `(0.50W, 0.73H)` | الرسم في النصف العلوي |
+
+اضبط العرض الفعلي وطول البيت والوجهة داخل الرسم؛ حافظ على اتصال العربية وترتيب الكلمات حتى عندما يكون النص يسار الكادر. استخدم الأبيض أو الداكن أو النقش الخفيف وفق الهوية وخطة المشهد، وقدّم طلب المستخدم الخاص بالسماء والخلفية على التنويع.
+
+## أربع وصفات لتحريك الأبيات
+
+هذه وصفات إخراج وليست أربعة محركات برمجية جاهزة. لا تتضمن الحزمة المستوردة تعريفًا لدالة `buildVerseKineticBlock`؛ عند طلب التنفيذ ابنِها أو ابنِ الوظائف المكافئة وفحصها للمشروع.
+
+- `BRACKET_MORPHER`: ارسم قوس الهوية بـTrim Paths ثم حوّله إلى خط تحت الشطر. طابق عدد رؤوس المسارات وترتيبها قبل Path Morph، أو استخدم مسارين متداخلين إذا اختلفت البنية. ارفع الشطر الأول بما يسمح بظهور الثاني، وحرّك لون التعبئة عند الحاجة؛ اسم Two-Tone Shift وصف للنتيجة ولا يكفي لتحديد خاصية AE.
+- `GLOSSY_RIBBON`: ابنِ الحفر والشريط ولمعة المرور في طبقات منفصلة، مع ألفا نظيفة وفق مرجع المخطوطات واللمعة. لا تجعل اللمعة تحجب الحروف أو تغيّر اللون الدائم.
+- `BANNER_CARD`: أظهر إطارًا أو بطاقة بزوايا مستديرة خلف البيت. اعتبر Roundness=32px قيمة بدء عند 1080p، وكيّفها مع المقاس والهوية. قِس النص قبل بناء البطاقة.
+- `STAR_ACCENT`: أظهر نجمة أو علامة من هوية العميل عند الكلمة المهمة أو الشطر الثاني، خلف الحروف دون إعاقة القراءة. لا تستورد نجمة مؤسسة إلى هوية أخرى.
+
+اختر وصفة لكل وحدة شعرية بحسب النبرة ومدة القراءة؛ استعمل السكون المقصود للأبيات الهادئة، وقلّل تزامن الحركات الثانوية مع دخول الكلمات المهمة.
+
+## الإعادة الصوتية والتصعيد البصري
+
+اربط كل تكرار مسموع برقم occurrence وتوقيت مستقلين، ولا تستنتج توقيته من النص وحده. نوّع اللقطة المكررة بإضافة معنى أو تغيير زاوية أو كشف تفصيل أو الانتقال من النص وحده إلى مشهد إنساني. مثال: تعريف الفكرة في `CENTER_ONLY` ثم عرض تطبيقها في `TEXT_RIGHT`. يمكن إبقاء التكوين أو العودة إلى موتيف بصري إذا خدم ذلك الإيقاع أو طلب المستخدم؛ تجنب إعادة لقطة كاملة تلقائيًا دون قرار إخراجي.
+
+خطّط جدولًا: رقم اللقطة، البيت/الشطر كما اعتمده المستخدم، البداية والنهاية، occurrence، التوزيع، وصفة النص، فعل المشهد، وصلة اللقطة التالية. حافظ على المستوى الصوتي الأصلي؛ لا تضف SFX إلى Style D دون طلب.
+
+## تجهيز مشاهد OmniFlash أو أداة I2V يختارها المستخدم
+
+تعامل مع OmniFlash كوجهة اختارها المستخدم، لا كموصل مدمج أو خدمة تم التحقق من خصائصها. لا تدّع توليد فيديو فيها أو نجاح الاستبدال دون تشغيل فعلي. تحقّق من إمكاناتها الحالية إذا احتاج التنفيذ معرفة واجهتها أو إعداداتها.
+
+1. أنشئ رسومًا نقطية خفيفة بمظهر فيكتور موحّد، بألوان العميل ودون أبيات أو نصوص مدمجة؛ أبقِ النص العربي طبقات AE مستقلة. لا تصف raster أو فيديو I2V بأنه فيكتور قابل لتعديل أجزائه. استخدم أداة توليد/تحرير الصور المتاحة للصور.
+2. استخدم خلفية بيضاء صافية `#FFFFFF` عندما يكون هذا هو مسار الدمج المتفق عليه. إن احتاجت اللقطة خلفية داكنة أو ملابس بيضاء محفوظة، فضّل ألفا حقيقية أو فصل الرسم عن الخلفية بدل افتراض أن الأبيض قابل للإزالة بلا خسارة.
+3. نظّم الأصول في `03_OmniFlash_Scenes` أو اسم الوجهة الفعلي، واربطها بأرقام اللقطات. أرفق `OMNIFLASH_PROMPTS_AND_SCENES_GUIDE.md` عند تسليم مشروع بهذا المسار، مع اسم المصدر والخرج، المقاس، المدة، FPS، وصف الحركة، قيود الهوية، وترتيب الربط في AE.
+4. اكتب لكل لقطة حركة صغيرة محددة: فعل الشخصية، حركة ثانوية وكاميرا عند الحاجة، وثبات التكوين والوجوه والملابس والشعار. اطلب منع النصوص الجديدة والتشوهات والوميض، ثم راجع النتيجة بصريًا؛ البرومبت وحده لا يضمن ذلك.
+5. جرّب `BlendingMode.MULTIPLY` فقط عندما يناسب الصورة والخلفية: هو دمج لوني لا استخراج ألفا، يغمّق الألوان ويُظهر الخلفية عبر المساحات البيضاء بما فيها الملابس. افحص النتيجة على الخلفية النهائية؛ لا تستخدمه افتراضيًا لكل المشاهد.
+6. قبل `Replace Footage` طابق المقاس والمدة وFPS ونسبة البكسل والتوقيت. استبدال Footage مشترك قد يغيّر كل نسخه؛ افصل الأصل إذا كان الاستبدال يخص لقطة واحدة. أبقِ المصدر الثابت للرجوع، وراجع إعادة التوقيت والتأثيرات والألوان بعد الاستبدال. ميّز هذا المسار الإجرائي عن وجود زر أو تكامل مخصص مثبت.
+
+## التحقق والتسليم
+
+راجع القراءة وهوامش الأمان وتنوع اللقطات واستقرار الهوية والحواف وتوقيت الفيديو على الصوت. سجّل فحص البنية منفصلًا عن تشغيل AE أو خدمة I2V أو الرندر؛ لا تدّع إنجاز أحدها من كتابة الدليل وحده.
+
+---
+
+<a id="file-12"></a>
+
 ## references/packaging-and-windows-zip-rules.md
 
 # قواعد بناء الحزمة المضغوطة وتوافق ويندوز (ZIP Packaging & Windows Compatibility Rules)
@@ -1276,7 +1351,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-12"></a>
+<a id="file-13"></a>
 
 ## templates/mp3_vocal_onset_analyzer.py
 
@@ -1318,7 +1393,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-13"></a>
+<a id="file-14"></a>
 
 ## templates/salman_calligraphy_glass_shine_v08_template.jsx
 
@@ -2446,7 +2521,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-14"></a>
+<a id="file-15"></a>
 
 ## templates/salman_motion_starter_template.js
 
@@ -2821,7 +2896,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-15"></a>
+<a id="file-16"></a>
 
 ## templates/stereo_wav_sfx_generator.py
 
@@ -2851,7 +2926,7 @@ def write_stereo_wav(filepath, left_samples, right_samples):
 
 ---
 
-<a id="file-16"></a>
+<a id="file-17"></a>
 
 ## templates/svg_to_ae_bezier_parser.py
 
@@ -2975,7 +3050,7 @@ def parse_svg_path_to_ae_subpaths(d_str, center_x=0.0, center_y=0.0, scale=1.0):
 
 ---
 
-<a id="file-17"></a>
+<a id="file-18"></a>
 
 ## scripts/validate_png_assets.py
 
