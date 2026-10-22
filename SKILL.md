@@ -1,7 +1,7 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V16: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V17: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
   motion storyboards, brand-consistent scene redesign and open AE project requests.
@@ -10,10 +10,22 @@ description: >
   Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
   transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
   verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  packaging and honest render review.
+  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V16 — تنويع الأبيات ومسار I2V مع حفظ تحديثات الهوية والمخطوطات)
+# Salman After Effects Motion (V17 — إعداد المشروع وتوقيت الأناشيد ومراجعة الرندر)
+
+## نافذة الإعداد والتوقيت ومراجعة الفيديو — V17
+
+عند إنشاء JSX بواجهة قبل البناء أو ضبط الموال واللازمة والطيف وشريط الوقت، اقرأ
+[نافذة الإعداد وتوقيت الأناشيد](references/prebuild-dialog-and-timed-nasheed.md).
+أظهر نافذة ScriptUI قبل تعديل المشروع، وافحص الملفات والإلغاء والخط والإعدادات؛ اعرض الميزات المنفذة فقط.
+استخدم `templates/salman_prebuild_setup.jsx` مع البناء الفعلي، وافحص التوقيت بعد الإزاحة بـ`scripts/validate_motion_project.py`.
+لا تورّث افتراضات غروب العمر، ولا تقص الأشطر أو تخلط علاماتها بعد تغيير التوقيت.
+عند تحليل مرجع فيديو أو مراجعة الرندر المشفر، اقرأ
+[سجل المرجع ومراجعة الفيديو](references/reference-ledger-and-render-review.md).
+حلّل المدة الكاملة، وسجّل التطابق والتغييرات المقصودة، وراجع نطاقات الحركة بإطارات مؤرخة وصوت عند توفره.
+استخدم `scripts/review_motion_render.py` على فيديو فعلي؛ لا تعتبر نجاحه تشغيلًا لـAE أو تحققًا سمعيًا.
 
 ## تنويع الأبيات وتسليم مشاهد I2V — V16
 
@@ -192,14 +204,17 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
             var verifyDoc = txtDocProp.value;
             var actualFont = String(verifyDoc.font || "").toLowerCase();
             var actualFam  = String(verifyDoc.fontFamily || "").toLowerCase();
-            if (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1) {
+            if (actualFont === String(tryList[cIdx]).toLowerCase() &&
+                (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1)) {
                 return verifyDoc.font;
             }
         } catch (fErr) {}
     }
-    return doc.font;
+    return null; // No verified candidate; caller must stop or report an explicit fallback.
 }
 ```
+
+اقرأ قيمة الإرجاع: `null` تعني فشل التحقق، ولا يجوز عرض رسالة نجاح. يقبل المساعد اسم PostScript مطابقًا للمرشح الفعلي؛ بدائل الأوزان داخل candidates بدائل صريحة يجب ذكرها. عند اختيار المستخدم PostScript محددًا في نافذة V17، تحقّق من مطابقته حرفيًا بعد التطبيق ولا تستبدله بصمت.
 
 ### قوائم المرشحين القياسية (Standard Font Candidate Lists)
 - **لعائلة خط لينا (`Lina round`)**:
@@ -246,7 +261,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 - **متى يُستخدم**: عند طلب مونتاج أنشودة أو قصيدة صوتية بمشاهد بصرية متتابعة ونصوص تظهر كلمةً بكلمة (`Kinetic Typography Booklet`).
 - **القواعد الإلزامية لهذا النمط**:
   1. **عدم إضافة مؤثرات صوتية اصطناعية (`No Synthetic SFX by Default`)**: في مشاريع الأناشيد والقصائد لا تضف ملفات `WAV SFX` (مثل `whoosh` و`pop`) إلا إذا طلب المستخدم ذلك صراحةً؛ اكتفِ بملف الأنشودة الأصلي فقط حتى لا تشوّش المؤثرات على اللحن والصوت.
-  2. **المزامنة الصوتية الطيفية الفعلية (`Acoustic MP3 Onset Synchronization`)**: عند توفر الملف الصوتي (`.mp3` أو `.wav`)، حلّل الموجة الصوتية عبر مرشح ترددات الصوت البشري (`250Hz - 3400Hz Bandpass Filter` عبر `templates/mp3_vocal_onset_analyzer.py`) لاستخراج فواصل التنفس ولحظة نطق كل شطر وكل كلمة بالمللي ثانية، مع مراعاة المدود الصوتية في نهاية الشطور والقوافي.
+  2. **المزامنة الصوتية الطيفية الفعلية (`Acoustic MP3 Onset Synchronization`)**: عند توفر الملف الصوتي (`.mp3` أو `.wav`)، حلّل الموجة الصوتية عبر مرشح ترددات الصوت البشري (`250Hz - 3400Hz Bandpass Filter` عبر `templates/mp3_vocal_onset_analyzer.py`) لاستخراج غلاف طاقة RMS بخطوة افتراضية 20ms كقرينة على النشاط والصمت. المرشح لا يفصل الغناء عن بقية المصادر ولا يستخرج توقيت كل كلمة أو شطر وحده؛ قارنه بالأداء والنص المعتمد أو محاذاة موثوقة، وراجع المدود والقوافي سمعيًا عند الإمكان.
   3. **بطاقة العنوان الافتتاحي في المقدمة (`Intro Title Card`)**: في مشهد المقدمة الصوتية (`آهات / Intro`)، يُعرض عنوان الأنشودة بحجم كبير وبارز في الأعلى (`106pt+`)، يفصل تحته خط زخرفي متحرك عبر `Trim Paths`، ثم يُكتب تحته اسم الشاعر (`كلمات: ...`) متبوعًا باسم المنشد والملحن (`أداء وألحان: ...`).
   4. **رصف الكلمات العربية ديناميكيًا بدون تداخل (`Dynamic RTL Word Layout via sourceRectAtTime`)**: قس العرض الفعلي لكل كلمة بعد تطبيق الخط عبر `sourceRectAtTime(0, false).width` وارصف كلمات كل سطر من اليمين إلى اليسار بفراغ ثابت داخل المساحة الفارغة المخصصة للمشهد (`TOP`, `BOTTOM`, `RIGHT`, `LEFT`) بدون خطوط زخرفية زائدة فوق الأبيات، واضبط `txtLyr.inPoint = localStart` ليسهل تحريك شريط أي كلمة بالماوس.
   5. **منع التقطيع الكرتوني أو الـ 2.5D المزيف للصور الفردية**: لا تقم بمضاعفة صورة المشهد الواحدة وقصها بأقنعة (`2.5D Masks`) لأن ذلك يسبب ازدواجية الحواف (`Ghosting`)؛ أبقِ المشهد في طبقة واحدة صافية (`BG_MAIN_SCENE`) مع دعم الاستبدال التلقائي بملفات الفيديو المتحركة (`.mp4` / `.mov` من نماذج `Image-to-Video / Omni Router`).
@@ -357,6 +372,13 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
 
+- [references/prebuild-dialog-and-timed-nasheed.md](references/prebuild-dialog-and-timed-nasheed.md): نافذة قبل البناء، توقيت الموال واللازمة بعد الإزاحة، وفحوص الطيف والشريط وحدود مثال غروب العمر.
+- [references/reference-ledger-and-render-review.md](references/reference-ledger-and-render-review.md): تحليل المرجع كاملًا ومصفوفة المقارنة ومراجعة الرندر ونسبة المصدر.
+- `templates/salman_prebuild_setup.jsx`: وحدة ScriptUI عامة بإلغاء وفحص مدخلات، لا تبني المشروع وحدها.
+- `scripts/validate_motion_project.py`: فاحص JSON للتوقيت والإزاحة وlayout وصياغة JSX دون تنفيذ AE.
+- `scripts/review_motion_render.py`: عينات مؤرخة من فيديو محلي وأوراق مراجعة وتقرير بيانات، دون حكم جودة تلقائي.
+
+
 - [references/nasheed-layout-and-i2v.md](references/nasheed-layout-and-i2v.md): خمسة توزيعات، أربع وصفات للأبيات، تنويع التكرار الصوتي، ودليل تسليم I2V واستبدال Footage.
 
 - [references/calligraphy-dual-path-and-shine.md](references/calligraphy-dual-path-and-shine.md): فصل الكشف عن الريشة، تكييف السرعة والومضة واللمعة، ومراجعة قالب V08 المستورد وحدود إثبات التغطية والرندر.
@@ -371,7 +393,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 - `templates/salman_motion_starter_template.js`: القالب البرمجي الدفاعي الجاهز (شامل دوال الغوص بالكاميرا عبر الخرائط، دبوس الرادار، وحركة تلاحم الشعار `buildSplitSlideLogoLockup`).
 - `templates/svg_to_ae_bezier_parser.py`: أداة بايثون لتحويل أي ملف `SVG` إلى مسارات After Effects Bezier أصلية.
 - `templates/stereo_wav_sfx_generator.py`: مولّد المؤثرات الصوتية (`48kHz Stereo WAV`) المتزامنة مع الموشن جرافيك والغوص البصري.
-- `templates/mp3_vocal_onset_analyzer.py`: محلل الطيف الصوتي (`250Hz - 3400Hz Vocal Bandpass`) لاستخراج توقيت الكلمات والشطور للأناشيد والقصائد.
+- `templates/mp3_vocal_onset_analyzer.py`: غلاف طاقة RMS بعد ترشيح 250–3400Hz للمساعدة في المحاذاة؛ لا يستخرج كلمات أو توقيت أشطر بمفرده.
 
 - [references/logo-animation-gallery-ae.md](references/logo-animation-gallery-ae.md): فهرس 17 حركة مع خطط توقيت مقترحة وتحويلها إلى أدوات AE.
 - [references/logo-animation-production.md](references/logo-animation-production.md): إعداد الشعار، المسارات الوسطية، توافق Morph، الشفافية، أداء الجزيئات وفحص الختام.

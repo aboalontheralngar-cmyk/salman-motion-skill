@@ -1,8 +1,8 @@
 interface:
-  display_name: مهارة سلمان للموشن جرافيك V16
-  short_description: موشن عربي وتوزيعات أبيات ومخطوطات وهوية ومشاهد I2V
-  default_prompt: استخدم $salman-after-effects-motion لتنفيذ مشاهد عربية ومخطوطات
-    وفق هويتي، مع كشف وريشة ولمعة عند ملاءمتها ونوع التسليم المطلوب.
+  display_name: مهارة سلمان للموشن جرافيك V17
+  short_description: موشن عربي ونافذة إعداد وتوقيت أناشيد ومراجعة رندر
+  default_prompt: استخدم $salman-after-effects-motion لبناء مشروع عربي وفق هويتي،
+    مع نافذة إعداد عند ملاءمتها وتوقيت مدقق ومراجعة للمشاهد والرندر.
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

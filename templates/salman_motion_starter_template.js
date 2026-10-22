@@ -140,12 +140,13 @@
                 var verifyDoc = txtDocProp.value;
                 var actualFont = String(verifyDoc.font || "").toLowerCase();
                 var actualFam  = String(verifyDoc.fontFamily || "").toLowerCase();
-                if (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1) {
+                if (actualFont === String(tryList[cIdx]).toLowerCase() &&
+                (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1)) {
                     return verifyDoc.font;
                 }
             } catch (fErr) {}
         }
-        return doc.font;
+        return null; // No verified candidate; caller must stop or report an explicit fallback.
     }
 
     function enableGpuAnd16Bit() {

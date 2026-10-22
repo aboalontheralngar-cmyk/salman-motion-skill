@@ -1,4 +1,4 @@
-# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V16
+# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V17
 
 هذا الملف مولّد من ملفات المصدر في المستودع. اقرأ التعليمات الأساسية أولًا، ثم المراجع والقوالب المناسبة للمشروع. يتضمن الكود النصي كاملًا، ولا يتضمن أصولًا ثنائية أو مشاريع خاصة أو إثباتًا لتشغيل After Effects.
 
@@ -16,12 +16,17 @@
 10. [references/motion-styles-and-choreography.md](#file-10)
 11. [references/nasheed-layout-and-i2v.md](#file-11)
 12. [references/packaging-and-windows-zip-rules.md](#file-12)
-13. [templates/mp3_vocal_onset_analyzer.py](#file-13)
-14. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-14)
-15. [templates/salman_motion_starter_template.js](#file-15)
-16. [templates/stereo_wav_sfx_generator.py](#file-16)
-17. [templates/svg_to_ae_bezier_parser.py](#file-17)
-18. [scripts/validate_png_assets.py](#file-18)
+13. [references/prebuild-dialog-and-timed-nasheed.md](#file-13)
+14. [references/reference-ledger-and-render-review.md](#file-14)
+15. [templates/mp3_vocal_onset_analyzer.py](#file-15)
+16. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-16)
+17. [templates/salman_motion_starter_template.js](#file-17)
+18. [templates/salman_prebuild_setup.jsx](#file-18)
+19. [templates/stereo_wav_sfx_generator.py](#file-19)
+20. [templates/svg_to_ae_bezier_parser.py](#file-20)
+21. [scripts/review_motion_render.py](#file-21)
+22. [scripts/validate_motion_project.py](#file-22)
+23. [scripts/validate_png_assets.py](#file-23)
 
 ---
 
@@ -32,7 +37,7 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V16: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V17: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
   motion storyboards, brand-consistent scene redesign and open AE project requests.
@@ -41,10 +46,22 @@ description: >
   Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
   transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
   verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  packaging and honest render review.
+  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V16 — تنويع الأبيات ومسار I2V مع حفظ تحديثات الهوية والمخطوطات)
+# Salman After Effects Motion (V17 — إعداد المشروع وتوقيت الأناشيد ومراجعة الرندر)
+
+## نافذة الإعداد والتوقيت ومراجعة الفيديو — V17
+
+عند إنشاء JSX بواجهة قبل البناء أو ضبط الموال واللازمة والطيف وشريط الوقت، اقرأ
+[نافذة الإعداد وتوقيت الأناشيد](references/prebuild-dialog-and-timed-nasheed.md).
+أظهر نافذة ScriptUI قبل تعديل المشروع، وافحص الملفات والإلغاء والخط والإعدادات؛ اعرض الميزات المنفذة فقط.
+استخدم `templates/salman_prebuild_setup.jsx` مع البناء الفعلي، وافحص التوقيت بعد الإزاحة بـ`scripts/validate_motion_project.py`.
+لا تورّث افتراضات غروب العمر، ولا تقص الأشطر أو تخلط علاماتها بعد تغيير التوقيت.
+عند تحليل مرجع فيديو أو مراجعة الرندر المشفر، اقرأ
+[سجل المرجع ومراجعة الفيديو](references/reference-ledger-and-render-review.md).
+حلّل المدة الكاملة، وسجّل التطابق والتغييرات المقصودة، وراجع نطاقات الحركة بإطارات مؤرخة وصوت عند توفره.
+استخدم `scripts/review_motion_render.py` على فيديو فعلي؛ لا تعتبر نجاحه تشغيلًا لـAE أو تحققًا سمعيًا.
 
 ## تنويع الأبيات وتسليم مشاهد I2V — V16
 
@@ -223,14 +240,17 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
             var verifyDoc = txtDocProp.value;
             var actualFont = String(verifyDoc.font || "").toLowerCase();
             var actualFam  = String(verifyDoc.fontFamily || "").toLowerCase();
-            if (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1) {
+            if (actualFont === String(tryList[cIdx]).toLowerCase() &&
+                (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1)) {
                 return verifyDoc.font;
             }
         } catch (fErr) {}
     }
-    return doc.font;
+    return null; // No verified candidate; caller must stop or report an explicit fallback.
 }
 ```
+
+اقرأ قيمة الإرجاع: `null` تعني فشل التحقق، ولا يجوز عرض رسالة نجاح. يقبل المساعد اسم PostScript مطابقًا للمرشح الفعلي؛ بدائل الأوزان داخل candidates بدائل صريحة يجب ذكرها. عند اختيار المستخدم PostScript محددًا في نافذة V17، تحقّق من مطابقته حرفيًا بعد التطبيق ولا تستبدله بصمت.
 
 ### قوائم المرشحين القياسية (Standard Font Candidate Lists)
 - **لعائلة خط لينا (`Lina round`)**:
@@ -277,7 +297,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 - **متى يُستخدم**: عند طلب مونتاج أنشودة أو قصيدة صوتية بمشاهد بصرية متتابعة ونصوص تظهر كلمةً بكلمة (`Kinetic Typography Booklet`).
 - **القواعد الإلزامية لهذا النمط**:
   1. **عدم إضافة مؤثرات صوتية اصطناعية (`No Synthetic SFX by Default`)**: في مشاريع الأناشيد والقصائد لا تضف ملفات `WAV SFX` (مثل `whoosh` و`pop`) إلا إذا طلب المستخدم ذلك صراحةً؛ اكتفِ بملف الأنشودة الأصلي فقط حتى لا تشوّش المؤثرات على اللحن والصوت.
-  2. **المزامنة الصوتية الطيفية الفعلية (`Acoustic MP3 Onset Synchronization`)**: عند توفر الملف الصوتي (`.mp3` أو `.wav`)، حلّل الموجة الصوتية عبر مرشح ترددات الصوت البشري (`250Hz - 3400Hz Bandpass Filter` عبر `templates/mp3_vocal_onset_analyzer.py`) لاستخراج فواصل التنفس ولحظة نطق كل شطر وكل كلمة بالمللي ثانية، مع مراعاة المدود الصوتية في نهاية الشطور والقوافي.
+  2. **المزامنة الصوتية الطيفية الفعلية (`Acoustic MP3 Onset Synchronization`)**: عند توفر الملف الصوتي (`.mp3` أو `.wav`)، حلّل الموجة الصوتية عبر مرشح ترددات الصوت البشري (`250Hz - 3400Hz Bandpass Filter` عبر `templates/mp3_vocal_onset_analyzer.py`) لاستخراج غلاف طاقة RMS بخطوة افتراضية 20ms كقرينة على النشاط والصمت. المرشح لا يفصل الغناء عن بقية المصادر ولا يستخرج توقيت كل كلمة أو شطر وحده؛ قارنه بالأداء والنص المعتمد أو محاذاة موثوقة، وراجع المدود والقوافي سمعيًا عند الإمكان.
   3. **بطاقة العنوان الافتتاحي في المقدمة (`Intro Title Card`)**: في مشهد المقدمة الصوتية (`آهات / Intro`)، يُعرض عنوان الأنشودة بحجم كبير وبارز في الأعلى (`106pt+`)، يفصل تحته خط زخرفي متحرك عبر `Trim Paths`، ثم يُكتب تحته اسم الشاعر (`كلمات: ...`) متبوعًا باسم المنشد والملحن (`أداء وألحان: ...`).
   4. **رصف الكلمات العربية ديناميكيًا بدون تداخل (`Dynamic RTL Word Layout via sourceRectAtTime`)**: قس العرض الفعلي لكل كلمة بعد تطبيق الخط عبر `sourceRectAtTime(0, false).width` وارصف كلمات كل سطر من اليمين إلى اليسار بفراغ ثابت داخل المساحة الفارغة المخصصة للمشهد (`TOP`, `BOTTOM`, `RIGHT`, `LEFT`) بدون خطوط زخرفية زائدة فوق الأبيات، واضبط `txtLyr.inPoint = localStart` ليسهل تحريك شريط أي كلمة بالماوس.
   5. **منع التقطيع الكرتوني أو الـ 2.5D المزيف للصور الفردية**: لا تقم بمضاعفة صورة المشهد الواحدة وقصها بأقنعة (`2.5D Masks`) لأن ذلك يسبب ازدواجية الحواف (`Ghosting`)؛ أبقِ المشهد في طبقة واحدة صافية (`BG_MAIN_SCENE`) مع دعم الاستبدال التلقائي بملفات الفيديو المتحركة (`.mp4` / `.mov` من نماذج `Image-to-Video / Omni Router`).
@@ -388,6 +408,13 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
 
+- [references/prebuild-dialog-and-timed-nasheed.md](references/prebuild-dialog-and-timed-nasheed.md): نافذة قبل البناء، توقيت الموال واللازمة بعد الإزاحة، وفحوص الطيف والشريط وحدود مثال غروب العمر.
+- [references/reference-ledger-and-render-review.md](references/reference-ledger-and-render-review.md): تحليل المرجع كاملًا ومصفوفة المقارنة ومراجعة الرندر ونسبة المصدر.
+- `templates/salman_prebuild_setup.jsx`: وحدة ScriptUI عامة بإلغاء وفحص مدخلات، لا تبني المشروع وحدها.
+- `scripts/validate_motion_project.py`: فاحص JSON للتوقيت والإزاحة وlayout وصياغة JSX دون تنفيذ AE.
+- `scripts/review_motion_render.py`: عينات مؤرخة من فيديو محلي وأوراق مراجعة وتقرير بيانات، دون حكم جودة تلقائي.
+
+
 - [references/nasheed-layout-and-i2v.md](references/nasheed-layout-and-i2v.md): خمسة توزيعات، أربع وصفات للأبيات، تنويع التكرار الصوتي، ودليل تسليم I2V واستبدال Footage.
 
 - [references/calligraphy-dual-path-and-shine.md](references/calligraphy-dual-path-and-shine.md): فصل الكشف عن الريشة، تكييف السرعة والومضة واللمعة، ومراجعة قالب V08 المستورد وحدود إثبات التغطية والرندر.
@@ -402,7 +429,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 - `templates/salman_motion_starter_template.js`: القالب البرمجي الدفاعي الجاهز (شامل دوال الغوص بالكاميرا عبر الخرائط، دبوس الرادار، وحركة تلاحم الشعار `buildSplitSlideLogoLockup`).
 - `templates/svg_to_ae_bezier_parser.py`: أداة بايثون لتحويل أي ملف `SVG` إلى مسارات After Effects Bezier أصلية.
 - `templates/stereo_wav_sfx_generator.py`: مولّد المؤثرات الصوتية (`48kHz Stereo WAV`) المتزامنة مع الموشن جرافيك والغوص البصري.
-- `templates/mp3_vocal_onset_analyzer.py`: محلل الطيف الصوتي (`250Hz - 3400Hz Vocal Bandpass`) لاستخراج توقيت الكلمات والشطور للأناشيد والقصائد.
+- `templates/mp3_vocal_onset_analyzer.py`: غلاف طاقة RMS بعد ترشيح 250–3400Hz للمساعدة في المحاذاة؛ لا يستخرج كلمات أو توقيت أشطر بمفرده.
 
 - [references/logo-animation-gallery-ae.md](references/logo-animation-gallery-ae.md): فهرس 17 حركة مع خطط توقيت مقترحة وتحويلها إلى أدوات AE.
 - [references/logo-animation-production.md](references/logo-animation-production.md): إعداد الشعار، المسارات الوسطية، توافق Morph، الشفافية، أداء الجزيئات وفحص الختام.
@@ -415,7 +442,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## references/PRE_DELIVERY_CHECKLIST.md
 
-# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V16)
+# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V17)
 
 قبل تسليم المشروع، افحص البنود المنطبقة أدناه. سجّل ما اختُبر برمجيًا وما اختُبر داخل AE وما لم يُختبر؛ لا تعلن نجاح بند يحتاج تشغيلًا فعليًا بناءً على فحص ساكن.
 
@@ -472,6 +499,14 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
   - إبقاء العربية مستقلة، وعدم وصف الصور أو الفيديو بأنها فيكتور قابل لتعديل أجزائه.
   - فحص الأبيض والملابس وMultiply على الخلفية النهائية، وتطابق المقاس والمدة وFPS قبل Replace Footage.
   - إرفاق دليل اللقطات والبرومبتات عند اختيار هذا المسار، وتسجيل ما شُغّل في AE أو I2V وما لم يُختبر.
+
+- [ ] **11. نافذة الإعداد والتوقيت والرندر (V17)**:
+  - الإلغاء يسبق أي استيراد/إنشاء؛ الأخطاء تبقي نافذة الإعداد قابلة للتصحيح، والاعتمادات لا تتضمن أسماء موروثة.
+  - مفاتيح الواجهة تربط ميزات منفذة، والمقاس وFPS والخط وقوة الحركة تطبق فعليًا، مع فحص أقصى حركة والحواف.
+  - فحص التوقيت النهائي بعد الإزاحة، بما فيه المقدمة الخالية واللازمة وfixedTiming؛ تطابق العلامات مع ظهور الكلمات دون قص صامت.
+  - فحص مرجع الصوت للطيف ووحدات خصائصه؛ تقدم الوقت خطي وتلاشيه مستقل، مع معايرة المؤثرات على الرندر.
+  - سجل المرجع يغطي المدة المعنية كاملة، ومصفوفة المقارنة تميز الهوية المطلوبة عن شكل المرجع.
+  - مراجعة الفيديو المشفر والعربية كاملة الدقة والصوت عند توفره؛ تمييز فحص البيانات/الصياغة والمحاكاة عن تشغيل AE.
 
 ---
 
@@ -1353,13 +1388,160 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 <a id="file-13"></a>
 
+## references/prebuild-dialog-and-timed-nasheed.md
+
+# نافذة الإعداد وتوقيت الأناشيد — V17
+
+## المحتويات
+
+1. نافذة الإعداد قبل البناء
+2. التوقيت الفعلي والموال واللازمة
+3. الطيف والشريط والمؤثرات
+4. حدود مثال غروب العمر وفحوصه
+
+## نافذة الإعداد قبل البناء
+
+استعمل `templates/salman_prebuild_setup.jsx` كوحدة ScriptUI موثوقة. تُعرّف `SalmanMotionSetup` فقط؛ لا تبني مشروعًا عند تحميلها. أظهر النافذة قبل الاستيراد أو فتح Undo Group أو إنشاء كومب. الإلغاء يعيد `null` بلا تغيير للمشروع. عند طلب التشغيل غير التفاعلي، مرّر إعدادات موثقة وافحصها بدل فرض النافذة.
+
+```javascript
+var setupFile = new File(File($.fileName).parent.fsName + "/salman_prebuild_setup.jsx");
+if (!setupFile.exists) throw new Error("ملف إعداد المشروع غير موجود");
+$.evalFile(setupFile); // Trusted bundled code only; never use this to load arbitrary timing data.
+var cfg = SalmanMotionSetup.show({
+    width:1920, height:1080, fps:30, fontPS:"", motion:1, offset:0,
+    required:{audio:true, images:true, timing:true, output:true},
+    availableEffects:[{id:"progress", label:"شريط الوقت والعداد", enabled:false}]
+});
+if (!cfg) return; // Place inside the project's build function/IIFE.
+// Validate timing with cfg.offset, actual media and the implemented effect branches here.
+// Start Undo Group only after validation; close it in finally.
+```
+
+ضمّن ملف الوحدة بجوار JSX المشروع عند استخدام هذا النمط، أو ادمج الشيفرة الموثوقة في JSX واحد. المثال لا ينفّذ شريط التقدم؛ مرّر فقط IDs لميزات بناها السكربت فعلًا، واربط `cfg.effects[id]` بمسار التنفيذ. لا تعرض مفاتيح وهمية.
+
+اجمع في النافذة: المقاس وFPS، اسم PostScript مع قائمة الخطوط المتاحة، إزاحة الكلمات، قوة الحركة، ملفات الصوت والصور والتوقيت، واسم مشروع إخراج جديد. اترك العنوان والاعتمادات فارغة حتى تتأكد من بيانات المشروع. استعمل أسماء وإعدادات العميل؛ لا تورّث ذهبية غروب العمر أو أسماء أصحابه أو صوره التسع.
+
+الوحدة تدعم الأرقام العربية والفارسية وتتحقق من الحدود والملفات المطلوبة؛ المدخل الخاطئ يبقي النافذة مفتوحة لتصحيحه. مرّر `preflight:function(cfg){ return errors; }` لفحص بيانات التوقيت والوسائط قبل إغلاق النافذة؛ يجب أن تعيد قائمة أخطاء ولا تعدّل مشروع AE. عند الخطأ تبقى القيم للتصحيح. إذا فصلت التحقق عن النافذة فأعد فتحها بالقيم السابقة عند الفشل، قبل أي بناء. افحص قدرة الاستيراد الفعلية ومحتويات المجلد وملف التوقيت قبل البناء. وجود الملف وحده لا يثبت أنه صوت أو صورة صالحة. تحقّق من الخط بعد تطبيقه بالقراءة الراجعة، ولا تعتبر وجوده في القائمة إثباتًا لرصف العربية. افحص توفر خصائص RTL نفسها بدل الاعتماد على رقم إصدار AE فقط.
+
+دوال القالب الدفاعي العام داخل IIFE؛ انسخها أو أعد تصديرها عمدًا عند البناء، ولا تفترض أن تحميله يكشفها كدوال عامة. إغلاق Undo Group في finally لا يتراجع تلقائيًا عن بناء جزئي فاشل؛ أبلغ بالمراحل التي اكتملت وأتح التراجع دون حذف مشروع المستخدم.
+
+اربط جميع الإعدادات بالمخرجات: W/H/FPS للنص والكاميرا والكومب، offset للأشطر وعلاماتها، motion للحركة مع حساب Overscan، ومفاتيح المؤثرات بإنشائها. إذا أُلغي الحفظ فلا تدّع وجود AEP؛ لا تحفظ فوق مشروع موجود تلقائيًا.
+
+## التوقيت الفعلي والموال واللازمة
+
+استخرج ترتيب الأداء من الصوت الفعلي، بما فيه الموال والمدود واللازمة والفواصل والإعادات. قارن مدة الحاوية بمدة العينات المفكوكة عند اختلافهما. التعرّف الصوتي وVocal Bandpass قرائن للمحاذاة، ولا يثبتان حدود أشطر غنائية وحدهما؛ احتفظ بالنص الذي اعتمده المستخدم وراجع سمعيًا عند الإمكان. سمِّ أي توقيت غير متحقق منه مؤقتًا.
+
+احتفظ بالبيانات مستقلة بصيغة JSON، مع `duration`, `fps`, `scenes`. لكل فترة: `id` اختياري فريد، `scene` رقم أصل يمكن تكراره، `start`, `end`, `kind`, و`layout` من توزيعات V16 أو `side` بقيمة LEFT/RIGHT لجهة النص. لكل شطر: `text`, `start`, `end` و`fixedTiming:true` اختياري للعناوين والاعتمادات المستثناة من إزاحة الكلمات. لا تخلط رقم الأصل برقم ظهور اللازمة.
+
+```json
+{"duration":12,"fps":30,"scenes":[
+  {"id":"intro","scene":1,"layout":"CENTER_ONLY","kind":"intro","start":0,"end":2,"cues":[]},
+  {"id":"verse-01","scene":2,"layout":"TEXT_TOP","kind":"verse","start":2,"end":12,
+   "cues":[{"text":"النص المعتمد","start":3,"end":10}]}
+]}
+```
+
+افحص المدد والتسلسل وعدم خروج الأشطر عن فتراتها **بعد تطبيق إزاحة المستخدم**. إذا انتقل شطر إلى مشهد آخر فعدّل فترة النص/المشهد أو حذّر واطلب تصحيح الإعداد داخل النافذة؛ لا تقصّ الشطر بصمت. اجعل علامات المراجعة تعكس الظهور الفعلي وتستثني fixedTiming بالطريقة نفسها. تحريك Marker وحده لا يعيد توقيت النص إلا إذا بنيت هذا الربط.
+
+```bash
+python scripts/validate_motion_project.py --timing timing.json --jsx Build_Project.jsx --offset 0
+```
+
+الفاحص المدمج، المطور من فاحص حزمة سلمان المرفقة، يقبل أيضًا JSON محاطًا بـ`(...)` في `.jsxinc` دون تنفيذه. يتحقق من خمسة layouts أو side، ومعرّفات الفترات، والإزاحة، والتغطية خلال إطار واحد. يسمح بالمقدمة الخالية من الكلمات وتكرار أصل الصورة. لا يقبل تداخل الأشطر في هذا المخطط؛ إذا طُلب تداخل مقصود فطوّر المخطط والبناء والفاحص معًا. عند إنشاء نسخة JSON بأزمنة فعلية بعد الإزاحة مرّر `--offset 0` للفاحص لتجنب تطبيق الإزاحة مرتين. فحص Node للصياغة لا يضمن ES3 أو صحة الـincludes أو تعبيرات AE. لا تشغّل ملف التوقيت بـ`$.evalFile`؛ استخدم محلل JSON موثوقًا أو ضمّن البيانات المدققة ككائن ثابت أثناء توليد JSX.
+
+## الطيف والشريط والمؤثرات
+
+أضف الطيف والدخان والذرات ولمعة الحروف وLens Flare بحسب الطلب والهوية. لا تجعلها واجبة لكل أنشودة أو مفعّلة كلها افتراضيًا. وجودها البصري لا يبرر تغيير تسجيل Style D أو إضافة SFX إليه دون طلب.
+
+- اربط Audio Spectrum بطبقة الصوت الحقيقية بعد استقرار ترتيب MASTER، ثم تحقق من مرجع الطبقة. ميّز حساسية الرسم عن مستوى الصوت المسموع؛ لا تصطنع الاستجابة بعشوائية.
+- افحص هوية كل خاصية ونوعها ووحدتها وحدودها في AE؛ خاصيتان عدديتان قد تجتازان الفحص النوعي مع اختلاف وظيفتهما. النوع وحده لا يثبت عنوان الخاصية. لا تنقل أرقام Spectrum أو Glass من مثال إلى إصدار آخر بلا تحقق. لا تفترض أن كل نسبة في AE تقع بين 0 و100؛ لا تقرأ minValue/maxValue دون hasMin/hasMax.
+- حرّك تقدم الوقت خطيًا من مدة الكومب، واجعل التلاشي للدخول والخروج خاصية مستقلة. يجب أن يطابق العداد الزمن الفعلي؛ لا تطبق easing على تقدم الزمن.
+- طبّق لمعة النص في فضاء طبقته وبحدوده المرئية، أو قيدها بألفا سليمة. راجع تراكم الشفافية والمزج على إطار نهائي قبل تقوية اللمعة أو الضباب.
+- للصور الثابتة، مدّد precomp بذيل الانتقال بدل استخدام Time Remap ثم حذف جميع مفاتيحه. احسب Cover مع هامش حركة عند أقصى قوة كاميرا؛ لا تكتفِ بالحالة الافتراضية.
+- استعمل Match Names المتحققة أولًا. إذا احتجت قراءة أسماء محلية فاحصرها في لغة معروفة مع تحقق الهوية، ولا تستبدل خاصية مجهولة بأول عددية. اجعل الخطأ يحدد المرحلة والطبقة والخاصية والوقت.
+
+## حدود مثال غروب العمر وفحوصه
+
+فُحصت الحزمة `Salman_Motion_Graphic_Final.zip` أثناء دمج V17: مثال Build_Nasheed.jsx يضم 18 فترة و37 شطرًا، لكنه مخصص لـ1920×1080 و30fps وتسع صور. لم يُنقل إلى قالبنا العام ولم تُنشر بياناته وكلماته واعتماداته كمشروع جديد.
+
+أظهر فحصه الساكن قيودًا يجب تجنبها: قصّ الإزاحة عند حافة المشهد مع اختلاف العلامات عن ظهور الكلمات، وقراءة أول cue في مقدمة قد تكون خالية، ووضع الاعتمادات على كل فترة بلا كلمات، وتجاهل fps من البيانات. خصّص kind للمقدمة والخاتمة، وافحص cues قبل فهرستها، وطبّق بيانات المقاس والتوقيت بدل الثوابت.
+
+اجتاز المثال فحص بيانات وصياغة، دون تشغيل AE أو سماع التسجيل في هذه المراجعة. مراجعة الفاحص أو وحدة النافذة بمحاكاة لا تثبت صحة الطيف أو شدة الضباب أو جودة الخط والرندر على جهاز المستخدم.
+
+---
+
+<a id="file-14"></a>
+
+## references/reference-ledger-and-render-review.md
+
+# تحليل المرجع ومراجعة الفيديو المشفر — V17
+
+## المحتويات
+
+1. سجل المرجع والتطابق المقصود
+2. المراجعة المرحلية واستئناف العمل
+3. أداة أوراق الإطارات
+4. المصدر ونطاق الاستفادة
+
+## سجل المرجع والتطابق المقصود
+
+افحص كامل المدة ذات الصلة من المرجع، لا الافتتاح وحده. سجّل بيانات الفيديو والصوت، ووزع المراجعة على مقاطع قصيرة تغطي البداية والوسط والختام. خذ إطارات مؤرخة داخل اللقطات وحول الانتقالات، وراجع الحركة مع الصوت عند توفره؛ الأوراق الثابتة لا تثبت النعومة أو دقة الإيقاع.
+
+أنشئ سجل لقطات: بداية ونهاية، العبارة، التكوين، الخط، مسار الحركة، منحنى التوقيت، الانتقال، وعلامة الصوت عند انطباقها. ثم استعمل مصفوفة للمقارنة:
+
+| وقت المرجع | وقت المشروع | الصفة المطلوب حفظها | التغيير المقصود | إطار/مقطع التحقق |
+| --- | --- | --- | --- | --- |
+| زمن محدد | زمن محدد | إيقاع/حركة/توزيع | هوية العميل ونصه وأصوله | مسار الدليل |
+
+استخرج القواعد البصرية من المرجع واستخدم أصول العميل. لا تجعل لوحة ألوان أو موكاب أو أسماء المرجع جزءًا من هوية العميل. لا تدّع مشاهدة فيديو لم تُفتح إطاراته أو سماع صوت لم يتوفر.
+
+## المراجعة المرحلية واستئناف العمل
+
+اختبر أصعب لقطة مبكرًا، ثم راجع نطاق اللقطة المعدلة ومعها الوصلتان المحيطتان. أنشئ نسخة صغيرة مع صوت عند مراجعة التوقيت، وإطارات كاملة الدقة لتدقيق العربية. بعد نجاح ذلك راجع النسخة المشفرة كاملة، مع عينات عند كل تغيير نص/انتقال وأول وآخر إطار. لا تعِد رندر المشروع كله بعد كل تغيير محلي بلا حاجة.
+
+في المشاريع الطويلة، احتفظ بملف تقدم مقتضب يحدد المرحلة والملفات المعتمدة وآخر اختبار والخطوة التالية. افصل الأصول والمصادر والنتائج والكاش، واحتفظ بإصدارات بدل الكتابة فوق النسخة المعتمدة. دوّن مصدر الأصول والخطوط وترخيصها عند استقدام مواد خارجية، دون تضمين مفاتيح أو تسجيلات دخول.
+
+صمّم العناصر العربية المتتابعة وفق ترتيب القراءة من اليمين إلى اليسار عند انطباقه؛ لا تعكس الشعار أو لقطة واجهة حقيقية. افحص الأرقام والأسماء اللاتينية وعلامات الترقيم. لا تعمم اتجاه الحركة على كل لقطة: اتجاه الشخصية والكاميرا ومعنى الانتقال قد يختلف، بينما يحافظ تسلسل المعلومات على القراءة.
+
+عند بناء معاينة برمجية خارج AE، اجعل الإطار دالة للزمن مع عشوائية ببذرة ثابتة حتى تطابق لقطة المعاينة الزمن نفسه في الرندر. هذا خيار للمعاينة/الفيديو المطلوب، وليس تحويلًا تلقائيًا لمشروع AE المفتوح إلى Canvas أو MP4.
+
+افحص الأدوات اللازمة للمسار المختار فقط. لا تثبّت حزمة نماذج أو موصلات أو تطلب مفاتيح خدمات أو تشترط صوت ElevenLabs لمجرد وجودها في مهارة مرجعية. استخدم الصوت النهائي المتاح؛ أبقِ تخطيطًا مؤقتًا موسومًا بوضوح إن لم يتوفر، ولا تفرض موافقات جديدة على عمل أذن به المستخدم.
+
+## أداة أوراق الإطارات
+
+أُضيفت أداة مستقلة مكتوبة لهذا الدمج، وليست نسخة من سكربتات الحزمة الثانية. تحتاج Python وPillow وffmpeg/ffprobe، وتقرأ فيديو محليًا مرندرًا من AE أو مصدر آخر:
+
+```bash
+python scripts/review_motion_render.py renders/final_v01.mp4 --out review/v01 --interval 2
+python scripts/review_motion_render.py renders/final_v01.mp4 --out review/shot02_v01 --start 10 --end 18 --interval 0.25 --timing timing.json
+```
+
+تنتج أوراقًا مرقمة و`review_report.json` يذكر المقاس والمدة وFPS المتوسط ومسارات العينات وبيانات الصوت. تضيف `--timing` عينات حول حدود المشاهد والأشطر غير المزاحة، وتستخدم أزمنة JSON دون تشغيله؛ مرّر بيانات نهائية بعد الإزاحة إذا أردت مراجعة التوقيت المعدل. اختر مجلد إخراج جديدًا، ولا تنشئ أوراقًا ضخمة؛ الحد 600 عينة لكل نطاق.
+
+الملصق يمثل زمن seek المطلوب، لا PTS المقاس لكل إطار؛ لا تدّع دقة إطار واحد من الورقة وحدها، خصوصًا مع VFR أو فيديو ذي دوران. راجع تشغيل الفيديو والحواف والعربية كاملة الدقة، وافحص PTS/تزامن الصوت بأدوات مخصصة عند الحاجة. الأداة لا تمنح تقييم جودة تلقائيًا ولا تنتج AEP.
+
+راجع في الرندر: حدود النص والصور، اتجاه القراءة، عدم تغير الهوية، الاستقرار، الوصلات، شدة المؤثرات، دخول الطيف والشريط وخروجهما، العنوان والاعتمادات. افحص الصوت على التسجيل الحقيقي، ولا تغيّر مستواه أو تطبع الجهارة تلقائيًا دون حاجة ضمن طلب المشروع.
+
+## المصدر ونطاق الاستفادة
+
+اطُّلِع على الحزمة المرفقة `arabian-motion-video-director-v1.0.0.zip` وإصدار Arabian AI School المبني، بحسب NOTICE.md، على Motion Video Director لـMiftahul Islam Efaz. الحزمة تنص على دعم Claude Code وCodex وCursor؛ ليست مقصورة على Claude. المرجع يذكر:
+
+© 2026 Arabian AI School. All rights reserved.
+
+المصدر المعرّف في الحزمة: https://arabianaischool.com و https://instagram.com/arabianaischool . تُحفظ حقوق أصحابها؛ لم تُنسخ الحزمة أو سكربتاتها إلى المستودع العام. صيغت هنا تعليمات جديدة لتحليل المراجع والمراجعة التدريجية، مع الحفاظ على مسار سلمان وAE والعربية. لا يُفهم الاطلاع على README على أنه اختبار لتكامل Claude أو الخدمات المذكورة.
+
+---
+
+<a id="file-15"></a>
+
 ## templates/mp3_vocal_onset_analyzer.py
 
 ```python
 """
 Acoustic MP3/WAV Vocal-Onset Analyzer (250Hz - 3400Hz Bandpass Filter) for Style D
 (Spiritual Nasheed & Poetic Kinetic Typography Montage).
-Extracts breath pauses and millisecond-accurate onset windows for Arabic verses and words.
+Returns a sampled RMS envelope as alignment evidence, not word or verse timestamps.
+The bandpass does not separate vocals from overlapping instruments or noise.
 """
 import subprocess
 import wave
@@ -1368,7 +1550,8 @@ import math
 
 def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
     """
-    Uses ffmpeg bandpass (250Hz-3400Hz) to isolate human vocals and returns RMS energy envelope.
+    Uses ffmpeg bandpass (250Hz-3400Hz) and returns a sampled RMS energy envelope.
+    Default hop is 20 ms; no transcription, word alignment or native AE verification.
     """
     tmp_wav = "/tmp/_vocal_bandpass.wav"
     subprocess.run([
@@ -1393,7 +1576,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-14"></a>
+<a id="file-16"></a>
 
 ## templates/salman_calligraphy_glass_shine_v08_template.jsx
 
@@ -2521,7 +2704,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-15"></a>
+<a id="file-17"></a>
 
 ## templates/salman_motion_starter_template.js
 
@@ -2668,12 +2851,13 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
                 var verifyDoc = txtDocProp.value;
                 var actualFont = String(verifyDoc.font || "").toLowerCase();
                 var actualFam  = String(verifyDoc.fontFamily || "").toLowerCase();
-                if (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1) {
+                if (actualFont === String(tryList[cIdx]).toLowerCase() &&
+                (actualFont.indexOf(fk) !== -1 || actualFam.indexOf(fk) !== -1)) {
                     return verifyDoc.font;
                 }
             } catch (fErr) {}
         }
-        return doc.font;
+        return null; // No verified candidate; caller must stop or report an explicit fallback.
     }
 
     function enableGpuAnd16Bit() {
@@ -2896,7 +3080,132 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-16"></a>
+<a id="file-18"></a>
+
+## templates/salman_prebuild_setup.jsx
+
+```javascript
+/* Salman Motion V17 — reusable ScriptUI setup. ES3-style source.
+ * This module defines SalmanMotionSetup; it imports/builds/saves nothing.
+ * Load the trusted bundled file with $.evalFile(), then call .show(defaults).
+ * Use only controls whose features the project's builder actually implements.
+ */
+var SalmanMotionSetup = (function () {
+    function clean(v) { return String(v === undefined || v === null ? "" : v).replace(/^\s+|\s+$/g, ""); }
+    function number(v) {
+        var a = "٠١٢٣٤٥٦٧٨٩", b = "۰۱۲۳۴۵۶۷۸۹", t = clean(v), i;
+        if (!t.length) return NaN;
+        for (i = 0; i < 10; i++) {
+            t = t.split(a.charAt(i)).join(String(i));
+            t = t.split(b.charAt(i)).join(String(i));
+        }
+        return Number(t.replace(/٫/g, "."));
+    }
+    function validate(c, req) {
+        req = req || {};
+        var e = [];
+        if (!c.fontPS) e.push("أدخل اسم PostScript للخط.");
+        if (!isFinite(c.offset) || c.offset < -5 || c.offset > 5) e.push("إزاحة النص بين -5 و5 ثوانٍ.");
+        if (!isFinite(c.motion) || c.motion < 0.5 || c.motion > 2) e.push("قوة الحركة بين 0.5 و2.");
+        if (!isFinite(c.width) || c.width < 16 || c.width > 30000 || c.width % 1) e.push("عرض صحيح بين 16 و30000.");
+        if (!isFinite(c.height) || c.height < 16 || c.height > 30000 || c.height % 1) e.push("ارتفاع صحيح بين 16 و30000.");
+        if (!isFinite(c.fps) || c.fps < 1 || c.fps > 120) e.push("معدل إطارات بين 1 و120.");
+        if (req.audio && !c.audioPath) e.push("اختر ملف الصوت.");
+        if (req.images && !c.imagesPath) e.push("اختر مجلد الصور.");
+        if (req.timing && !c.timingPath) e.push("اختر ملف التوقيت.");
+        if (c.audioPath && !new File(c.audioPath).exists) e.push("ملف الصوت غير موجود.");
+        if (c.imagesPath && !new Folder(c.imagesPath).exists) e.push("مجلد الصور غير موجود.");
+        if (c.timingPath && !new File(c.timingPath).exists) e.push("ملف التوقيت غير موجود.");
+        if (c.outputPath && !/\.aep$/i.test(c.outputPath)) e.push("اسم مشروع الإخراج ينتهي بـ .aep.");
+        if (c.outputPath && new File(c.outputPath).exists) e.push("اختر اسم مشروع جديدًا؛ الملف موجود بالفعل.");
+        if (req.output && !c.outputPath) e.push("اختر مسار حفظ جديدًا.");
+        return e;
+    }
+    function installedFonts() {
+        var out = [], seen = {}, groups, i, j, ps;
+        try {
+            groups = app.fonts.allFonts;
+            for (i = 0; i < groups.length; i++) for (j = 0; j < groups[i].length; j++) {
+                ps = String(groups[i][j].postScriptName || "");
+                if (ps && !seen["f_" + ps]) { seen["f_" + ps] = true; out.push(ps); }
+            }
+        } catch (ignored) {}
+        out.sort(); return out;
+    }
+    function show(d) {
+        d = d || {};
+        var win = new Window("dialog", "سلمان للموشن — إعداد المشروع");
+        win.orientation = "column"; win.alignChildren = "fill";
+        var tabs = win.add("tabbedpanel"), base = tabs.add("tab", undefined, "الملفات والإعداد"),
+            fx = tabs.add("tab", undefined, "الحركة والمؤثرات"), credits = tabs.add("tab", undefined, "العنوان والاعتمادات");
+        base.orientation = fx.orientation = credits.orientation = "column";
+        base.alignChildren = fx.alignChildren = credits.alignChildren = "fill";
+        function field(parent, label, value) {
+            var row = parent.add("group"); row.add("statictext", undefined, label);
+            var ed = row.add("edittext", undefined, clean(value)); ed.characters = 28; return ed;
+        }
+        function pathField(label, value, kind) {
+            var row = base.add("group"); row.add("statictext", undefined, label);
+            var ed = row.add("edittext", undefined, clean(value)); ed.characters = 23;
+            var button = row.add("button", undefined, "اختيار");
+            button.onClick = function () {
+                var file;
+                if (kind === "folder") file = Folder.selectDialog(label);
+                else if (kind === "output") file = File.saveDialog(label, "*.aep");
+                else file = File.openDialog(label);
+                if (file) ed.text = file.fsName;
+            }; return ed;
+        }
+        var width = field(base, "العرض", d.width || 1920), height = field(base, "الارتفاع", d.height || 1080),
+            fps = field(base, "FPS", d.fps || 30), font = field(base, "الخط PostScript", d.fontPS || "");
+        var fonts = installedFonts();
+        if (fonts.length) {
+            var dd = base.add("dropdownlist", undefined, fonts);
+            dd.onChange = function () { if (dd.selection) font.text = dd.selection.text; };
+        } else base.add("statictext", undefined, "تعذر سرد الخطوط؛ تحقق من تطبيق الخط عند البناء.");
+        var audio = pathField("الصوت", d.audioPath, "file"), images = pathField("مجلد الصور", d.imagesPath, "folder"),
+            timing = pathField("التوقيت JSON", d.timingPath, "file"), output = pathField("مشروع AEP جديد", d.outputPath, "output");
+        var offset = field(fx, "إزاحة الكلمات (+ تأخير)", d.offset === undefined ? 0 : d.offset),
+            motion = field(fx, "قوة الحركة 0.5–2", d.motion === undefined ? 1 : d.motion);
+        fx.add("statictext", undefined, "تظهر مفاتيح الميزات المنفذة في هذا المشروع فقط.");
+        var available = d.availableEffects || [], toggles = [], k;
+        for (k = 0; k < available.length; k++) {
+            var cb = fx.add("checkbox", undefined, available[k].label);
+            cb.value = !!available[k].enabled; toggles.push(cb);
+        }
+        var title = field(credits, "العنوان", d.title), author = field(credits, "كلمات", d.author),
+            vocals = field(credits, "أداء وألحان", d.vocals), editor = field(credits, "مونتاج", d.editor),
+            producer = field(credits, "إنتاج (اختياري)", d.producer);
+        credits.add("statictext", undefined, "املأ البيانات المؤكدة فقط؛ لا توجد أسماء افتراضية.");
+        var row = win.add("group"); row.alignment = "right";
+        row.add("button", undefined, "إلغاء", {name:"cancel"});
+        var build = row.add("button", undefined, "بناء المشروع", {name:"ok"}), result = null;
+        build.onClick = function () {
+            var c = {width:number(width.text), height:number(height.text), fps:number(fps.text),
+                fontPS:clean(font.text), offset:number(offset.text), motion:number(motion.text),
+                audioPath:clean(audio.text), imagesPath:clean(images.text), timingPath:clean(timing.text), outputPath:clean(output.text),
+                title:clean(title.text), author:clean(author.text), vocals:clean(vocals.text), editor:clean(editor.text),
+                producer:clean(producer.text), effects:{}};
+            var i; for (i = 0; i < available.length; i++) c.effects[available[i].id] = toggles[i].value;
+            var errors = validate(c, d.required);
+            if (!errors.length && typeof d.preflight === "function") {
+                try { errors = d.preflight(c) || []; }
+                catch (error) { errors = [String(error)]; }
+            }
+            if (errors.length) { alert(errors.join("\n")); return; }
+            result = c; win.close(1);
+        };
+        tabs.selection = base;
+        if (win.show() !== 1) return null;
+        return result;
+    }
+    return {show:show, validate:validate, number:number, installedFonts:installedFonts};
+})();
+```
+
+---
+
+<a id="file-19"></a>
 
 ## templates/stereo_wav_sfx_generator.py
 
@@ -2926,7 +3235,7 @@ def write_stereo_wav(filepath, left_samples, right_samples):
 
 ---
 
-<a id="file-17"></a>
+<a id="file-20"></a>
 
 ## templates/svg_to_ae_bezier_parser.py
 
@@ -3050,7 +3359,283 @@ def parse_svg_path_to_ae_subpaths(d_str, center_x=0.0, center_y=0.0, scale=1.0):
 
 ---
 
-<a id="file-18"></a>
+<a id="file-21"></a>
+
+## scripts/review_motion_render.py
+
+```python
+#!/usr/bin/env python3
+"""Sample an encoded local video into timestamped contact sheets. No quality score or AE execution."""
+import argparse
+from fractions import Fraction
+import io
+import json
+import math
+from pathlib import Path
+import subprocess
+from PIL import Image, ImageDraw, ImageFont
+
+
+def run(args):
+    return subprocess.run(args, check=True, capture_output=True, timeout=90).stdout
+
+
+def timing_events(path):
+    raw = path.read_text(encoding="utf-8-sig").strip().rstrip(";").strip()
+    if raw.startswith("(") and raw.endswith(")"):
+        raw = raw[1:-1]
+    data = json.loads(raw)
+    result = []
+    for scene in data.get("scenes", []):
+        for entry in [scene] + scene.get("cues", []):
+            for key in ("start", "end"):
+                t = entry.get(key)
+                if isinstance(t, (int, float)) and not isinstance(t, bool) and math.isfinite(t):
+                    result.append(t)
+    return result
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("video", type=Path)
+    p.add_argument("--out", required=True, type=Path, help="New directory, never overwritten.")
+    p.add_argument("--interval", type=float, default=2.0)
+    p.add_argument("--start", type=float, default=0)
+    p.add_argument("--end", type=float)
+    p.add_argument("--timing", type=Path, help="Optional unshifted JSON timeline; sample around boundaries too.")
+    a = p.parse_args()
+    if not math.isfinite(a.interval) or a.interval < 0.05:
+        p.error("interval must be finite and >= 0.05 seconds")
+    if a.out.exists():
+        p.error("output directory exists; choose a new version")
+    meta = json.loads(run(["ffprobe", "-v", "error", "-show_format", "-show_streams", "-of", "json", str(a.video.resolve())]))
+    video = next((x for x in meta["streams"] if x.get("codec_type") == "video"), None)
+    if not video:
+        p.error("no video stream")
+    duration = float(video.get("duration") or meta["format"].get("duration", 0))
+    try:
+        fps = float(Fraction(video.get("avg_frame_rate", "0/1")))
+    except (ValueError, ZeroDivisionError):
+        fps = 0
+    if not math.isfinite(duration) or duration <= 0 or not math.isfinite(fps) or fps <= 0:
+        p.error("positive duration and average fps required")
+    end = duration if a.end is None else a.end
+    if not math.isfinite(a.start) or not math.isfinite(end) or not 0 <= a.start < end <= duration:
+        p.error("range must satisfy 0 <= start < end <= duration")
+    last = max(a.start, end - 1 / fps)
+    count = math.ceil((end - a.start) / a.interval)
+    if count > 600:
+        p.error("more than 600 samples; review smaller time ranges or increase interval")
+    times = {a.start, last}
+    times.update(min(last, a.start + i * a.interval) for i in range(count))
+    if a.timing:
+        for t in timing_events(a.timing):
+            for delta in (-1 / fps, 0, 1 / fps):
+                at = t + delta
+                if a.start <= at <= last:
+                    times.add(at)
+    times = sorted({round(t, 6) for t in times})
+    if len(times) > 600:
+        p.error("more than 600 event samples; review smaller time ranges")
+    a.out.mkdir(parents=True)
+    cell_w, cell_h, columns, per_page = 326, 210, 4, 24
+    try:
+        font = ImageFont.truetype("DejaVuSans.ttf", 14)
+    except OSError:
+        font = ImageFont.load_default()
+    pages = []
+    for page_start in range(0, len(times), per_page):
+        selected = times[page_start:page_start + per_page]
+        rows = math.ceil(len(selected) / columns)
+        sheet = Image.new("RGB", (columns * cell_w, rows * cell_h), "#202020")
+        draw = ImageDraw.Draw(sheet)
+        for i, t in enumerate(selected):
+            image = Image.open(io.BytesIO(run(["ffmpeg", "-v", "error", "-ss", str(t), "-i", str(a.video.resolve()),
+                "-map", "0:v:0", "-frames:v", "1", "-vf", "scale=640:360:force_original_aspect_ratio=decrease", "-f", "image2pipe", "-c:v", "png", "-"]))).convert("RGB")
+            image.thumbnail((cell_w - 8, cell_h - 30))
+            x, y = (i % columns) * cell_w, (i // columns) * cell_h
+            sheet.paste(image, (x + (cell_w - image.width) // 2, y + 4))
+            draw.text((x + 6, y + cell_h - 23), f"requested t={t:.3f}s", font=font, fill="white")
+        target = a.out / f"sheet_{len(pages) + 1:03}.jpg"
+        sheet.save(target, quality=92)
+        pages.append(target.name)
+    report = {"scope": "Human review samples only; no audio alignment, quality score or After Effects execution.",
+        "video": str(a.video.resolve()), "width": video.get("width"), "height": video.get("height"),
+        "duration": duration, "avg_fps": fps, "codec": video.get("codec_name"), "pixel_format": video.get("pix_fmt"),
+        "audio": [{"codec": x.get("codec_name"), "sample_rate": x.get("sample_rate"), "channels": x.get("channels")}
+                  for x in meta["streams"] if x.get("codec_type") == "audio"],
+        "range": [a.start, end], "requested_times": times, "sheets": pages,
+        "limitations": "Labels show requested seek times, not decoded PTS. VFR/rotation require separate inspection; inspect playback and full-resolution text too."}
+    (a.out / "review_report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(json.dumps({"sheets": len(pages), "samples": len(times), "report": str(a.out / "review_report.json")}))
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:
+        raise SystemExit("Review failed: " + str(exc))
+```
+
+---
+
+<a id="file-22"></a>
+
+## scripts/validate_motion_project.py
+
+```python
+#!/usr/bin/env python3
+"""Check timeline data and JSX syntax; does not emulate or render After Effects."""
+import argparse
+import json
+import math
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+
+
+def finite(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def validate_timing(path, errors, offset=0.0):
+    raw = path.read_text(encoding="utf-8-sig").strip().rstrip(";").strip()
+    if raw.startswith("(") and raw.endswith(")"):
+        raw = raw[1:-1].strip()
+    data = json.loads(raw)  # Never execute supplied JSX data.
+    if not isinstance(data, dict):
+        errors.append("Timeline root must be an object.")
+        return {}
+    duration, fps = data.get("duration"), data.get("fps", 30)
+    if not finite(duration) or duration <= 0:
+        errors.append("duration must be a positive finite number.")
+    if not finite(fps) or fps <= 0:
+        errors.append("fps must be a positive finite number.")
+        fps = 30
+    tolerance = 1 / fps + 1e-6
+    scenes = data.get("scenes")
+    if not isinstance(scenes, list) or not scenes:
+        errors.append("scenes must be a nonempty list.")
+        return {}
+    seen_ids = set()
+    previous_end = 0.0
+    cue_count = 0
+    for index, scene in enumerate(scenes):
+        label = "scene[%d]" % index
+        if not isinstance(scene, dict):
+            errors.append(label + " must be an object.")
+            continue
+        number = scene.get("scene")
+        if not isinstance(number, int) or isinstance(number, bool) or number <= 0:
+            errors.append(label + ".scene must be a positive asset number.")
+        layout = scene.get("layout")
+        if layout is not None:
+            if layout not in ("CENTER_ONLY", "TEXT_LEFT", "TEXT_RIGHT", "TEXT_TOP", "TEXT_BOTTOM"):
+                errors.append(label + ".layout is invalid.")
+        elif scene.get("side") not in ("LEFT", "RIGHT"):
+            errors.append(label + " needs layout or LEFT/RIGHT text side.")
+        if "id" in scene:
+            sid = scene["id"]
+            if not isinstance(sid, str) or not sid.strip():
+                errors.append(label + ".id must be a nonempty string.")
+            elif sid in seen_ids:
+                errors.append(label + ".id is duplicated.")
+            else:
+                seen_ids.add(sid)
+        start, end = scene.get("start"), scene.get("end")
+        valid_bounds = finite(start) and finite(end) and 0 <= start < end
+        if not valid_bounds:
+            errors.append(label + " needs finite bounds 0 <= start < end.")
+        else:
+            if abs(start - previous_end) > tolerance:
+                errors.append(label + " has a gap/overlap greater than one frame.")
+            if finite(duration) and end > duration + tolerance:
+                errors.append(label + " exceeds duration.")
+            previous_end = end
+        cues = scene.get("cues", [])
+        if not isinstance(cues, list):
+            errors.append(label + ".cues must be a list.")
+            continue
+        last_cue_end = start if valid_bounds else 0
+        for ci, cue in enumerate(cues):
+            clabel = label + ".cues[%d]" % ci
+            cue_count += 1
+            if not isinstance(cue, dict):
+                errors.append(clabel + " must be an object.")
+                continue
+            if not isinstance(cue.get("text"), str) or not cue["text"].strip():
+                errors.append(clabel + " requires nonempty text.")
+            cs, ce = cue.get("start"), cue.get("end")
+            if "fixedTiming" in cue and not isinstance(cue["fixedTiming"], bool):
+                errors.append(clabel + ".fixedTiming must be boolean.")
+            if finite(cs) and finite(ce) and not cue.get("fixedTiming", False):
+                cs, ce = cs + offset, ce + offset
+            if not (finite(cs) and finite(ce) and 0 <= cs < ce):
+                errors.append(clabel + " has invalid time bounds.")
+                continue
+            if valid_bounds and (cs < start - 1e-6 or ce > end + 1e-6):
+                errors.append(clabel + " falls outside its scene.")
+            if cs < last_cue_end - 1e-6:
+                errors.append(clabel + " overlaps the previous cue.")
+            last_cue_end = ce
+    if finite(duration) and abs(previous_end - duration) > tolerance:
+        errors.append("Last scene must cover duration within one frame.")
+    return {"scenes": len(scenes), "cues": cue_count, "duration": duration, "fps": fps}
+
+
+def validate_jsx(path, errors, warnings):
+    source = path.read_text(encoding="utf-8-sig")
+    if re.search(r'\.property\(\s*[\"\']ADBE Point of Interest[\"\']\s*\)', source):
+        errors.append("Invalid camera matchName: use ADBE Anchor Point in Transform.")
+    # Conservative hint only: arbitrary variable/property names cannot be resolved statically.
+    if re.search(r'Softness[^\n]{0,100}(?:setValue\(|,\s*)\s*35(?:\D|$)', source):
+        warnings.append("Review Spectrum Softness: its normalized value may need 0.35.")
+    node = shutil.which("node")
+    if not node:
+        warnings.append("Node unavailable: JSX JavaScript syntax check skipped.")
+        return "skipped"
+    # AE preprocessor directives are not JavaScript. Check remaining source only.
+    filtered = "\n".join("" if re.match(r"\s*#(?:target|include|includepath)\b", line) else line
+                         for line in source.splitlines())
+    result = subprocess.run([node, "--check"], input=filtered, text=True,
+                            capture_output=True, timeout=30)
+    if result.returncode:
+        errors.append("JSX syntax check failed: " + result.stderr.strip())
+        return "failed"
+    return "passed (directives excluded; no AE execution or ES3 guarantee)"
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--timing", required=True, type=Path)
+    parser.add_argument("--jsx", type=Path)
+    parser.add_argument("--offset", type=float, default=0, help="Effective lyric shift in seconds; fixedTiming cues are exempt.")
+    args = parser.parse_args()
+    errors, warnings = [], []
+    report = {"scope": "Static timeline/syntax checks only; no audio alignment or native AE rendering."}
+    try:
+        if not math.isfinite(args.offset) or abs(args.offset) > 5:
+            raise ValueError("offset must be finite and within -5..5 seconds")
+        report["offset"] = args.offset
+        report["timing"] = validate_timing(args.timing, errors, args.offset)
+        if args.jsx:
+            report["jsx"] = validate_jsx(args.jsx, errors, warnings)
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+        errors.append(str(exc))
+    report.update(ok=not errors, errors=errors, warnings=warnings)
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+---
+
+<a id="file-23"></a>
 
 ## scripts/validate_png_assets.py
 
