@@ -1,4 +1,4 @@
-# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V17
+# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V18
 
 هذا الملف مولّد من ملفات المصدر في المستودع. اقرأ التعليمات الأساسية أولًا، ثم المراجع والقوالب المناسبة للمشروع. يتضمن الكود النصي كاملًا، ولا يتضمن أصولًا ثنائية أو مشاريع خاصة أو إثباتًا لتشغيل After Effects.
 
@@ -18,15 +18,17 @@
 12. [references/packaging-and-windows-zip-rules.md](#file-12)
 13. [references/prebuild-dialog-and-timed-nasheed.md](#file-13)
 14. [references/reference-ledger-and-render-review.md](#file-14)
-15. [templates/mp3_vocal_onset_analyzer.py](#file-15)
-16. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-16)
-17. [templates/salman_motion_starter_template.js](#file-17)
-18. [templates/salman_prebuild_setup.jsx](#file-18)
-19. [templates/stereo_wav_sfx_generator.py](#file-19)
-20. [templates/svg_to_ae_bezier_parser.py](#file-20)
-21. [scripts/review_motion_render.py](#file-21)
-22. [scripts/validate_motion_project.py](#file-22)
-23. [scripts/validate_png_assets.py](#file-23)
+15. [references/soft-3d-continuous-transitions.md](#file-15)
+16. [templates/mp3_vocal_onset_analyzer.py](#file-16)
+17. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-17)
+18. [templates/salman_motion_starter_template.js](#file-18)
+19. [templates/salman_motion_timing_helpers.js](#file-19)
+20. [templates/salman_prebuild_setup.jsx](#file-20)
+21. [templates/stereo_wav_sfx_generator.py](#file-21)
+22. [templates/svg_to_ae_bezier_parser.py](#file-22)
+23. [scripts/review_motion_render.py](#file-23)
+24. [scripts/validate_motion_project.py](#file-24)
+25. [scripts/validate_png_assets.py](#file-25)
 
 ---
 
@@ -37,7 +39,7 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V17: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V18: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
   motion storyboards, brand-consistent scene redesign and open AE project requests.
@@ -46,10 +48,20 @@ description: >
   Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
   transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
   verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, packaging and honest render review.
+  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, soft-3D transitions, gradient choreography, camera/element separation, controlled bounce,
+  packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V17 — إعداد المشروع وتوقيت الأناشيد ومراجعة الرندر)
+# Salman After Effects Motion (V18 — الوصلات المتصلة والتدرّج والكاميرا والحركة المجسمة)
+
+## الوصلات والتدرّج والكاميرا والعوم والارتداد — V18
+
+عند طلب أسلوب سجام أو Soft 3D أو وصلات تتولد من العناصر وواجهات مائلة، اقرأ
+[المجسمات الناعمة والوصلات المتصلة](references/soft-3d-continuous-transitions.md).
+خطّط تغير الخلفية والإضاءة مع الوصلة، وافصل Rig الكاميرا عن حركة الواجهة ومحتواها.
+وازن الحركة الرئيسية والعوم والتتابع والارتداد؛ استخدم `templates/salman_motion_timing_helpers.js` لحساب القيم عند الحاجة.
+احفظ دروس التجربة وملاحظة المستخدم: الحركة السابقة أولية ولم تصل تمامًا للمطلوب؛ لا تعتمدها معيارًا نهائيًا.
+طبّق هوية العميل، وميّز ما لوحظ من المرجع وما تقترحه للتنفيذ، وما رُندر خارج AE وما اختُبر داخله.
 
 ## نافذة الإعداد والتوقيت ومراجعة الفيديو — V17
 
@@ -408,6 +420,9 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
 
+- [references/soft-3d-continuous-transitions.md](references/soft-3d-continuous-transitions.md): دروس سجام وتجربة أثر الخير؛ الخامات والتدرج والوصلات والكاميرا والعوم والارتداد وحدود اعتماد الحركة.
+- `templates/salman_motion_timing_helpers.js`: حساب منحنيات وتدرجات وعوم وزوم وعينات زمنية بأسلوب ES3؛ يحتاج ربطًا بخصائص المشروع.
+
 - [references/prebuild-dialog-and-timed-nasheed.md](references/prebuild-dialog-and-timed-nasheed.md): نافذة قبل البناء، توقيت الموال واللازمة بعد الإزاحة، وفحوص الطيف والشريط وحدود مثال غروب العمر.
 - [references/reference-ledger-and-render-review.md](references/reference-ledger-and-render-review.md): تحليل المرجع كاملًا ومصفوفة المقارنة ومراجعة الرندر ونسبة المصدر.
 - `templates/salman_prebuild_setup.jsx`: وحدة ScriptUI عامة بإلغاء وفحص مدخلات، لا تبني المشروع وحدها.
@@ -442,7 +457,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## references/PRE_DELIVERY_CHECKLIST.md
 
-# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V17)
+# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V18)
 
 قبل تسليم المشروع، افحص البنود المنطبقة أدناه. سجّل ما اختُبر برمجيًا وما اختُبر داخل AE وما لم يُختبر؛ لا تعلن نجاح بند يحتاج تشغيلًا فعليًا بناءً على فحص ساكن.
 
@@ -507,6 +522,14 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
   - فحص مرجع الصوت للطيف ووحدات خصائصه؛ تقدم الوقت خطي وتلاشيه مستقل، مع معايرة المؤثرات على الرندر.
   - سجل المرجع يغطي المدة المعنية كاملة، ومصفوفة المقارنة تميز الهوية المطلوبة عن شكل المرجع.
   - مراجعة الفيديو المشفر والعربية كاملة الدقة والصوت عند توفره؛ تمييز فحص البيانات/الصياغة والمحاكاة عن تشغيل AE.
+
+- [ ] **12. الوصلات والتدرّج والكاميرا والارتداد (V18)**:
+  - فصل الصفة المرصودة عن آلية محتملة أو وصفة مقترحة؛ عدم اعتماد حركة الدراسة السابقة نهائيًا بعد ملاحظة المستخدم.
+  - تماس المجسمات بالقاعدة، واتساق الخامات والضوء وألوان العميل، وتحديد قابلية تحرير PNG/الأجزاء/Rig.
+  - استمرارية اللون وقراءة النص في منتصف تغير التدرج، وتغطية جميع زوايا المسحة أو الدائرة.
+  - فصل الكاميرا عن حركة الواجهة ومحتواها، وفحص المنظور والحواف عند الذروة وأقصى إعداد حركة.
+  - تمايز الحركة الرئيسية والعوم والارتداد، وعدم تجاوز حدود الألفا والألوان أو إضافة easing ثانٍ للقيم المأخوذة مسبقًا.
+  - مقارنة قبل الحركة/ذروتها/استقرارها، ومراجعة القصور الذي حدده المستخدم دون ادعاء تطابق الرندر البرمجي مع AE.
 
 ---
 
@@ -1534,6 +1557,119 @@ python scripts/review_motion_render.py renders/final_v01.mp4 --out review/shot02
 
 <a id="file-15"></a>
 
+## references/soft-3d-continuous-transitions.md
+
+# المجسمات الناعمة والوصلات المتصلة والكاميرا — V18
+
+## المحتويات
+
+1. نطاق الدرس وحالة اعتماد الحركة
+2. لغة الرسم والخامات والارتكاز
+3. تغيّر التدرج والإضاءة
+4. الانتقالات التي تنشأ من العناصر
+5. الكاميرا والواجهات والمنظور
+6. هرم الحركة والتتابع والعوم والارتداد
+7. تنفيذ القيم الزمنية في AE
+8. المقارنة والتحقق والتسليم
+
+## 1. نطاق الدرس وحالة اعتماد الحركة
+
+استخدم هذا المرجع مع Style C للمشاهد المجسمة/متعددة المستويات، ومع Style B لعرض الشعار والواجهات. احتفظ بـStyle F للخرائط ووصفات L01–L17 وقواعد الهوية والتوقيت السابقة.
+
+المصدر البصري: فيديو «سجام أثر الجمعيات الخيرية» المرفق في المحادثة، https://www.youtube.com/watch?v=I6pE8i2smkQ . النسخة المفحوصة نحو 46.08s، 640×360، 30fps. روجعت إطارات تغطي كامل المدة وعينات أكثر كثافة عند الوصلات؛ لم يُنجز هنا تحليل سمعي أو استعادة ملفات المشروع الأصلية. فرّق بين الصفة المرصودة، والآلية المحتملة، والوصفة المقترحة للتنفيذ. لا تستنتج برنامج النمذجة أو منحنيات المصدر من MP4 وحده.
+
+أُنتجت دراسة «أثر الخير» 13s برسوم أصلية منفصلة ومعاينة برمجية خارج AE. أشاد المستخدم بالجهد وذكر أن الحركة لم تصل تمامًا لما يريد. احفظها كتجربة أولية قابلة للمراجعة، ولا تجعل منحنياتها أو سرعاتها أو درجة التشابه معيارًا معتمدًا. لا تنسب عدم الرضا إلى قيمة محددة لم يذكرها المستخدم؛ قارِن أقصر مقطع مناسب ثم اضبطه وفق ملاحظته المتاحة.
+
+## 2. لغة الرسم والخامات والارتكاز
+
+وحّد نعومة الحواف والخامة ومصدر الضوء وتشبّع اللون وحجم التفاصيل. استعمل مظاهر Soft 3D/Clay-like عندما يخدمها المرجع والهوية، مع مبانٍ أو شخصيات مبسطة وأيقونات داخل كرات ذات إضاءة عريضة. لا تكتفِ بإعادة اللون إذا اختلفت الخامات والنسب والتكوين.
+
+ثبّت الكتلة على سطح أو ظل تماس أو قاعدة مقصودة. افصل ظل التماس عن الظل المحيط الناعم، وتجنب هيئة القطع الطافية عند المباني والأقدام. الكرات والأيقونات يمكن أن تعوم بقصد؛ حافظ على اختلافها عن العناصر المرتكزة.
+
+قسّم الأصول إلى خلفية/قاعدة/عنصر رئيسي/أيقونات/واجهة/بطاقات/نص/شعار، مع مرجع مركب ومقياس ومحاور ثابتة. جهّز الأجزاء المحجوبة عند احتمال كشفها بالكاميرا. إذا لزم تحريك الرأس واليدين والتعبير، اطلب أو أنشئ أجزاء/Rig أو مجسمًا مناسبًا. PNG منفصل يتحرك كطبقة، ولا يعطي تفاصيل قابلة لإعادة النمذجة أو دورانًا يكشف جوانب غير مرسومة.
+
+طبّق ألوان العميل على كل عنصر مع تدرجات وإضاءة مشتقة منها. البنفسجي والوردي في سجام وصف للمرجع، وليس لوحة افتراضية للتدريبات العقلية أو لكل عميل. احتفظ بملف المؤسسة في V14 عند انطباقه، وبالسماء الفاتحة إذا طلبها المستخدم.
+
+## 3. تغيّر التدرج والإضاءة
+
+اكتب لكل لقطة حالات البداية/الذروة/النهاية: اللون العلوي والسفلي، موضع البقعة المضيئة، امتدادها، شدة اللون، ودور النص فوقها. في المرجع رُصد انتقال بين خلفية فاتحة متدرجة وشاشة داكنة وأبيض؛ هذا لا يثبت أن Gradient Stops حُرّكت داخل المصدر. اعتبر تحريك نقاط التدرج أو ألوانه وصفة مقترحة عندما يلزم.
+
+- حرّك الإضاءة ببطء أثناء ثبات القراءة، وغيّر حالة اللون مع الوصلة أو تحوّل المعنى؛ اجعل معدلها أبطأ من الحركة الرئيسية.
+- حافظ على استمرارية اللون عبر الوصلة: تطابق حافة المسحة أو لون البطاقة مع أول إطار من العالم التالي. تجنب ومضة بيضاء أو قفزة تباين غير مقصودة.
+- افصل خلفية اللون عن النص والعناصر عند الحاجة، وابنِ حالات متصلة بدل قطع طبقة Solid بين لونين. يمكن استخدام Ramp بعد التحقق من خصائصه الفعلية، أو صفائح خلفية موثقة ومزجها؛ لا تخمّن فهارس المؤثرات.
+- احسب الفروق بين المزج اللوني وتحريك الضوء: crossfade بين صورتين قد يخلق أشباحًا ولا يساوي حركة نقطة إضاءة. اختبر منتصف الانتقال، والنطاق اللوني وعمق المشروع لمنع banding أو احتراق الضوء.
+- اجعل ألوان النص والواجهة مقروءة في جميع حالات الخلفية، ولا تقلب الهوية لمجرد التنويع.
+
+## 4. الانتقالات التي تنشأ من العناصر
+
+اختر لكل وصلة عنصرًا يقودها، ودوّن حالته قبل الانتقال وبعده، ثم افحص موضع الاهتمام والاتجاه والسرعة والحجم. لا تحرك العالم كله بانتقال واحد افتراضيًا.
+
+| الوصفة | التنفيذ المقترح | نقطة الفحص |
+| --- | --- | --- |
+| إعادة توزيع داخل اللقطة | انقل المدينة/العنصر إلى جانب وقلّل حجمه باعتدال لفتح مساحة نص أو شخصية؛ نسّق الأحجام والمحاور | استمرارية الارتكاز وعدم تزاحم النص والأيقونات |
+| مسحة مائلة | Shape/Mask متسع يتجاوز زوايا الكادر ويكشف الخلفية التالية، مع لون رابط | لا شقوق أو زوايا مكشوفة عند منتصف المرور |
+| نافذة تتحول إلى وصلة | أمل الشاشة ثم لفّها أو ادفعها خارج الإطار ليظهر العالم التالي من خلفها | لا تتحول بطاقة رقيقة إلى مجسم سميك بلا أصل أو وجه خلفي |
+| دائرة تتسع إلى خلفية | كبّر كتلة/قناعًا دائريًا حتى تغطي قطر الإطار كله، ثم أدخل المحتوى التالي | احسب نصف قطر التغطية من موضع المركز وأبعد ركن، لا من عرض الكادر فقط |
+| محتوى يتغير داخل بطاقة مستمرة | أبقِ إطار الواجهة متصلًا، وحرّك بطاقاتها أو نموذج التسجيل في Precomp مقصوص | الحركة داخل النافذة منفصلة عن ميل النافذة ككل |
+| تداخل الشخصية والمنتج | أبقِ الشخصية أمام الحاسوب، وأدخل واجهة أكبر خلفها مع ترتيب عمق مفهوم | لا تحجب الواجهة الوجه أو العنوان ولا تطفو القدم/المكتب |
+| كشف الشعار على الأبيض | اجمع أجزاء أصل الشعار أو اكشفها بأقنعة، ثم ثبات مقروء وإظهار الدعوة | لا تفكك اتصال العربية أو تعِد رسم شعار العميل بالتخمين |
+
+التوقيت والتراكب والـMotion Blur قيم قابلة للضبط حسب المرجع والفعل. اترك فترة تُفهم فيها نتيجة الانتقال قبل بدء الحركة الكبيرة التالية.
+
+## 5. الكاميرا والواجهات والمنظور
+
+خطّط ثلاث حركات مستقلة: Rig العالم، وتحويل طبقة الواجهة، وتحريك عناصرها الداخلية. اختر أيّها يخدم اللقطة؛ لا تسمِّ تحريك كل PNG كاميرا ثلاثية الأبعاد حقيقية. حافظ على نقطة اهتمام مستقرة أثناء عرض تفاصيل الواجهة، واستعمل دفعة أو ميلًا محدودًا لخلق العمق.
+
+- للواجهة: استخدم Precomp في طبقة 3D، مع كاميرا فعلية وموضع/Zoom معلومين. افصل بطاقات الصفحة والنصوص عندما يلزم تغييرها أو تحريكها؛ صورة واجهة واحدة لا تمنح ذلك.
+- راجع Anchor وParent والمسافة ونوع الكاميرا؛ ثبّت محاور الحركة قبل توليد المفاتيح. قدّم إعداد Rig المصحح الموجود في القالب، ولا تورّث إزاحة مركز شاشة مختلفة.
+- افصل camera dolly عن Zoom وScale. يمكن أن تتشابه في لقطة أمامية، لكنها تختلف في المنظور والـParallax والمساحات المكشوفة. لا تقلب العمق لمجرد تبديل اتجاه الحركة.
+- أظهر السمك والجوانب فقط إذا وُجدت هندسة أو طبقات مهيأة لها. عند الميل الشديد افحص الوجه الخلفي والحواف وجودة الرسم وقراءة النص.
+- احسب Overscan عند جميع النهايات والذروة وأقصى قوة حركة في نافذة الإعداد. لا تعتبر قيمة 1.06 كافية لكل أصل أو زاوية أو نسبة أبعاد.
+- أعد توزيع العمودي بنفسه؛ لا تعتمد على اقتصاص الأفقي. مقاس المرجع المفحوص لا يحدد دقة إخراج المشروع، ولا يمنح تكبيره تفاصيل أصلية إضافية.
+
+## 6. هرم الحركة والتتابع والعوم والارتداد
+
+افصل الحركة إلى رئيسية تعرّف الفعل، وثانوية تتبعها، وحركة محيطية خفيفة تستمر بعد الاستقرار. اجعل للمدينة/المنتج وزنًا وزمن توقف، وللكرات عومًا أصغر، وللنص فترة قراءة. لا تجعل كل الطبقات تتموج أو ترتد بنفس الطور.
+
+جدول بدء اختياري للاختبار، وليس قياسًا مستخرجًا من سجام: دخول 0.45–0.9s، وتأخير بين الأيقونات 0.1–0.25s، وعوم بسعة نحو 0.3–1% من ارتفاع الإطار ودورة 3–6s. صغّر هذه القيم أو ألغها للمشاهد الهادئة أو متى نافست المعنى.
+
+معامل `backOut` ليس نسبة التجاوز مباشرة؛ قِس ذروة الناتج بالبكسل أو بنسبة الحجم، ثم عدّل المعامل. ميّز Overshoot وحيدًا عن oscillating bounce. استخدم تجاوزًا خفيفًا لحجم/موضع أيقونة عندما يلائمها الوزن، ثم استقرارًا حاسمًا؛ لا تورّث مرونة الكرات إلى المبنى أو كاميرا القراءة. لا تستخدم العشوائية كبديل لتصميم المسار. نوّع الطور والسعة بشكل حتمي، واجعل غلاف العوم يدخل ويخرج بلا قفزة.
+
+أبقِ قيمة الفيزياء/الموضع منفصلة عن القيمة المقيدة: منحنى back قد يتجاوز 1 للموضع أو الحجم؛ قيد Opacity إلى 0–100 وألوان RGB إلى 0–1. لا تقيد منحنى الموضع نفسه فتزيل الارتداد المطلوب، ولا تسمح بمقياس سالب دون قصد.
+
+عند تعديل «قوة الحركة» وضّح ما تضربه: سعة الانحراف والزوايا/العوم، لا مواضع النص المستقرة أو نقاط الوقوف النهائية تلقائيًا. اختبر القيمة الافتراضية والقصوى، ولا تجعل قيمة واحدة تكبّر كل شيء بلا تمييز.
+
+## 7. تنفيذ القيم الزمنية في AE
+
+استعمل `templates/salman_motion_timing_helpers.js` عند الحاجة إلى منحنيات وقيم قابلة للتكرار. يعرّف `SalmanMotionTiming` دون تعديل المشروع، ويقدّم `unit`, `smooth`, `outCubic`, `backOut`, `lerp`, `color`, `floatOffset`, `positiveZoom`, `sampleTimes`. هو حساب قيم فقط؛ ليس محرك مشهد/شخصية أو رندرًا جاهزًا.
+
+```javascript
+var T = SalmanMotionTiming;
+var u = T.unit(t, enterStart, 0.7);
+var x = T.lerp(startX, endX, T.backOut(u, 1.1));
+var y = baseY + T.floatOffset(t, floatStart, floatEnd, 5, 0.25, 0.8);
+var fade = Math.max(0, Math.min(100, 100 * T.outCubic(u)));
+var colors = T.color(startRGB, endRGB, T.smooth(u));
+```
+
+القيم في المثال تُحسب عند زمن t معلوم. لتوصيلها بخصائص AE، حوّلها إلى مفاتيح أو تعبيرات متوافقة ثم افحصها؛ لا تضع كائن namespace في تعبير لم يُضمّن تعريفه. استخدم جمع المصفوفات مكونًا مكونًا وفق قواعد V8. مزج color حساب لقنوات المصدر، وليس ضمانًا لتدرّج إدراكي أو إدارة ألوان متطابقة بين البرامج.
+
+ابنِ عينات زمنية مع بداية ونهاية اللقطة ولحظات التماس والتحول عبر `sampleTimes(start,end,fps,stride,events)`. تُدمج الأزمنة المتطابقة عدديًا ضمن سماحية صغيرة، وتطبق ميزانية 20000 على الناتج المجمّع. أحداث إضافية يمكن أن تقع بين الإطارات؛ قرّبها صراحةً إذا كان المخطط يتطلب ذلك. ابدأ بمفاتيح قليلة وأضف حول الانحناءات/التغيرات السريعة؛ لا تحوّل كل خاصية إلى آلاف المفاتيح تلقائيًا.
+
+إذا كانت القيم المأخوذة تشمل easing مسبقًا، ابدأ باستيفاء Temporal LINEAR بين العينات؛ لا تضف easing كاملًا ثانيًا إلى كل مفتاح. افحص المماسات المكانية لتمنع Auto-Bezier من انحناء المسار أو زحزحة الثبات. أخذ عينات كل إطارين/ثلاثة قد يقرب الحركة لكنه لا يثبت التطابق مع المرجع أو AE. احتفظ ببيانات واحدة ونظام إحداثيات وترتيب تحويلات معلوم للمعاينة والمشروع.
+
+## 8. المقارنة والتحقق والتسليم
+
+قارن ثلاث حالات لكل حركة: قبلها، وذروة السرعة/التجاوز، وبعد الاستقرار، مع مشاهدة النطاق بالسرعة الفعلية عند توفر الأداة. راجع أقصر لقطة ذات صلة بملاحظة المستخدم قبل إعادة بناء العمل كله. افصل تقييم الرسم والإضاءة عن توقيت الحركة؛ الأصول الأفضل وحدها لا تصلح تسارعًا غير مناسب.
+
+راجع خاصةً: تأطير النص وقت إعادة التوزيع، تماس العناصر بالقاعدة، تمايز أطوار العوم، ذروة الارتداد، حواف المسحة، منتصف تغير التدرج، قراءة الشاشة عند أقصى ميل، ونهاية الشعار. طابق الصوت على التسجيل الفعلي إن توفر؛ لا تدّع ذلك من إطارات صامتة.
+
+المعاينة المبرمجة خارج AE دراسة مرئية مفيدة، لكنها لا تثبت تشغيل JSX أو تطابق منظور الكاميرا والخط والمزج داخل AE. سمِّ PNG نقطيًا، وميّز النص الأصلي القابل للتحرير عن الكلمات المرسومة داخل واجهة. لا تنقل كل مفاتيح الدراسة أو قوالبها الخاصة إلى المهارة كحل نهائي مقبول. احفظ المشاهد والمواد الخاصة بالمشروع خارج مستودع المهارة العام، وانشر الوصفات والأدوات العامة فقط.
+
+---
+
+<a id="file-16"></a>
+
 ## templates/mp3_vocal_onset_analyzer.py
 
 ```python
@@ -1576,7 +1712,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-16"></a>
+<a id="file-17"></a>
 
 ## templates/salman_calligraphy_glass_shine_v08_template.jsx
 
@@ -2704,7 +2840,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-17"></a>
+<a id="file-18"></a>
 
 ## templates/salman_motion_starter_template.js
 
@@ -3080,7 +3216,90 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-18"></a>
+<a id="file-19"></a>
+
+## templates/salman_motion_timing_helpers.js
+
+```javascript
+/* Salman Motion V18 — ES3-style timing math; no project mutation on load.
+ * Values are design defaults, not a reconstruction of a reference's AE curves.
+ */
+var SalmanMotionTiming = (function () {
+    function finite(n) { return typeof n === "number" && isFinite(n); }
+    function clamp01(u) { if (!finite(u)) throw new Error("Nonfinite time/value"); return Math.max(0, Math.min(1, u)); }
+    function unit(t, start, duration) {
+        if (!finite(t) || !finite(start) || !finite(duration) || duration <= 0) throw new Error("Invalid timing interval");
+        return clamp01((t - start) / duration);
+    }
+    function smooth(u) { u = clamp01(u); return u * u * (3 - 2 * u); }
+    function outCubic(u) { u = clamp01(u); return 1 - Math.pow(1 - u, 3); }
+    function backOut(u, amount) {
+        u = clamp01(u); amount = amount === undefined ? 1.15 : amount;
+        if (!finite(amount) || amount < 0 || amount > 3) throw new Error("Invalid overshoot amount");
+        var x = u - 1; return 1 + (amount + 1) * x * x * x + amount * x * x;
+    }
+    function lerp(a, b, u) {
+        if (!finite(a) || !finite(b) || !finite(u)) throw new Error("Invalid interpolation");
+        var value = (1 - u) * a + u * b; // u may exceed 1 intentionally.
+        if (!finite(value)) throw new Error("Interpolation overflow");
+        return value;
+    }
+    function color(a, b, u) {
+        if (!a || !b || a.length !== b.length || (a.length !== 3 && a.length !== 4)) throw new Error("RGB/RGBA required");
+        u = clamp01(u); var out = [], i;
+        for (i = 0; i < a.length; i++) {
+            if (!finite(a[i]) || !finite(b[i]) || a[i] < 0 || a[i] > 1 || b[i] < 0 || b[i] > 1) throw new Error("Color channel outside 0..1");
+            out.push(lerp(a[i], b[i], u));
+        }
+        return out;
+    }
+    function floatOffset(t, start, end, amplitude, hz, phase) {
+        if (!finite(end) || !finite(start) || end <= start || !finite(amplitude) || amplitude < 0 || !finite(hz) || hz < 0 || !finite(phase === undefined ? 0 : phase)) throw new Error("Invalid float parameters");
+        var u = unit(t, start, end - start);
+        if (u === 0 || u === 1) return 0;
+        var envelope = Math.pow(Math.sin(Math.PI * u), 2);
+        var angle = 2 * Math.PI * hz * (t - start) + (phase || 0);
+        if (!finite(angle)) throw new Error("Float frequency/time overflow");
+        var value = amplitude * envelope * Math.sin(angle);
+        if (!finite(value)) throw new Error("Float output overflow");
+        return value;
+    }
+    function positiveZoom(a, b, u) {
+        if (!finite(a) || !finite(b) || a <= 0 || b <= 0) throw new Error("Zoom values must be positive");
+        var value = Math.exp(lerp(Math.log(a), Math.log(b), clamp01(u)));
+        if (!finite(value) || value <= 0) throw new Error("Zoom output overflow/underflow");
+        return value;
+    }
+    function sampleTimes(start, end, fps, stride, events) {
+        if (!finite(start) || !finite(end) || start < 0 || end <= start || !finite(fps) || fps <= 0 || !finite(stride) || stride < 1 || stride % 1) throw new Error("Invalid sampling range");
+        var count = Math.ceil((end - start) * fps / stride);
+        if (count > 20000 || (events && events.length > 20000)) throw new Error("Sample budget exceeded; use a shorter range");
+        var times = [start, end], i, t, out = [];
+        for (i = 1; i < count; i++) {
+            t = start + i * stride / fps; if (t < end) times.push(t);
+        }
+        events = events || [];
+        for (i = 0; i < events.length; i++) {
+            if (!finite(events[i])) throw new Error("Nonfinite event time");
+            if (events[i] >= start && events[i] <= end) times.push(events[i]);
+        }
+        times.sort(function (a, b) { return a - b; });
+        var epsilon = Math.min(0.0000001, stride / fps * 0.000001, (end - start) * 0.000000001);
+        for (i = 0; i < times.length; i++) {
+            if (!out.length || Math.abs(times[i] - out[out.length - 1]) > epsilon) out.push(times[i]);
+            else if (times[i] === end) out[out.length - 1] = end;
+        }
+        if (out.length > 20000) throw new Error("Combined sample budget exceeded");
+        return out;
+    }
+    return {unit:unit, smooth:smooth, outCubic:outCubic, backOut:backOut, lerp:lerp,
+        color:color, floatOffset:floatOffset, positiveZoom:positiveZoom, sampleTimes:sampleTimes};
+})();
+```
+
+---
+
+<a id="file-20"></a>
 
 ## templates/salman_prebuild_setup.jsx
 
@@ -3205,7 +3424,7 @@ var SalmanMotionSetup = (function () {
 
 ---
 
-<a id="file-19"></a>
+<a id="file-21"></a>
 
 ## templates/stereo_wav_sfx_generator.py
 
@@ -3235,7 +3454,7 @@ def write_stereo_wav(filepath, left_samples, right_samples):
 
 ---
 
-<a id="file-20"></a>
+<a id="file-22"></a>
 
 ## templates/svg_to_ae_bezier_parser.py
 
@@ -3359,7 +3578,7 @@ def parse_svg_path_to_ae_subpaths(d_str, center_x=0.0, center_y=0.0, scale=1.0):
 
 ---
 
-<a id="file-21"></a>
+<a id="file-23"></a>
 
 ## scripts/review_motion_render.py
 
@@ -3479,7 +3698,7 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-22"></a>
+<a id="file-24"></a>
 
 ## scripts/validate_motion_project.py
 
@@ -3635,7 +3854,7 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-23"></a>
+<a id="file-25"></a>
 
 ## scripts/validate_png_assets.py
 

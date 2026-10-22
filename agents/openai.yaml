@@ -1,14 +1,13 @@
 interface:
-  display_name: مهارة سلمان للموشن جرافيك V17
-  short_description: موشن عربي ونافذة إعداد وتوقيت أناشيد ومراجعة رندر
-  default_prompt: استخدم $salman-after-effects-motion لبناء مشروع عربي وفق هويتي،
-    مع نافذة إعداد عند ملاءمتها وتوقيت مدقق ومراجعة للمشاهد والرندر.
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  display_name: "مهارة سلمان للموشن جرافيك V18"
+  short_description: "موشن عربي ووصلات مجسمة وتدرّج وكاميرا وعوم وارتداد"
+  default_prompt: "استخدم $salman-after-effects-motion لبناء مشاهد عربية وفق هويتي، بوصلات متصلة وكاميرا وتدرّج وحركة مدروسة ومراجعة فعلية للنتيجة."
+  icon_small: "assets/icon.svg"
+  icon_large: "assets/icon.svg"
 policy:
   products:
-  - chatgpt
-  - codex
-  - api
-  - atlas
+    - "chatgpt"
+    - "codex"
+    - "api"
+    - "atlas"
   allow_implicit_invocation: true

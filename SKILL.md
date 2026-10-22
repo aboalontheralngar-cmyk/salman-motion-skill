@@ -1,7 +1,7 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V17: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V18: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
   motion storyboards, brand-consistent scene redesign and open AE project requests.
@@ -10,10 +10,20 @@ description: >
   Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
   transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
   verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, packaging and honest render review.
+  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, soft-3D transitions, gradient choreography, camera/element separation, controlled bounce,
+  packaging and honest render review.
 ---
 
-# Salman After Effects Motion (V17 — إعداد المشروع وتوقيت الأناشيد ومراجعة الرندر)
+# Salman After Effects Motion (V18 — الوصلات المتصلة والتدرّج والكاميرا والحركة المجسمة)
+
+## الوصلات والتدرّج والكاميرا والعوم والارتداد — V18
+
+عند طلب أسلوب سجام أو Soft 3D أو وصلات تتولد من العناصر وواجهات مائلة، اقرأ
+[المجسمات الناعمة والوصلات المتصلة](references/soft-3d-continuous-transitions.md).
+خطّط تغير الخلفية والإضاءة مع الوصلة، وافصل Rig الكاميرا عن حركة الواجهة ومحتواها.
+وازن الحركة الرئيسية والعوم والتتابع والارتداد؛ استخدم `templates/salman_motion_timing_helpers.js` لحساب القيم عند الحاجة.
+احفظ دروس التجربة وملاحظة المستخدم: الحركة السابقة أولية ولم تصل تمامًا للمطلوب؛ لا تعتمدها معيارًا نهائيًا.
+طبّق هوية العميل، وميّز ما لوحظ من المرجع وما تقترحه للتنفيذ، وما رُندر خارج AE وما اختُبر داخله.
 
 ## نافذة الإعداد والتوقيت ومراجعة الفيديو — V17
 
@@ -371,6 +381,9 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 ---
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
+
+- [references/soft-3d-continuous-transitions.md](references/soft-3d-continuous-transitions.md): دروس سجام وتجربة أثر الخير؛ الخامات والتدرج والوصلات والكاميرا والعوم والارتداد وحدود اعتماد الحركة.
+- `templates/salman_motion_timing_helpers.js`: حساب منحنيات وتدرجات وعوم وزوم وعينات زمنية بأسلوب ES3؛ يحتاج ربطًا بخصائص المشروع.
 
 - [references/prebuild-dialog-and-timed-nasheed.md](references/prebuild-dialog-and-timed-nasheed.md): نافذة قبل البناء، توقيت الموال واللازمة بعد الإزاحة، وفحوص الطيف والشريط وحدود مثال غروب العمر.
 - [references/reference-ledger-and-render-review.md](references/reference-ledger-and-render-review.md): تحليل المرجع كاملًا ومصفوفة المقارنة ومراجعة الرندر ونسبة المصدر.
