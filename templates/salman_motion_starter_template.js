@@ -11,6 +11,24 @@
  * - 1D/2D/3D Safe Temporal & Spatial Easing
  * ========================================================================== */
 (function () {
+    /* V15: explicit matte status; preserve Style F/isometric helpers below. */
+    function applyAlphaTrackMatte(targetLayer, matteLayer) {
+        if (!targetLayer || !matteLayer || targetLayer === matteLayer) return false;
+        try {
+            if (typeof targetLayer.setTrackMatte === "function") {
+                targetLayer.setTrackMatte(matteLayer, TrackMatteType.ALPHA);
+                matteLayer.enabled = false;
+                return true;
+            }
+        } catch (eModern) {}
+        try {
+            matteLayer.moveBefore(targetLayer);
+            targetLayer.trackMatteType = TrackMatteType.ALPHA;
+            matteLayer.enabled = false;
+            return true;
+        } catch (eLegacy) { return false; }
+    }
+
     function safeProp(parent, matchName) {
         if (!parent) return null;
         try { return parent.property(matchName); } catch (e) { return null; }

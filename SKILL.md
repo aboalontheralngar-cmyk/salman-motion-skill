@@ -1,7 +1,7 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V14: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V15: build editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   3D map dives, nasheed vocal sync and synchronized stereo SFX. Use for logo/brand animation,
   motion storyboards, brand-consistent scene redesign and open AE project requests. Includes Styles A-F plus 17 Motalim-inspired
@@ -10,10 +10,21 @@ description: >
   glitch, neon, brand hero and design canvas. Adds brand-led direction, shot handoffs,
   AE timing curves, calm Arabic pacing, illustration grounding, brush mattes, continuous brand backgrounds,
   camera parallax, selective glass shine, Aqleeat identity rules, verse-led human scenes,
-  Arabic review handoffs and honest render review. Includes ES3 rules and packaging.
+  Arabic review handoffs, dual-path calligraphy reveal/tracers, transient fill flashes,
+  slim shine ribbons and honest render review. Includes ES3 rules and packaging.
 ---
 
-# Salman After Effects Motion (V14 — هوية دقيقة ومشهد يخدم المعنى)
+# Salman After Effects Motion (V15 — مسارات المخطوطات واللمعة مع حفظ الهوية)
+
+## مسارات المخطوطات والريشة واللمعة — V15
+
+عند طلب كشف مخطوطة بالقلم أو شريط لمعان أو دمج وصفة V08 المرفقة، اقرأ
+[الكشف والريشة واللمعة للمخطوطات](references/calligraphy-dual-path-and-shine.md).
+افصل `reveal_subpath` عن `smooth_tracer_subpath`، واضبط التغطية وسرعة المسار وفق هندسة الحرف.
+استعمل ومضة تعبئة مؤقتة للتشكيل بدل تغيير لونه بتوهج دائم، وشريطًا رفيعًا مقصوصًا بألفا نظيفة للمعان.
+اعتبر أرقام V08 قيم مثال لشعار محدد؛ لا تنقل هويته البنية والذهبية أو بياناته إلى بقية المشاريع.
+احتفظ بالأنماط A–F ووصفات L01–L17؛ أدرج وصفة المخطوطات تحت Style B، ولا تعِد تعريف Style F الخاص بالخرائط.
+استخدم قالب `templates/salman_calligraphy_glass_shine_v08_template.jsx` كمرجع مستورد خاص، لا كتنفيذ عام مثبت بالرندر؛ اقرأ قيوده قبل الاقتباس منه.
 
 ## الهوية ومعنى المشهد وتسليم المراجعة — V14
 
@@ -338,6 +349,9 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 ---
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
+
+- [references/calligraphy-dual-path-and-shine.md](references/calligraphy-dual-path-and-shine.md): فصل الكشف عن الريشة، تكييف السرعة والومضة واللمعة، ومراجعة قالب V08 المستورد وحدود إثبات التغطية والرندر.
+- `templates/salman_calligraphy_glass_shine_v08_template.jsx`: المثال الخاص بشعار سلمان من حزمة V10 المرفقة، محفوظ كما ورد للمراجعة والتكييف؛ ليس بديلًا تلقائيًا للقالب الدفاعي العام.
 
 - [references/brand-led-scene-review.md](references/brand-led-scene-review.md): قواعد V14 لتوحيد الهوية في العناصر، تفسير الأبيات، ملف التدريبات العقلية، مراجعة العربية والمصحف، وإعداد ZIP الصور وPDF الملاحظات.
 
