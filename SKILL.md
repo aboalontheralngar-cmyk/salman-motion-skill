@@ -1,20 +1,30 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V18: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V19: create editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
-  3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
-  motion storyboards, brand-consistent scene redesign and open AE project requests.
-  Includes Styles A-F, 17 logo recipes L01-L17, direction and shot handoffs, AE timing,
-  illustration grounding, brush mattes, continuous brand backgrounds, camera parallax,
-  Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
-  transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
-  verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, soft-3D transitions, gradient choreography, camera/element separation, controlled bounce,
-  packaging and honest render review.
+  map dives, nasheed timing and stereo SFX. Use for logo/brand animation, motion storyboards,
+  brand-consistent scene redesign and open AE project requests. Includes Styles A-G:
+  boards, logos, multi-plane scenes, nasheeds, map dives, map roaming and unified spatial
+  arenas with two-stage camera gimbals, layer lifecycles, tactile UI and responsive Bento.
+  Retains logo recipes L01-L17, Aqleeat identity, dual-path calligraphy, fill flashes,
+  shine ribbons, verse layouts, I2V handoffs, ScriptUI setup, timeline checks,
+  soft-3D transitions, gradients, controlled bounce and encoded-video review.
+  Includes ES3 rules, lightweight packaging and honest validation limits.
 ---
 
-# Salman After Effects Motion (V18 — الوصلات المتصلة والتدرّج والكاميرا والحركة المجسمة)
+# Salman After Effects Motion (V19 — الساحة المكانية الموحدة والجيمبال والواجهات الحية)
+
+## Style G — ساحة موحدة ومحطات وكاميرا ذات مرحلتين — V19
+
+عند طلب كاميرا تتجول داخل بيئة واحدة أو إعلان خدمات بواجهات بارزة أو حوار بمحطات، اقرأ
+[الساحة الموحدة والكاميرا والواجهات](references/spatial-arena-camera-and-ui.md).
+ابنِ محطات world XYZ ومتحكم مسار ثم gimbal ثم كاميرا، مع توزيع عمق محلي وخطة خروج لكل طبقة مرئية.
+احسب مجال الرؤية والمسار الفعلي؛ لا تعتمد ΔZ ثابتًا أو انتهاء Null لإخفاء أبنائه.
+اختر حياة الطبقات بحسب الانسحاب والكشف الجماعي والزيارة اللاحقة؛ اجمع ملكية مفاتيح الشفافية والحركة لمنع التعارض.
+استخدم `templates/salman_spatial_arena_helpers.js` كأدوات عامة، وأعد ترتيب الحوار وBento فعليًا للمقاسين.
+هذا المسار G يحفظ F الخاص بالخرائط؛ خيار الشعار المتماسك لا يلغي بقية وصفات الشعارات.
+حافظ على الأصل الصوتي أو الربط المحلي حسب الطلب، وسمِّ محاكاة تفاعل الواجهات ودقة المعاينة بدقة.
 
 ## الوصلات والتدرّج والكاميرا والعوم والارتداد — V18
 
@@ -125,7 +135,7 @@ description: >
 
 ### ب. القاعدة الذهبية لتضمين ملف `.jsx` داخل ملف `.zip` (Windows Explorer ZIP Compatibility Rule)
 منعًا لاختفاء ملف `.jsx` عند فك الضغط في مستكشف ويندوز (`Windows Explorer / zipfldr.dll`) أو بسبب اختلاف مسار مجلد `Assets/`:
-1. **ضع دائمًا ملف السكربت `.jsx` في الجذر المباشر للحزمة (`Root Level`) بجانب مجلد `Assets/` مباشرةً**، بالإضافة إلى نسخة داخل مجلد المشروع الفرعي.
+1. **ضع دائمًا ملف السكربت `.jsx` في الجذر المباشر للحزمة (`Root Level`) بجانب مجلد `Assets/` مباشرةً**؛ اكتفِ بجذر واحد واضح ولا تكرر Assets أو شجرة المشروع داخل الأرشيف.
 2. **ضع نسختين من ملف `.jsx` بجانب `Assets/`**:
    - نسخة بالاسم الإنجليزي القياسي (`PROJECT_NAME_V01.jsx`) لضمان عدم قيام مستكشف ويندوز بإخفاء الملف بسبب ترميز UTF-8 في ترويسة ZIP القديمة.
    - نسخة بالاسم العربي الكامل (`اسم_المشروع_بالعربي_V01.jsx`).
@@ -133,7 +143,7 @@ description: >
    - `new File(scriptFolder.fsName + "/Assets/" + fileName)` (عندما يكون السكربت بجانب `Assets/`).
    - `new File(scriptFolder.parent.fsName + "/Assets/" + fileName)` (في حال وضع المستخدم السكربت داخل مجلد فرعي أو العكس).
    - البحث داخل أي مجلد فرعي مباشر يحتوي على `Assets/`.
-4. **التحقق الإلزامي قبل التسليم**: قبل إرسال ملف `.zip` للمستخدم، افحص محتوياته برمجيًا (`zipfile.ZipFile.namelist()`) وتأكد من وجود ملف `.jsx` غير فارغ (`file_size > 10000 bytes`) في جذر الأرشيف وبجانب `Assets/`.
+4. **التحقق الإلزامي قبل التسليم**: قبل إرسال ملف `.zip` للمستخدم، افحص محتوياته برمجيًا (`zipfile.ZipFile.namelist()`) وتأكد من وجود ملف `.jsx` غير فارغ مع اكتمال الكود والاعتمادات والمسارات وفحص الصياغة، دون حد حجم مصطنع في جذر الأرشيف وبجانب `Assets/`.
 
 ### ج. التسمية الثنائية داخل المشروع (Bilingual Arabic + English Project Structure)
 جميع المجلدات، الكومبوزيشنات، المشاهد الفرعية (`Precomps`)، وطبقات التحكم (`Nulls`) والـ`Layers` يجب أن تحمل اسمًا ثنائيًا (`ENGLISH | عربي`):
@@ -332,6 +342,10 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
+### النمط السابع (Style G): الساحة المكانية الموحدة للخدمات والحوار (`Unified Spatial Arena`)
+
+طبّق [مرجع الساحة والجيمبال](references/spatial-arena-camera-and-ui.md) ووحدته العامة. حافظ على F السابق للخرائط، واختر G للجولة بين المحطات وعرض الخدمات والواجهات والحوار المتجاوب.
+
 ## 5. المؤثرات الصوتية المتزامنة (`Synchronized 48kHz Stereo WAV SFX` — للأنماط A وB وC وE)
 
 - في مشاريع الإنفوجرافيك وتحريك الشعارات والبطاقات والخرائط العقارية (الأنماط `A`, `B`, `C`, `E` — وليس في الأناشيد `Style D` إلا بطلب صريح)، يتضمن مجلد `Assets/Audio_SFX/` مسارًا صوتيًا شاملًا (`sfx_00_master_dive_soundtrack.wav`) بالإضافة إلى 6 مؤثرات صوتية منفصلة مصممة برمجيًا بدقة `48000 Hz, 16-bit Stereo WAV` ومتزامنة بالإطار (`Frame-Accurate`) مع أحداث المشهد:
@@ -381,6 +395,9 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 ---
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
+
+- [references/spatial-arena-camera-and-ui.md](references/spatial-arena-camera-and-ui.md): Style G؛ دمج حزم V10/V11 ودروس المشروعين، الجيمبال والمحطات ومجال الرؤية ودورة الحياة ووصفات الواجهات والتخطيط والصوت وحدود المصدر.
+- `templates/salman_spatial_arena_helpers.js`: وحدة عامة للجيمبال والمحطات ونوافذ العرض وبطاقات 2.5D وإطار التحديد وحسابات التغطية والشبكة.
 
 - [references/soft-3d-continuous-transitions.md](references/soft-3d-continuous-transitions.md): دروس سجام وتجربة أثر الخير؛ الخامات والتدرج والوصلات والكاميرا والعوم والارتداد وحدود اعتماد الحركة.
 - `templates/salman_motion_timing_helpers.js`: حساب منحنيات وتدرجات وعوم وزوم وعينات زمنية بأسلوب ES3؛ يحتاج ربطًا بخصائص المشروع.

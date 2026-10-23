@@ -1,4 +1,4 @@
-# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V18
+# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V19
 
 هذا الملف مولّد من ملفات المصدر في المستودع. اقرأ التعليمات الأساسية أولًا، ثم المراجع والقوالب المناسبة للمشروع. يتضمن الكود النصي كاملًا، ولا يتضمن أصولًا ثنائية أو مشاريع خاصة أو إثباتًا لتشغيل After Effects.
 
@@ -19,16 +19,18 @@
 13. [references/prebuild-dialog-and-timed-nasheed.md](#file-13)
 14. [references/reference-ledger-and-render-review.md](#file-14)
 15. [references/soft-3d-continuous-transitions.md](#file-15)
-16. [templates/mp3_vocal_onset_analyzer.py](#file-16)
-17. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-17)
-18. [templates/salman_motion_starter_template.js](#file-18)
-19. [templates/salman_motion_timing_helpers.js](#file-19)
-20. [templates/salman_prebuild_setup.jsx](#file-20)
-21. [templates/stereo_wav_sfx_generator.py](#file-21)
-22. [templates/svg_to_ae_bezier_parser.py](#file-22)
-23. [scripts/review_motion_render.py](#file-23)
-24. [scripts/validate_motion_project.py](#file-24)
-25. [scripts/validate_png_assets.py](#file-25)
+16. [references/spatial-arena-camera-and-ui.md](#file-16)
+17. [templates/mp3_vocal_onset_analyzer.py](#file-17)
+18. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-18)
+19. [templates/salman_motion_starter_template.js](#file-19)
+20. [templates/salman_motion_timing_helpers.js](#file-20)
+21. [templates/salman_prebuild_setup.jsx](#file-21)
+22. [templates/salman_spatial_arena_helpers.js](#file-22)
+23. [templates/stereo_wav_sfx_generator.py](#file-23)
+24. [templates/svg_to_ae_bezier_parser.py](#file-24)
+25. [scripts/review_motion_render.py](#file-25)
+26. [scripts/validate_motion_project.py](#file-26)
+27. [scripts/validate_png_assets.py](#file-27)
 
 ---
 
@@ -39,20 +41,30 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V18: build editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V19: create editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
-  3D map dives, nasheed vocal sync and stereo SFX. Use for logo/brand animation,
-  motion storyboards, brand-consistent scene redesign and open AE project requests.
-  Includes Styles A-F, 17 logo recipes L01-L17, direction and shot handoffs, AE timing,
-  illustration grounding, brush mattes, continuous brand backgrounds, camera parallax,
-  Aqleeat identity rules, Arabic reviews, dual-path calligraphy reveal/tracers,
-  transient fill flashes, slim shine ribbons, five-zone verse layouts, four kinetic
-  verse recipes, vocal-repeat variation and I2V scene handoffs. Includes ES3 rules,
-  ScriptUI prebuild setup, timed-nasheed validation, encoded-video review, soft-3D transitions, gradient choreography, camera/element separation, controlled bounce,
-  packaging and honest render review.
+  map dives, nasheed timing and stereo SFX. Use for logo/brand animation, motion storyboards,
+  brand-consistent scene redesign and open AE project requests. Includes Styles A-G:
+  boards, logos, multi-plane scenes, nasheeds, map dives, map roaming and unified spatial
+  arenas with two-stage camera gimbals, layer lifecycles, tactile UI and responsive Bento.
+  Retains logo recipes L01-L17, Aqleeat identity, dual-path calligraphy, fill flashes,
+  shine ribbons, verse layouts, I2V handoffs, ScriptUI setup, timeline checks,
+  soft-3D transitions, gradients, controlled bounce and encoded-video review.
+  Includes ES3 rules, lightweight packaging and honest validation limits.
 ---
 
-# Salman After Effects Motion (V18 — الوصلات المتصلة والتدرّج والكاميرا والحركة المجسمة)
+# Salman After Effects Motion (V19 — الساحة المكانية الموحدة والجيمبال والواجهات الحية)
+
+## Style G — ساحة موحدة ومحطات وكاميرا ذات مرحلتين — V19
+
+عند طلب كاميرا تتجول داخل بيئة واحدة أو إعلان خدمات بواجهات بارزة أو حوار بمحطات، اقرأ
+[الساحة الموحدة والكاميرا والواجهات](references/spatial-arena-camera-and-ui.md).
+ابنِ محطات world XYZ ومتحكم مسار ثم gimbal ثم كاميرا، مع توزيع عمق محلي وخطة خروج لكل طبقة مرئية.
+احسب مجال الرؤية والمسار الفعلي؛ لا تعتمد ΔZ ثابتًا أو انتهاء Null لإخفاء أبنائه.
+اختر حياة الطبقات بحسب الانسحاب والكشف الجماعي والزيارة اللاحقة؛ اجمع ملكية مفاتيح الشفافية والحركة لمنع التعارض.
+استخدم `templates/salman_spatial_arena_helpers.js` كأدوات عامة، وأعد ترتيب الحوار وBento فعليًا للمقاسين.
+هذا المسار G يحفظ F الخاص بالخرائط؛ خيار الشعار المتماسك لا يلغي بقية وصفات الشعارات.
+حافظ على الأصل الصوتي أو الربط المحلي حسب الطلب، وسمِّ محاكاة تفاعل الواجهات ودقة المعاينة بدقة.
 
 ## الوصلات والتدرّج والكاميرا والعوم والارتداد — V18
 
@@ -163,7 +175,7 @@ description: >
 
 ### ب. القاعدة الذهبية لتضمين ملف `.jsx` داخل ملف `.zip` (Windows Explorer ZIP Compatibility Rule)
 منعًا لاختفاء ملف `.jsx` عند فك الضغط في مستكشف ويندوز (`Windows Explorer / zipfldr.dll`) أو بسبب اختلاف مسار مجلد `Assets/`:
-1. **ضع دائمًا ملف السكربت `.jsx` في الجذر المباشر للحزمة (`Root Level`) بجانب مجلد `Assets/` مباشرةً**، بالإضافة إلى نسخة داخل مجلد المشروع الفرعي.
+1. **ضع دائمًا ملف السكربت `.jsx` في الجذر المباشر للحزمة (`Root Level`) بجانب مجلد `Assets/` مباشرةً**؛ اكتفِ بجذر واحد واضح ولا تكرر Assets أو شجرة المشروع داخل الأرشيف.
 2. **ضع نسختين من ملف `.jsx` بجانب `Assets/`**:
    - نسخة بالاسم الإنجليزي القياسي (`PROJECT_NAME_V01.jsx`) لضمان عدم قيام مستكشف ويندوز بإخفاء الملف بسبب ترميز UTF-8 في ترويسة ZIP القديمة.
    - نسخة بالاسم العربي الكامل (`اسم_المشروع_بالعربي_V01.jsx`).
@@ -171,7 +183,7 @@ description: >
    - `new File(scriptFolder.fsName + "/Assets/" + fileName)` (عندما يكون السكربت بجانب `Assets/`).
    - `new File(scriptFolder.parent.fsName + "/Assets/" + fileName)` (في حال وضع المستخدم السكربت داخل مجلد فرعي أو العكس).
    - البحث داخل أي مجلد فرعي مباشر يحتوي على `Assets/`.
-4. **التحقق الإلزامي قبل التسليم**: قبل إرسال ملف `.zip` للمستخدم، افحص محتوياته برمجيًا (`zipfile.ZipFile.namelist()`) وتأكد من وجود ملف `.jsx` غير فارغ (`file_size > 10000 bytes`) في جذر الأرشيف وبجانب `Assets/`.
+4. **التحقق الإلزامي قبل التسليم**: قبل إرسال ملف `.zip` للمستخدم، افحص محتوياته برمجيًا (`zipfile.ZipFile.namelist()`) وتأكد من وجود ملف `.jsx` غير فارغ مع اكتمال الكود والاعتمادات والمسارات وفحص الصياغة، دون حد حجم مصطنع في جذر الأرشيف وبجانب `Assets/`.
 
 ### ج. التسمية الثنائية داخل المشروع (Bilingual Arabic + English Project Structure)
 جميع المجلدات، الكومبوزيشنات، المشاهد الفرعية (`Precomps`)، وطبقات التحكم (`Nulls`) والـ`Layers` يجب أن تحمل اسمًا ثنائيًا (`ENGLISH | عربي`):
@@ -370,6 +382,10 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
+### النمط السابع (Style G): الساحة المكانية الموحدة للخدمات والحوار (`Unified Spatial Arena`)
+
+طبّق [مرجع الساحة والجيمبال](references/spatial-arena-camera-and-ui.md) ووحدته العامة. حافظ على F السابق للخرائط، واختر G للجولة بين المحطات وعرض الخدمات والواجهات والحوار المتجاوب.
+
 ## 5. المؤثرات الصوتية المتزامنة (`Synchronized 48kHz Stereo WAV SFX` — للأنماط A وB وC وE)
 
 - في مشاريع الإنفوجرافيك وتحريك الشعارات والبطاقات والخرائط العقارية (الأنماط `A`, `B`, `C`, `E` — وليس في الأناشيد `Style D` إلا بطلب صريح)، يتضمن مجلد `Assets/Audio_SFX/` مسارًا صوتيًا شاملًا (`sfx_00_master_dive_soundtrack.wav`) بالإضافة إلى 6 مؤثرات صوتية منفصلة مصممة برمجيًا بدقة `48000 Hz, 16-bit Stereo WAV` ومتزامنة بالإطار (`Frame-Accurate`) مع أحداث المشهد:
@@ -420,6 +436,9 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## 8. المراجع والقوالب المرفقة داخل المهارة (Bundled Skill Resources)
 
+- [references/spatial-arena-camera-and-ui.md](references/spatial-arena-camera-and-ui.md): Style G؛ دمج حزم V10/V11 ودروس المشروعين، الجيمبال والمحطات ومجال الرؤية ودورة الحياة ووصفات الواجهات والتخطيط والصوت وحدود المصدر.
+- `templates/salman_spatial_arena_helpers.js`: وحدة عامة للجيمبال والمحطات ونوافذ العرض وبطاقات 2.5D وإطار التحديد وحسابات التغطية والشبكة.
+
 - [references/soft-3d-continuous-transitions.md](references/soft-3d-continuous-transitions.md): دروس سجام وتجربة أثر الخير؛ الخامات والتدرج والوصلات والكاميرا والعوم والارتداد وحدود اعتماد الحركة.
 - `templates/salman_motion_timing_helpers.js`: حساب منحنيات وتدرجات وعوم وزوم وعينات زمنية بأسلوب ES3؛ يحتاج ربطًا بخصائص المشروع.
 
@@ -457,14 +476,14 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## references/PRE_DELIVERY_CHECKLIST.md
 
-# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V18)
+# قائمة الفحص الإلزامية قبل التسليم (PRE-DELIVERY CHECKLIST V19)
 
 قبل تسليم المشروع، افحص البنود المنطبقة أدناه. سجّل ما اختُبر برمجيًا وما اختُبر داخل AE وما لم يُختبر؛ لا تعلن نجاح بند يحتاج تشغيلًا فعليًا بناءً على فحص ساكن.
 
 حدّد نوع التسليم أولًا: طبّق بنود JSX وAssets على مشروع AE، لا حزمة صور أو حزمة المهارة. لحزم الصور، طبّق بند الهوية والمراجعة في النهاية وفحوص PNG وZIP وPDF المنطبقة.
 
 - [ ] **1. وجود ملف `.jsx` داخل ملف الـ`.zip` فعليًا**:
-  - فحص أرشيف `.zip` عبر `zipfile.ZipFile(zip_path).namelist()` والتأكد من وجود ملف `.jsx` (بالاسمين العربي والإنجليزي) في الجذر المباشر (`Root`) وبجانب مجلد `Assets/` مباشرةً، وأن حجمه أكبر من `10 KB`.
+  - فحص أرشيف `.zip` عبر `zipfile.ZipFile(zip_path).namelist()` والتأكد من وجود ملف `.jsx` (بالاسمين العربي والإنجليزي) في الجذر المباشر (`Root`) وبجانب مجلد `Assets/` مباشرةً، وأنه غير فارغ وكامل الاعتمادات، مع أصل واحد لكل ملف في Assets وإصدار متطابق عبر أسماء التسليم والكود.
 - [ ] **2. التسمية العربية والثنائية (`Arabic & Bilingual Naming`)**:
   - اسم ملف `.zip` الخارجي واسم ملف `.jsx` يبدآن بعنوان عربي واضح.
   - جميع المجلدات والكومبوزيشنات والطبقات داخل After Effects تحمل اسمًا ثنائيًا (`ENGLISH | عربي`).
@@ -530,6 +549,15 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
   - فصل الكاميرا عن حركة الواجهة ومحتواها، وفحص المنظور والحواف عند الذروة وأقصى إعداد حركة.
   - تمايز الحركة الرئيسية والعوم والارتداد، وعدم تجاوز حدود الألفا والألوان أو إضافة easing ثانٍ للقيم المأخوذة مسبقًا.
   - مقارنة قبل الحركة/ذروتها/استقرارها، ومراجعة القصور الذي حدده المستخدم دون ادعاء تطابق الرندر البرمجي مع AE.
+
+- [ ] **13. الساحة الموحدة والجيمبال والواجهات (V19 / Style G)**:
+  - هرم path → gimbal → camera، وإحداثيات محلية بعد الربط، مع فصل الحركة الرئيسية والفرعية وعدم طمس زاوية الأصل بالعوم.
+  - فحص مجال الرؤية عند التحولات والانسحاب وإعادة الزيارة؛ لا اعتبار ΔZ=3800 ضمانًا ولا إخفاء Null بديلًا لإخفاء الأبناء.
+  - ملكية واحدة لمفاتيح الشفافية والتوقيت، وعدم عودة trace بعد تلاشيه؛ نافذة عرض فعلية لكل طبقة مرئية بحسب خطة اللقطة.
+  - محاور مشتركة للكتابة والقلم، وبطاقات وشارات مرتبة في العمق، وتمييز القرص الملون عن portal matte والتفاعل المصور عن التفاعل الحقيقي.
+  - إعادة تخطيط الحوار والشبكة للأفقي والعمودي وقياس Cover من الأصول، ومراجعة العربية عند Full وإعداد الرندر النهائي.
+  - الإلغاء لا يختار صوتًا آخر بصمت؛ الصوت المحذوف عمدًا لا يولد ادعاء مزامنة أو فشلًا في التحليل البصري.
+  - عدم نقل ألوان العميل أو هندسة شعاره وصوره إلى القالب العام، وعدم إعلان اكتمال محرك غير مرفق.
 
 ---
 
@@ -1389,13 +1417,11 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ## القواعد الإلزامية في كل تسليم (Mandatory Packaging Checklist)
 1. **توفير ملف `.jsx` في جذر الـZIP مباشرةً وبجانب `Assets/`**:
-   يجب أن يكون هيكل ملف الـ`.zip` مسطحًا وواضحًا في الجذر، مع وجود نسخة إضافية، كالتالي:
+   يجب أن يكون هيكل ملف الـ`.zip` مسطحًا وواضحًا في الجذر، مع اسم بديل للسكربت عند الحاجة، كالتالي:
    ```
-   ├── PROJECT_CODE_V01.jsx                        # اسم إنجليزي قياسي في الجذر (يظهر دائمًا في كل برامج فك الضغط)
+   ├── PROJECT_CODE_V01.jsx                        # اسم إنجليزي بديل في الجذر
    ├── اسم_المشروع_بالعربي_V01.jsx                  # اسم عربي واضح في الجذر
    ├── README.md                                   # دليل التشغيل السريع بالعربية
-   ├── SCENE_BREAKDOWN.md                          # تفصيل المشهد والتايملاين بالعربية
-   ├── COMPATIBILITY_NOTES.md                      # ملاحظات التوافق
    └── Assets/                                     # مجلد الأصول البصرية والصوتية مباشرة في الجذر
        ├── Audio/                                  # ملفات الصوت المتزامنة
        └── ...
@@ -1406,6 +1432,12 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
    - المجلد الأب (`scriptFolder.parent/Assets/`)
    - أي مجلد فرعي مباشر داخل مجلد السكربت يحتوي على `Assets/`
    وبذلك يعمل السكربت فورًا سواء وُضع في الجذر أو داخل مجلد فرعي!
+
+## الحزمة الخفيفة وربط الصوت — V19
+
+احفظ Assets مرة واحدة؛ الاسمان العربي والإنجليزي للسكربت بديلان متطابقان عند توفيرهما، وليسا مشروعين كاملين داخل مجلدين. لا تضع نسخة ثالثة من JSX داخل Assets بلا حاجة. افحص CRC ومسارات جميع المراجع، ولا تعتمد على تجاوز 10KB كدليل اكتمال الكود.
+
+إذا كان الصوت موجودًا عند المستخدم واختار الربط المحلي، أرفق آلية اختيار واضحة وتعليمات الوصول إليه بدل نسخه. إذا طُلبت حزمة مستقلة قابلة للنقل فضمّن الأصول اللازمة المصرح بها. لا تحوّل الصوت أو تتجاوزه أو تختَر بديلًا بعد الإلغاء بصمت. أدرج فقط تعليمات وتقارير تساعد في تسليم المشروع الفعلي، ولا تفرض عدة ملفات ملاحظات على تغيير بسيط.
 
 ---
 
@@ -1670,6 +1702,145 @@ var colors = T.color(startRGB, endRGB, T.smooth(u));
 
 <a id="file-16"></a>
 
+## references/spatial-arena-camera-and-ui.md
+
+# Style G — الساحة الموحدة والكاميرا ذات المرحلتين وواجهات الخدمات — V19
+
+## المحتويات
+
+1. نطاق المسار والفرق عن الأنماط السابقة
+2. ما أضافته حزم V10 وV11 والمشروعات المرفقة
+3. هندسة العالم والجيمبال والبارالاكس
+4. تخطيط المحطات ومسار الكاميرا ومجال الرؤية
+5. ملكية التحريك ودورة حياة الطبقات
+6. وصفات الواجهات والمدارات والشعار
+7. إعادة التخطيط للمقاسين والأداء والصوت
+8. استخدام الأدوات والتحقق
+9. قيود محددة في المصادر المفحوصة
+
+## 1. نطاق المسار والفرق عن الأنماط السابقة
+
+استخدم Style G عندما يطلب المستخدم بيئة واحدة تتحرك فيها الكاميرا بين محطات: إعلان خدمات، متجر، تطبيق، أو أنشودة حوارية في فضاء متصل. المقصود بالتفاعل هنا محاكاة مرئية لواجهات وتأشير وكتابة واستجابة؛ لا تدّع وجود تطبيق قابل للنقر أو إدخال المستخدم ما لم تبنِ ذلك صراحة.
+
+سمّت الحزمتان المستوردتان هذا المسار Style F. في المهارة الحالية F هو مشهد الخرائط والخطاف والتجول المتعامد؛ احفظه وأدرج الساحة الجديدة تحت G. احتفظ بـA–F وبوصفات L01–L17 ومراجع V14–V18. استخدم Precomps للتنظيم داخل العالم عند ملاءمتها، مع الحفاظ على عمق العناصر المطلوب؛ لا تفسر مطلب الساحة كحظر لكل Precomp أو لكل قطع إخراجي مقصود.
+
+## 2. ما أضافته حزم V10 وV11 والمشروعات المرفقة
+
+V10 أوسع شرحًا: محطات XYZ، جيمبال مزدوج، انسحاب يكشف مجموعات، غوص ونفق كلمات، مرور أمام حافة قريبة، بوابات دائرية، بطاقات ملمسية وشبكات خدمات. V11 أقصر في SKILL.md لكنه يحتفظ بمعظم المراجع والقالب السابق، ويضيف دقة معاينة Quarter ودالة دورة حياة بسيطة؛ يتوسع نصه في الحركة الحية والتخطيط المزدوج والشعار الموحد. ليس كل اسم دالة مذكور فيه تنفيذًا مرفقًا: القالب لا يتضمن بعض بُناة الشعار/المدار/الحركة، وتستدعي إضافات البطاقات فيه دوال هندسية أو reveal غير معرّفة داخله. لا تستبدل القالب الحالي به مباشرةً.
+
+راجعنا شفرة المنتجين والأصول فعلًا، لا README وحده:
+
+| المنتج | البنية الفعلية في JSX | ما يستفاد منه |
+| --- | --- | --- |
+| أنشودة يا أبتي V03 | 118s، 60fps، 14 محطة ST00–ST13، نسختان، تباعد Z نموذجي 3800، ودورة حياة للطبقات المرئية | التخطيط المتجاوب، مدارات الميداليات، الحوار، كتابة الدفتر، وخاتمة الشعار المتماسكة |
+| روف V02 داخل ملفات اسمها V01 | 34s، 60fps، 15 محطة، مسار XYZ حتى نحو 26920 | ثلاثية الخطاف ثم كشفها، بطاقات خدمات، جوال وشارات، شرائح، استمارات، نفق قيمة ثم Bento |
+
+حذف المستخدم الصوت عمدًا من الحزمتين؛ لم تُقارن المدد أو الأشطر بالأداء المسموع. لا تستنتج أن توقيت أي منهما صالح لتسجيل جديد، ولا تعِد إرفاق صوت خاص بالمشروع في مستودع المهارة. لم تتضمن الحزمتان رندرًا أو AEP؛ فحص الشفرة والأصول ليس مشاهدة للحركة داخل AE.
+
+## 3. هندسة العالم والجيمبال والبارالاكس
+
+ابنِ هرمًا واضحًا:
+
+- `MASTER_CAM_POS_CTRL`: موضع مركز الجولة في العالم XYZ.
+- `MASTER_CAM_ORBIT_GIMBAL`: ابن المتحكم السابق، موضعه المحلي صفر، ويدير X/Y/Z.
+- `MAIN_CAMERA`: ابن الجيمبال، بموقع محلي `[0,0,-distance]` واتجاه معلوم وAuto Orient معطل إذا كان هذا تصميم الـRig.
+- `ST_nn`: Null ثلاثي الأبعاد مستقل في العالم لكل محطة؛ اجعل الأصول والنصوص والبطاقات أبناء له بإحداثيات محلية.
+
+ضع Anchor للـNulls عند الصفر، ثم عيّن المواضع المحلية بعد الربط لتجنب تعويض parent غير المقصود. افصل Camera Zoom عن distance؛ قيم متساوية لهما قد تعطي تحجيمًا أماميًا مألوفًا، لكن لا تجعلهما مترادفين. تدوير الجيمبال يحرك موضع الكاميرا الفعلي حول مركزه؛ موضع POS_CTRL وحده ليس موضع العدسة عند الدوران.
+
+داخل المحطة وزّع البطاقة والنص والرموز على مستويات Z مختلفة مناسبة للمسافة واللقطة. أمثلة المصادر: وجه البطاقة نحو +60، والنص نحو -40..-100، والشارات نحو -140..-240؛ هذه قيم مشروع لا معيار عام، وإشارة العمق تعتمد على اتجاه الكاميرا. افحص التعارض وZ-fighting والوجه الخلفي وتداخل الألفا. ترتيب أسماء الطبقات وحده لا يحل تقاطع الطائرات في الفضاء.
+
+بطاقة ذات وجه وخلفية مزاحة تمثل 2.5D وليست مجسمًا مغلقًا؛ عند الميل الشديد قد تنفصل الحواف. PNG ذو bevel مرسوم يظل لوحة نقطية مسطحة قابلة للتحويل، لا هندسة قابلة لتعديل سماكتها.
+
+## 4. تخطيط المحطات ومسار الكاميرا ومجال الرؤية
+
+أنشئ جدولًا: رقم المحطة، موضوعها، world XYZ، حدود الأصول والطبقات الأمامية، بداية الظهور، فترة القراءة، بدء المغادرة، نهاية العرض، ونوع الوصلة. أنشئ جدول كاميرا مستقلًا: الزمن وXYZ والزوايا والهدف البصري وحالة السرعة.
+
+اختر من وصفات المصدر بحسب المعنى:
+
+- زيارة ثلاث أفكار عن قرب ثم `Pull-Back Overview` يكشف علاقتها؛ أبقها حية حتى نهاية الكشف الجماعي.
+- `Whip-Pan + Z-Dive` للانتقال القطري بين خدمات، مع تهدئة كافية عند هدف القراءة.
+- `Foreground Edge Fly-Past` بمحاذاة حافة بطاقة قريبة، مع أصل يمتد خارج الكادر ولا يقطع العدسة بلا قصد.
+- `Z-Tunnel` بين كلمات القيمة أو البطاقات؛ تجنب عبور سطح مصمت غير مخطط له.
+- اقتراب من تفصيل ثم انسحاب لكشف شبكة أو عناصر محيطة.
+- غوص ختامي من Bento إلى الشعار، مع بوابة/لون رابط وثبات نهائي واضح.
+
+ميّز حركة متصلة بمتحكم واحد عن حركة ذات سرعة مستمرة. تصفير السرعة عند كل Key كما في المصدر ينتج وقفات؛ اختر نقاط hold وtravel صراحة، ونسّق مماسات الموضع والزوايا بدل تطبيق ease نفسه على كل نقطة. Gaussian Blur في المنتجين نبضات موقّتة مسبقًا رغم تسمية velocity-linked؛ لا تصفها بأنها تستجيب فعليًا لسرعة الكاميرا. إن أردت ذلك احسب سرعة المسار واربط الشدة بها مع حد أعلى، وافصل هذا عن Motion Blur الأصلي وإعداد shutter.
+
+**إخلاء مجال الرؤية:** `ΔZ=3800` و`distance=2666.67` أرقام مثال، وليست برهانًا على اختفاء المحطة السابقة. افحص موضع العدسة واتجاهها الفعليين وحدود المحطة في camera space أثناء الحركة والارتداد والانسحاب. عند كاميرا أمامية بسيطة يكون امتداد نصف الكادر نحو `distance * width/(2*zoom)` أفقيًا؛ أدخل الدوران والمقياس والأصول الأمامية في التقدير الفعلي.
+
+الأداة `sphereInFrustum` تعطي اختبار تقاطع محافظًا لكرة إحاطة في camera space موجب Z أمام العدسة، ولا تفحص الحجب أو هندسة المجسم أو far clipping داخل AE. ظهور النتيجة false يمكن أن يساعد في الاستبعاد ضمن هذه الفرضيات؛ النتيجة true لا تثبت ظهور بكسلات. لا تستخدمها على world XYZ مباشرةً دون تحويل للكاميرا.
+
+## 5. ملكية التحريك ودورة حياة الطبقات
+
+طبّق inPoint/outPoint وOpacity على الطبقات المرئية نفسها. انتهاء Null الأب أو تلاشيه لا يعني انتهاء أو تلاشي أبنائه. اختر دورة حياة بحسب الغرض: خروج نهائي، تداخل بين محطتين، كشف جماعي، أو زيارة لاحقة. في الزيارات المتعددة اجمع فترات الشفافية في مخطط واحد؛ outPoint واحد لا يمثل فترات متقطعة.
+
+افصل reveal rig عن idle rig وعن الخروج عند الحاجة، أو اجمع قيمها صراحة. لا تجعل دالة العوم تستبدل زاوية تصميم أساسية أو تكتب مفاتيح Position الخاصة بالدخول بلا قصد. أضف sway حول الزاوية المعتمدة، مع envelope يعود إلى الصفر، واحفظ فترات السكون المقصود وفق V18. المدار ليس إلزاميًا حول كل عنصر أو حول كل آية/بيت.
+
+اجعل لكل خاصية مالكًا واحدًا للجدول النهائي. مثال خطير في المصدر: دالة lifecycle تضع Opacity=100 قرب نهاية المحطة، ثم يضيف مسار اللمعة تلاشيًا إلى صفر مبكرًا؛ يعود الخط للظهور تدريجيًا بسبب المفتاح القديم. حدّد timeline كاملًا للخط المؤقت دون مفتاح hold=100 لاحق، أو احذف/استبدل المفاتيح المتعارضة عمدًا قبل التسليم.
+
+لا تجعل عمر الطبقة ينتهي قبل وصول الكاميرا إذا احتاجت الوصلة استمرارها، ولا تُبقها أمام العدسة بعد انتهاء دورها. راجع قبل/عند/بعد المغادرة، وعند الانسحاب الذي يعيد محطات سابقة للمنظر.
+
+## 6. وصفات الواجهات والمدارات والشعار
+
+| الوصفة | التطبيق القابل للتعميم | شرط التنفيذ |
+| --- | --- | --- |
+| إطار تحديد حي | مستطيل native بمقابض زوايا، مع reveal/Trim مناسب وحركة حول لوحة التصميم | Shape paths قابلة للتحريك، ومحاور مشتركة تمنع انزياح الإطار عن البطاقة |
+| جوال وشارات خارجة | جوال أمامي مع pills على مستويات Z مستقلة | PNG الجوال لا يعطي دورانًا خلفيًا حقيقيًا؛ النص على الشارات مستقل |
+| شرائح عرض | صف/مكدس بطاقات مع تغير موضع وزاوية متتابع وختم نتيجة | لا تسمِّ ترتيب keyframes عابرًا carousel كاملًا دون دورة أو تحكم منفذ |
+| شبكات سوشيال | بطاقات 2×2 وطبقات ردود فعل منفصلة | تأخير وتباين مرئيان مع احترام وقت القراءة |
+| تأشير الاستمارة | مسار checkmark مرسوم native وتحريك Trim End | لا تتطلب تفاعل نقر فعلي، ولا تغيّر بيانات واجهة معتمدة بلا طلب |
+| دفتر وقلم يكتب | مسار كتابة واحد يقود stroke reveal ورأس القلم | استخرج رأس القلم من تقدم المسار/جدول عيناته نفسه؛ تحريكه مستقلًا قد لا يطابق الخط |
+| مدارات حية | حلقات native مع Trim ودوران/نقاط تتبع مسار | فرّق بين دوران حلقة ونقاط مثبتة بها وبين orbit ثلاثي الأبعاد حقيقي |
+| Bento | شبكة خدمات بتتابع RTL، خلفها لوح موحد ثم غوص إلى الخاتمة | رتبها للمقاس الحقيقي وقياس النص، لا باسم عدد الصفوف فقط |
+| بوابة دائرية | قرص ملون يتسع ليخفي وصلة أو Track Matte يكشف العالم التالي | القرص الممتلئ ليس ثقبًا/بوابة مجوفة؛ اختر النوع ومدة بقائه وانتهاء عرضه |
+
+في البوابة الأمامية غير المائلة، احسب نصف قطر تغطية أبعد ركن من موقع مركز الدائرة؛ استخدم `coverRadius`. ثم حوّل حجم الشاشة إلى العالم عند العمق المعني، وافحص المنظور إذا مالت الدائرة. لا تنقل Scale=2800/3200% دون حساب، ولا تترك القرص يحجب كل المحطات التالية.
+
+**خيار الشعار المتماسك:** ضع Base/Wings داخل rig واحد مع مواضع نسبية ثابتة، وأضف trace محيطي مؤقت ثم ظهور الجسم وتتابع تفاصيله. هذا خيار ضمن Style B، لا حظر عام على L01–L17 أو split-slide الذي يطلبه المستخدم. راجع كل مسارات الأصل، بما فيها الأجزاء العليا والنقاط؛ مركز كل نجمة ومحورها يجب أن يحفظا موضعها أثناء scale. outline Trim Paths لا يساوي مسار ريشة داخليًا، ولا يثبت وجود رأس شعاع/Glow أو دوران للنجوم إذا لم يُبرمج. احفظ أصل العميل وهويته ولا تنشر هندسته الخاصة داخل قالب عام.
+
+## 7. إعادة التخطيط للمقاسين والأداء والصوت
+
+ابنِ العمودي بتراص مناسب، والأفقي بتوزيع جانبي للنص والرسم. لشبكة من ستة عناصر ابدأ بعمودين×ثلاثة صفوف في العمودي وثلاثة أعمدة×صفين في الأفقي، مع ترتيب عربي من اليمين. هذه نقطة بدء تقاس مع الهوامش والهوية، لا فرضًا لكل مشروع. أعد ضبط القرب/الميل وعدد العناصر المقروءة لكل لقطة.
+
+احسب Cover للخلفيات من أبعاد الأصل الفعلية: `max(compW/sourceW, compH/sourceH)` ثم هامش الحركة اللازم. تكبير كاميرا أفقي أو استعمال خلفية طولية بنسبة ثابتة لا يعادل إعادة تخطيط متجاوب. افحص أيضًا الألفا وحواف الأصل؛ حجم ملف PNG وحده لا يثبت امتلاءه المرئي.
+
+وفر دقة معاينة Quarter/Half اختيارية للمشروعات الثقيلة. لا تضمن السلاسة بمجرد `[4,4]`، وراجع العربية والتفاصيل عند Full. احفظ إعدادات المعاينة واستعدها عند الحاجة، واضبط Render Settings إلى الجودة/الدقة المطلوبة عند الإخراج؛ لا تجعل Current Settings يمرر معاينة منخفضة إلى الرندر النهائي دون انتباه.
+
+استورد الصوت المحلي بعد اختيار المستخدم والتحقق من نوعه ومدته وقبل بناء التوقيت النهائي. الإلغاء يعني إلغاء الاختيار؛ لا تستورد تسجيلًا آخر تلقائيًا بعده إلا إذا اختار المستخدم مسار البحث البديل. اسمح ببناء بصري موسوم بلا صوت عندما يُطلب ذلك. في Style D احفظ التسجيل الأصلي ولا تضف SFX دون طلب؛ في الإعلانات افحص ألا تُشغّل master SFX والمسارات المنفردة ذاتها معًا فتضاعف المؤثرات.
+
+سلّم حزمة بجذر واضح وAssets مرة واحدة، مع JSX عربي واسم إنجليزي بديل عند الحاجة. اجعل تضمين الصوت أو ربطه محليًا وفق طلب المشروع وإمكانية نقله؛ الحزمة الخفيفة لا تعني حذف أصل ضروري بلا وسيلة ربط. استخدم رقم إصدار موحدًا في اسم ZIP وJSX والكومب والتعليقات ورسالة النجاح.
+
+## 8. استخدام الأدوات والتحقق
+
+`templates/salman_spatial_arena_helpers.js` يعرّف namespace عامًا دون تنفيذ مشروع عند التحميل. يتضمن:
+
+- `createGimbal`, `createStation`: هرم الكاميرا ومحاور المحطات المحلية، مع أخطاء صريحة عند غياب خاصية لازمة.
+- `applyCameraTour`: تطبيق جدول عينات `[time,x,y,z,rx,ry,rz]` على متحكم المسار والجيمبال مع رفض التعارض، ومفاتيح LINEAR ومماسات موضع صفرية. احسب easing والوقفات في العينات عبر دوال V18 أو صمّمها في AE؛ الدالة لا تخترع مسارًا ولا تحول جدول محطات خشنًا إلى حركة ناعمة تلقائيًا.
+- `windowLayer`: نافذة عرض ومخطط Opacity صريح للطبقة المرئية. يرفض Opacity ذي مفاتيح/تعبير مملوك مسبقًا لتمنع التعارض؛ اجمع الجدول بنفسك، ولا تستعمله بدل ضبط الأبناء.
+- `card`, `selectionFrame`: بطاقات ذات وجه/خلفية ومقابض native، مع إعادة جلب المراجع بعد addProperty. تضيف الدوال البنية فقط ولا تبني كل reveal/orbit/portal.
+- `bentoPositions`: مواضع شبكة تبدأ من اليمين؛ اختر الأعمدة وأضف موضع النص والعمق المناسبين.
+- `coverRadius`, `sphereInFrustum`: حسابات هندسية محدودة الفرضيات، لا محاكي AE.
+- `previewResolution`: ضبط 1/2/4 مع الإخفاق الصريح عند قيمة غير مدعومة.
+
+حمّل ملف الوحدة الموثوق أو ادمج تعريفه في JSX المشروع. افحص المدخلات والأصول قبل استدعاء الدوال التي تنشئ طبقات، واستعمل Undo Group وfinally. اختبر جلسة قصيرة بمحطتين وoverview وبوابة قبل مشروع طويل. لا تنقل بيانات أو توقيت العميل كقيم افتراضية عامة. عند إضافة مسارات native استخدم حارس Bezier الحالي، وعند إضافة حركات القيم استعمل دوال V18 مع مالك واحد لكل خاصية.
+
+افحص الشفرة والبيانات والأصول، ثم شغّل AE وارندر الفترات الصعبة عند توفره. عدم توفر الصوت يمنع الحكم على التزامن، وعدم توفر رندر يمنع تأكيد خلو المنظر من الحجب أو القص. لا تحوّل نجاح Node أو mock إلى نتيجة «100% Editable» أو رندر ناجح.
+
+## 9. قيود محددة في المصادر المفحوصة
+
+- روف: 15 محطة في الشفرة رغم بعض تعليقات 14؛ ملفات V01 تحتوي VERSION_CODE V02. وسيطا inTime/outTime في station null لا يُطبّقان، وreveal لا يُنهي معظم الطبقات المرئية. التخطيط الأفقي يغير التكبير أكثر مما يعيد ترتيب العناصر، والخلفية الطولية عند نسبته تصبح أضيق من 1920.
+- الأنشودة: دوال lifecycle تُستخدم فعلًا على النصوص والأصول، وتُعاد صياغة الحوار وBento للمقاسين. حركة livingMotion تستبدل Y/Z rotation المطلوبين بقيم متناوبة بدل إضافتها إلى الزاوية الأصلية. المدار من -35° إلى165° يساوي 200°، لا دورة 360° كما في تعليق المصدر.
+- الشعار: الجسم يضم القاعدة والجناحين؛ trace يتناول القاعدة والجناح السفلي فقط. لا يوجد في الشفرة شعاع ذو رأس أو Glow أو مفاتيح دوران لكل نجمة رغم بعض الأوصاف، مع تعارض الشفافية المذكور أعلاه. لا تنقل هذا القصور إلى وصفة الشعار العام.
+- القالب المستورد: يذكر SKILL.md وظائف لا يعرّفها القالب. احتفظ بالتقنيات كدروس واستخدم وحدات مكتملة أو اكتب الدوال المطلوبة، بدل إعلان وجود محرك جاهز.
+- الرسوم: 21 PNG في الأنشودة و29 في روف شاملة الخلفيات؛ فُك ترميزها وفُحصت مسارات الاستيراد، والسكربتات اجتازت فحص الصياغة دون تنفيذ. لم يُنتج AEP أو رندر أو استماع متزامن ضمن هذه المراجعة.
+
+مرجع نوعي للخصائص: [Property.propertyValueType](https://ae-scripting.docsforadobe.dev/property/property/#propertypropertyvaluetype). خصائص COLOR في AE تتطلب أربعة مكونات RGBA؛ استعمل نوع الخاصية الفعلي ولا تخلطها مع TextDocument.fillColor ذي RGB.
+
+---
+
+<a id="file-17"></a>
+
 ## templates/mp3_vocal_onset_analyzer.py
 
 ```python
@@ -1712,7 +1883,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-17"></a>
+<a id="file-18"></a>
 
 ## templates/salman_calligraphy_glass_shine_v08_template.jsx
 
@@ -2840,7 +3011,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-18"></a>
+<a id="file-19"></a>
 
 ## templates/salman_motion_starter_template.js
 
@@ -3216,7 +3387,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-19"></a>
+<a id="file-20"></a>
 
 ## templates/salman_motion_timing_helpers.js
 
@@ -3299,7 +3470,7 @@ var SalmanMotionTiming = (function () {
 
 ---
 
-<a id="file-20"></a>
+<a id="file-21"></a>
 
 ## templates/salman_prebuild_setup.jsx
 
@@ -3424,7 +3595,186 @@ var SalmanMotionSetup = (function () {
 
 ---
 
-<a id="file-21"></a>
+<a id="file-22"></a>
+
+## templates/salman_spatial_arena_helpers.js
+
+```javascript
+/* Salman Motion V19 — explicit ES3-style spatial-arena helpers.
+ * Defines a namespace only. Call from the actual AE builder after input validation.
+ * Two-plane cards are 2.5D, not closed/extruded solid geometry.
+ */
+var SalmanSpatialArena = (function () {
+    function finite(n) { return typeof n === "number" && isFinite(n); }
+    function positive(n) { return finite(n) && n > 0; }
+    function vector(v, count) {
+        if (!v || v.length !== count) throw new Error("Invalid vector dimensions");
+        for (var i = 0; i < count; i++) if (!finite(v[i])) throw new Error("Nonfinite vector");
+        return v;
+    }
+    function prop(parent, name) {
+        var p = parent && parent.property(name);
+        if (!p) throw new Error("Required AE property unavailable: " + name);
+        return p;
+    }
+    function tr(layer) { return prop(layer, "ADBE Transform Group"); }
+    function null3D(comp, name, parent, position) {
+        vector(position, 3);
+        var layer = comp.layers.addNull(comp.duration); layer.name = name; layer.threeDLayer = true;
+        if (parent) layer.parent = parent;
+        prop(tr(layer), "ADBE Anchor Point").setValue([0, 0, 0]);
+        prop(tr(layer), "ADBE Position").setValue(position);
+        return layer;
+    }
+    function createGimbal(comp, worldPosition, zoom) {
+        vector(worldPosition, 3); if (!positive(zoom)) throw new Error("Positive camera zoom required");
+        var pos = null3D(comp, "MASTER_CAM_POS_CTRL | مسار_الكاميرا", null, worldPosition);
+        var orbit = null3D(comp, "MASTER_CAM_ORBIT_GIMBAL | زاوية_الكاميرا", pos, [0, 0, 0]);
+        var camera = comp.layers.addCamera("MAIN_CAMERA | كاميرا_الساحة", [comp.width / 2, comp.height / 2]);
+        camera.autoOrient = AutoOrientType.NO_AUTO_ORIENT;
+        prop(prop(camera, "ADBE Camera Options Group"), "ADBE Camera Zoom").setValue(zoom);
+        camera.parent = orbit;
+        prop(tr(camera), "ADBE Position").setValue([0, 0, -zoom]);
+        prop(tr(camera), "ADBE Orientation").setValue([0, 0, 0]);
+        prop(tr(camera), "ADBE Rotate X").setValue(0);
+        prop(tr(camera), "ADBE Rotate Y").setValue(0);
+        prop(tr(camera), "ADBE Rotate Z").setValue(0);
+        return {camera:camera, position:pos, orbit:orbit};
+    }
+    function applyCameraTour(rig, frames) {
+        if (!frames || frames.length < 2 || frames.length > 20000) throw new Error("Camera tour needs 2..20000 samples");
+        var properties = [prop(tr(rig.position), "ADBE Position"), prop(tr(rig.orbit), "ADBE Rotate X"),
+            prop(tr(rig.orbit), "ADBE Rotate Y"), prop(tr(rig.orbit), "ADBE Rotate Z")];
+        var duration = rig.position.containingComp.duration, times = [], values = [[],[],[],[]], i, j, f, prev = -Infinity;
+        for (j = 0; j < properties.length; j++) if (properties[j].numKeys || properties[j].expressionEnabled) throw new Error("Camera property already animated");
+        for (i = 0; i < frames.length; i++) {
+            f = frames[i]; vector(f, 7);
+            if (f[0] < 0 || f[0] > duration || f[0] <= prev) throw new Error("Invalid camera sample time");
+            prev = f[0]; times.push(f[0]); values[0].push([f[1],f[2],f[3]]);
+            values[1].push(f[4]); values[2].push(f[5]); values[3].push(f[6]);
+        }
+        for (j = 0; j < properties.length; j++) {
+            properties[j].setValuesAtTimes(times, values[j]);
+            for (i = 1; i <= properties[j].numKeys; i++) {
+                properties[j].setInterpolationTypeAtKey(i, KeyframeInterpolationType.LINEAR, KeyframeInterpolationType.LINEAR);
+                if (j === 0) {
+                    properties[j].setSpatialAutoBezierAtKey(i, false);
+                    properties[j].setSpatialContinuousAtKey(i, false);
+                    properties[j].setSpatialTangentsAtKey(i, [0,0,0], [0,0,0]);
+                }
+            }
+        }
+        return rig; // Input samples must already contain the intended easing and holds.
+    }
+    function createStation(comp, name, worldPosition) { return null3D(comp, name, null, worldPosition); }
+    function windowLayer(layer, start, end, opacityKeys) {
+        var duration = layer.containingComp.duration;
+        if (!finite(start) || !finite(end) || start < 0 || end <= start || end > duration) throw new Error("Invalid layer lifetime");
+        var opacity = null, i, key, previous = -Infinity, times = [], values = [];
+        if (opacityKeys && opacityKeys.length) {
+            opacity = prop(tr(layer), "ADBE Opacity");
+            if (opacity.numKeys || opacity.expressionEnabled) throw new Error("Opacity already owned: combine its timeline explicitly");
+            for (i = 0; i < opacityKeys.length; i++) {
+                key = opacityKeys[i]; vector(key, 2);
+                if (key[0] < start || key[0] > end || key[0] <= previous || key[1] < 0 || key[1] > 100) throw new Error("Invalid opacity timeline");
+                previous = key[0]; times.push(key[0]); values.push(key[1]);
+            }
+        }
+        layer.inPoint = start; layer.outPoint = end;
+        if (opacity) {
+            opacity.setValuesAtTimes(times, values);
+            for (i = 1; i <= opacity.numKeys; i++) opacity.setInterpolationTypeAtKey(i, KeyframeInterpolationType.LINEAR, KeyframeInterpolationType.LINEAR);
+        }
+        return layer; // Null in/out/opacity does not retire or fade its descendants.
+    }
+    function previewResolution(comp, factor) {
+        if (factor !== 1 && factor !== 2 && factor !== 4) throw new Error("Preview factor must be 1, 2 or 4");
+        comp.resolutionFactor = [factor, factor]; return factor;
+    }
+    function bentoPositions(count, columns, gapX, gapY) {
+        if (!finite(count) || count < 1 || count > 10000 || count % 1 || !finite(columns) || columns < 1 || columns > count || columns % 1 || !positive(gapX) || !positive(gapY)) throw new Error("Invalid bento layout");
+        var rows = Math.ceil(count / columns), result = [], i, row, col;
+        for (i = 0; i < count; i++) {
+            row = Math.floor(i / columns); col = i % columns;
+            result.push([(columns - 1) * gapX / 2 - col * gapX, row * gapY - (rows - 1) * gapY / 2, 0]);
+        }
+        return result; // Right-first rows; select 2 columns for portrait, 3 for landscape as appropriate.
+    }
+    function coverRadius(width, height, center) {
+        if (!positive(width) || !positive(height)) throw new Error("Invalid frame dimensions");
+        vector(center, 2);
+        var dx = Math.max(Math.abs(center[0]), Math.abs(width - center[0]));
+        var dy = Math.max(Math.abs(center[1]), Math.abs(height - center[1]));
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    function sphereInFrustum(cameraPoint, radius, width, height, zoom) {
+        vector(cameraPoint, 3);
+        if (!finite(radius) || radius < 0 || !positive(width) || !positive(height) || !positive(zoom)) throw new Error("Invalid frustum arguments");
+        var x = cameraPoint[0], y = cameraPoint[1], z = cameraPoint[2];
+        var tx = width / (2 * zoom), ty = height / (2 * zoom);
+        return {potentiallyVisible:z + radius > 0 &&
+            Math.abs(x) - z * tx <= radius * Math.sqrt(1 + tx * tx) &&
+            Math.abs(y) - z * ty <= radius * Math.sqrt(1 + ty * ty),
+            nearCrossing:z - radius <= 0 && z + radius > 0};
+        // Conservative sphere/side-plane intersection; no occlusion, far plane or AE clipping claim.
+    }
+    function color(c) { vector(c, 3); for (var i = 0; i < 3; i++) if (c[i] < 0 || c[i] > 1) throw new Error("Color outside 0..1"); }
+    function rectangle(layer, groupName, size, fill, stroke, width, roundness) {
+        vector(size, 2); if (!positive(size[0]) || !positive(size[1]) || !finite(roundness) || roundness < 0) throw new Error("Invalid rectangle");
+        if (fill) color(fill); if (stroke) { color(stroke); if (!positive(width)) throw new Error("Positive stroke required"); }
+        var root = prop(layer, "ADBE Root Vectors Group");
+        if (root.property(groupName)) throw new Error("Duplicate vector group: " + groupName);
+        var g = root.addProperty("ADBE Vector Group"); g.name = groupName;
+        function contents() { return prop(prop(prop(layer, "ADBE Root Vectors Group"), groupName), "ADBE Vectors Group"); }
+        var r = contents().addProperty("ADBE Vector Shape - Rect"); r.name = "Geometry";
+        if (fill) { var f = contents().addProperty("ADBE Vector Graphic - Fill"); f.name = "Fill"; }
+        if (stroke) { var st = contents().addProperty("ADBE Vector Graphic - Stroke"); st.name = "Stroke"; }
+        r = prop(contents(), "Geometry");
+        prop(r, "ADBE Vector Rect Size").setValue(size);
+        prop(r, "ADBE Vector Rect Position").setValue([0, 0]);
+        prop(r, "ADBE Vector Rect Roundness").setValue(roundness);
+        if (fill) prop(prop(contents(), "Fill"), "ADBE Vector Fill Color").setValue([fill[0], fill[1], fill[2], 1]);
+        if (stroke) {
+            st = prop(contents(), "Stroke"); prop(st, "ADBE Vector Stroke Color").setValue([stroke[0], stroke[1], stroke[2], 1]);
+            prop(st, "ADBE Vector Stroke Width").setValue(width);
+        }
+        return prop(prop(layer, "ADBE Root Vectors Group"), groupName);
+    }
+    function card(comp, parent, name, center, size, faceColor, bevelColor, depth) {
+        vector(center, 3); vector(size, 2); color(faceColor); color(bevelColor);
+        if (!positive(size[0]) || !positive(size[1]) || !finite(depth) || depth < 0) throw new Error("Invalid card size/depth");
+        var rig = null3D(comp, name + "_RIG", parent, center);
+        function plane(suffix, pos, col) {
+            var l = comp.layers.addShape(); l.name = name + suffix; l.threeDLayer = true; l.parent = rig;
+            prop(tr(l), "ADBE Anchor Point").setValue([0, 0, 0]); prop(tr(l), "ADBE Position").setValue(pos);
+            rectangle(l, "Card", size, col, null, 0, Math.min(36, size[0] / 4, size[1] / 4)); return l;
+        }
+        var bevel = plane("_BEVEL", [6, 8, depth], bevelColor), face = plane("_FACE", [0, 0, 0], faceColor);
+        return {rig:rig, face:face, bevel:bevel}; // Explicitly window/fade both renderable layers when retiring.
+    }
+    function selectionFrame(comp, parent, name, center, size, strokeColor, handleColor) {
+        vector(center, 3); vector(size, 2); color(strokeColor); color(handleColor);
+        if (!positive(size[0]) || !positive(size[1])) throw new Error("Invalid selection frame");
+        var l = comp.layers.addShape(); l.name = name; l.threeDLayer = true; if (parent) l.parent = parent;
+        prop(tr(l), "ADBE Anchor Point").setValue([0, 0, 0]); prop(tr(l), "ADBE Position").setValue(center);
+        rectangle(l, "Frame", size, null, strokeColor, 3, 0);
+        var corners = [[-1,-1],[1,-1],[-1,1],[1,1]], i, group;
+        for (i = 0; i < corners.length; i++) {
+            rectangle(l, "Handle_" + i, [16,16], handleColor, strokeColor, 2, 2);
+            group = prop(prop(l, "ADBE Root Vectors Group"), "Handle_" + i);
+            prop(prop(group, "ADBE Vector Transform Group"), "ADBE Vector Position").setValue([corners[i][0] * size[0] / 2, corners[i][1] * size[1] / 2]);
+        }
+        return l;
+    }
+    return {createGimbal:createGimbal, applyCameraTour:applyCameraTour, createStation:createStation, windowLayer:windowLayer,
+        previewResolution:previewResolution, bentoPositions:bentoPositions, coverRadius:coverRadius,
+        sphereInFrustum:sphereInFrustum, card:card, selectionFrame:selectionFrame};
+})();
+```
+
+---
+
+<a id="file-23"></a>
 
 ## templates/stereo_wav_sfx_generator.py
 
@@ -3454,7 +3804,7 @@ def write_stereo_wav(filepath, left_samples, right_samples):
 
 ---
 
-<a id="file-22"></a>
+<a id="file-24"></a>
 
 ## templates/svg_to_ae_bezier_parser.py
 
@@ -3578,7 +3928,7 @@ def parse_svg_path_to_ae_subpaths(d_str, center_x=0.0, center_y=0.0, scale=1.0):
 
 ---
 
-<a id="file-23"></a>
+<a id="file-25"></a>
 
 ## scripts/review_motion_render.py
 
@@ -3698,7 +4048,7 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-24"></a>
+<a id="file-26"></a>
 
 ## scripts/validate_motion_project.py
 
@@ -3854,7 +4204,7 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-25"></a>
+<a id="file-27"></a>
 
 ## scripts/validate_png_assets.py
 

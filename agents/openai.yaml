@@ -1,7 +1,7 @@
 interface:
-  display_name: "مهارة سلمان للموشن جرافيك V18"
-  short_description: "موشن عربي ووصلات مجسمة وتدرّج وكاميرا وعوم وارتداد"
-  default_prompt: "استخدم $salman-after-effects-motion لبناء مشاهد عربية وفق هويتي، بوصلات متصلة وكاميرا وتدرّج وحركة مدروسة ومراجعة فعلية للنتيجة."
+  display_name: "مهارة سلمان للموشن جرافيك V19"
+  short_description: "موشن عربي وساحة كاميرا ثلاثية الأبعاد وواجهات حية"
+  default_prompt: "استخدم $salman-after-effects-motion لبناء مشاهد عربية وفق هويتي داخل ساحة موحدة بكاميرا وجيمبال ومحطات وواجهات مدروسة وتحقق واضح."
   icon_small: "assets/icon.svg"
   icon_large: "assets/icon.svg"
 policy:
