@@ -1,4 +1,4 @@
-# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V19
+# مهارة سلمان للموشن جرافيك - النسخة الموحّدة V20
 
 هذا الملف مولّد من ملفات المصدر في المستودع. اقرأ التعليمات الأساسية أولًا، ثم المراجع والقوالب المناسبة للمشروع. يتضمن الكود النصي كاملًا، ولا يتضمن أصولًا ثنائية أو مشاريع خاصة أو إثباتًا لتشغيل After Effects.
 
@@ -9,28 +9,30 @@
 3. [references/brand-led-scene-review.md](#file-3)
 4. [references/calligraphy-dual-path-and-shine.md](#file-4)
 5. [references/direction-rhythm-and-render-review.md](#file-5)
-6. [references/extendscript-defensive-rules.md](#file-6)
-7. [references/illustration-depth-and-glass-shine.md](#file-7)
-8. [references/logo-animation-gallery-ae.md](#file-8)
-9. [references/logo-animation-production.md](#file-9)
-10. [references/motion-styles-and-choreography.md](#file-10)
-11. [references/nasheed-layout-and-i2v.md](#file-11)
-12. [references/packaging-and-windows-zip-rules.md](#file-12)
-13. [references/prebuild-dialog-and-timed-nasheed.md](#file-13)
-14. [references/reference-ledger-and-render-review.md](#file-14)
-15. [references/soft-3d-continuous-transitions.md](#file-15)
-16. [references/spatial-arena-camera-and-ui.md](#file-16)
-17. [templates/mp3_vocal_onset_analyzer.py](#file-17)
-18. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-18)
-19. [templates/salman_motion_starter_template.js](#file-19)
-20. [templates/salman_motion_timing_helpers.js](#file-20)
-21. [templates/salman_prebuild_setup.jsx](#file-21)
-22. [templates/salman_spatial_arena_helpers.js](#file-22)
-23. [templates/stereo_wav_sfx_generator.py](#file-23)
-24. [templates/svg_to_ae_bezier_parser.py](#file-24)
-25. [scripts/review_motion_render.py](#file-25)
-26. [scripts/validate_motion_project.py](#file-26)
-27. [scripts/validate_png_assets.py](#file-27)
+6. [references/editorial-collage-and-breakdown.md](#file-6)
+7. [references/extendscript-defensive-rules.md](#file-7)
+8. [references/illustration-depth-and-glass-shine.md](#file-8)
+9. [references/logo-animation-gallery-ae.md](#file-9)
+10. [references/logo-animation-production.md](#file-10)
+11. [references/motion-styles-and-choreography.md](#file-11)
+12. [references/nasheed-layout-and-i2v.md](#file-12)
+13. [references/packaging-and-windows-zip-rules.md](#file-13)
+14. [references/prebuild-dialog-and-timed-nasheed.md](#file-14)
+15. [references/reference-ledger-and-render-review.md](#file-15)
+16. [references/soft-3d-continuous-transitions.md](#file-16)
+17. [references/spatial-arena-camera-and-ui.md](#file-17)
+18. [templates/mp3_vocal_onset_analyzer.py](#file-18)
+19. [templates/salman_calligraphy_glass_shine_v08_template.jsx](#file-19)
+20. [templates/salman_motion_starter_template.js](#file-20)
+21. [templates/salman_motion_timing_helpers.js](#file-21)
+22. [templates/salman_prebuild_setup.jsx](#file-22)
+23. [templates/salman_spatial_arena_helpers.js](#file-23)
+24. [templates/stereo_wav_sfx_generator.py](#file-24)
+25. [templates/svg_to_ae_bezier_parser.py](#file-25)
+26. [scripts/review_motion_render.py](#file-26)
+27. [scripts/sample_editorial_camera.py](#file-27)
+28. [scripts/validate_motion_project.py](#file-28)
+29. [scripts/validate_png_assets.py](#file-29)
 
 ---
 
@@ -41,19 +43,32 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V19: create editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V20: create editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   map dives, nasheed timing and stereo SFX. Use for logo/brand animation, motion storyboards,
   brand-consistent scene redesign and open AE project requests. Includes Styles A-G:
   boards, logos, multi-plane scenes, nasheeds, map dives, map roaming and unified spatial
   arenas with two-stage camera gimbals, layer lifecycles, tactile UI and responsive Bento.
+  V20 adds continuous editorial 2.5D collage, an optional vertical process breakdown,
+  editable camera samples, and audio-led nasheed adaptation.
   Retains logo recipes L01-L17, Aqleeat identity, dual-path calligraphy, fill flashes,
   shine ribbons, verse layouts, I2V handoffs, ScriptUI setup, timeline checks,
   soft-3D transitions, gradients, controlled bounce and encoded-video review.
   Includes ES3 rules, lightweight packaging and honest validation limits.
 ---
 
-# Salman After Effects Motion (V19 — الساحة المكانية الموحدة والجيمبال والواجهات الحية)
+# Salman After Effects Motion (V20 — الكولاج التحريري المتصل وكواليس الحركة)
+
+## الكولاج التحريري 2.5D وكواليس الحركة — V20
+
+عند طلب لقطة أفقية متصلة، كولاج وثائقي بعمق متعدد أو Process Breakdown، اقرأ
+[الكولاج المتصل وعرض الكواليس](references/editorial-collage-and-breakdown.md).
+هذا توسيع لـ Style G يجتمع مع Style D للأناشيد. استخرج نقاط القراءة من التسجيل، ثم برمج سرعة المحطات والعلاقة بين العين والكلمة.
+شغّل `scripts/sample_editorial_camera.py` عند الحاجة إلى عينات مسار متزايد على X تشترك فيها معاينة Three.js وطبقات AE.
+وسّط كل PNG بحسب أبعاده أو مفصله المقصود، وأعد قراءة الخط العربي بعد التطبيق. افحص الوصلات والأفق وخروج كل مجموعة من الكادر.
+استخدم لوحة BTS متزامنة عند طلبها، وسمِّ الرسم الهندسي والتايم لاين المشتق بوضوح. راجع الأصل في AE عند توفره.
+لأعمال التدريبات العقلية اقرأ [مرجع الهوية](references/brand-led-scene-review.md) وطابق الألوان مع المرجع المعتمد للمشروع.
+
 
 ## Style G — ساحة موحدة ومحطات وكاميرا ذات مرحلتين — V19
 
@@ -594,7 +609,8 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 | العنصر | التنفيذ |
 | --- | --- |
-| اللون الرئيسي | أخضر الهوية `#B3C727`؛ حافظ على درجته ولا تدفعه إلى أصفر نيون. |
+| لوح الأعمال السابقة | `#B3C727` مرجع إنتاجي لمشاهد سبق اعتمادها. حافظ عليه عند استكمال سلسلة العميل نفسها. |
+| الواجهة الرسمية العامة | الصفحة الرئيسية [aqleeat.com](https://aqleeat.com/) تستخدم `#B6D80F` للأخضر المميز و`#A8C90B` للأخضر الداعم، و`#03070D` للخلفية الداكنة في CSS. هذه قيم واجهة ويب موثقة من المصدر، واعتماد لون الأنشودة يخضع لأصل الشعار ودليل الجهة أو المرجع الذي يطلبه المستخدم. |
 | المساحات الفاتحة | أبيض `#FFFFFF` ودرجات خضراء باهتة مشتقة من اللون الرئيسي. |
 | الظلال والخلفية الداكنة | استعمل درجات زيتونية مشتقة؛ `#30370F` خيار إنتاجي داعم، وليس ادعاءً بأنه كود رسمي ثانٍ. |
 | الأسود والفحمي | احتفظ بهما للنص والشعار والشعر والتفاصيل المناسبة. إزالة سواد لقطة الشاشة لا تعني حذف الأسود من الشعار. |
@@ -602,6 +618,8 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 | النقش | نجوم ثمانية خفيفة مستلهمة من الهوية؛ لا تضف فوانيس أو مساجد أو زخارف جانبية كثيفة تلقائيًا. |
 | الأشخاص | اعتمد الزي العربي في المشاهد المطلوب تعريبها: ثوب وطاقية أو غترة مناسبة؛ لا تجعلهم بقمصان وبناطيل غربية دون طلب. |
 | الأصول | استخدم الشعار الأصلي بنسبة صحيحة ومواقع عناصره؛ لا تعتمد شعارًا تخيليًا مرسومًا داخل صورة مولدة كأصل رسمي. |
+
+للشعار، ارجع إلى ملفات العميل الأصلية أولًا. [ترويسة المؤسسة المنشورة](https://aqleeat.com/wp-content/uploads/aqleeat-white-2.png) توفر نسخة بيضاء شفافة فوق الداكن. في [صفحة المساقات](https://aqleeat.com/) يظهر سياق نشاط المؤسسة، وتشمل المسارات التدريب المباشر وفحص الذاكرة والورش والمتابعة، وتطبيقات الحفظ في القرآن والحديث واللغات والدراسة والمتون والمنظومات، مع مسار للطلاقة القرائية. استخرج الصور أو المشاهد من معنى كلمات الأنشودة؛ لا تحولها إلى إعلان يدّعي نسبًا أو مدد إنجاز ما لم يطلب العميل ادعاءً مطابقًا لمصدره وبصياغة واضحة.
 
 راجع الألوان في كل عنصر، لا الجدار فقط: فرش السرير والوسادة، الملابس، الكرسي، الجبال والصخور، الكتاب وتجليده وفاصله، النباتات، المصباح وواجهة شاشة الدرس. استبدل التركواز والأزرق والبني والزخارف البرتقالية أو الذهبية غير المطلوبة؛ لا تُبقها لأنها تبدو طبيعية في مرجع أجنبي.
 
@@ -875,6 +893,41 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 <a id="file-6"></a>
 
+## references/editorial-collage-and-breakdown.md
+
+# الكولاج التحريري المتصل وكواليس الحركة
+
+## الحركة والسرد
+
+1. حدّد دور كل محطة: تمهيد، عبارة تستحق وقت قراءة، انتقال، لازمة، وخاتمة. في الأنشودة استمع إلى التسجيل المعتمد وسجّل أزمنة بدايات الأبيات واللازمة والتنفس والسكتات والتكرار. استعمل تحليل بدايات الصوت للمساعدة وراجعها سمعيًا؛ سلّم المواضع المسموعة كما هي مع الكلمات العربية القابلة للتحرير. إن توفر النص فقط فسمِّ الجدول الناتج تخطيطًا أوليًا.
+2. استخدم Null لمسار XYZ وNull ابن للجيمبال وكاميرا ابنة بمسافة عدسة. في اللقطة الأفقية المتصلة اجعل X يتقدم حتى في نافذة القراءة بسرعة خفيفة، ومهّد منحنى السرعة لكل انتقال. احسب حدود التكوين عند التباطؤ، ونهاية الخروج، ومنتصف العبور. اختبر كل وصلة على الكادر كاملًا. وضّح مدة تثبيت مقطع طويل بدل التزام عدد ثابت من المحطات.
+3. ثبّت هندسة العالم قبل التأثيرات: أفق مستمر بعيد بألفا متدرجة على الجانبين، وطبقة رئيسية واضحة للنص والأصل، ومقدمة أقرب تعبر مجال الرؤية. ضع ظلال تلامس عند موضع الأقدام أو قاعدة الأصل وافحصها أثناء الاقتراب. لا تقطع الأفق بانتهاء المحطة. قس نقطة ارتكاز PNG من أبعاد المصدر؛ عند برج أو عشبة أو جزء من شخصية استعمل نقطة مفصل فعلية وعوّض الموضع وفق المقياس. طبّق `sourceRectAtTime` على النص بعد التحقق من الخط.
+4. أعط العنصر الدليل مسارًا يخدم القراءة: يمهد لدخول العنوان، يهدأ فوقه أو بجوار المسطرة، ثم يسلّم العين للمحطة اللاحقة. حرك الارتداد عبر Position وScale منفصلين مع الحفاظ على حجم بصري مناسب. افصل الجذع والطرف أو اجعل الأصول حول جذورها بحسب الحاجة. راجع حواف المفاصل عند أقصى دوران. الحركة الثانوية تتوقف أو تخف عند بيت يحتاج هدوءًا.
+5. شغّل Motion Blur على التكوين والطبقات المتحركة. اربط تمويه الاندفاع بسرعة الإزاحة وبحد أعلى إن كان مؤثرًا منفصلًا، واضبط Focus Distance وAperture لعمق الميدان حين يخدم المعلومة. أبقِ محاكاة البلور في المعاينة منفصلة عن ادعاء تطابق محرك AE. عالج الحواف الزجاجية بطبقات إضاءة ومسحة ضوئية وقناع محلي، وسمّها زجاجًا 2.5D عندما يكون المصدر PNG. لا تنسب نتيجة المرجع إلى Ray Tracing أو إضافات محددة استنادًا إلى الشكل وحده.
+6. حافظ على اتساق الهوية في لون العنصر الدليل والنص والملابس ونقاط الطباعة الدقيقة، مع فصل الخامة وصد ظلالها عن النص لتبقى القراءة سهلة. استخدم صورًا أصلية منفصلة؛ لا تدمج طبقة نص أو شعار رسمي داخل صورة توليدية. اجعل مسطرة المحطات ذات وظيفة سردية: ترتيب أقسام أو إشارة إلى تقدم لازمة، بلا أرقام زخرفية.
+
+## مشاركة زوايا الكاميرا بين AE والمعاينة
+
+مرّر ملف JSON مستقل إلى:
+
+```sh
+python scripts/sample_editorial_camera.py camera-source.json camera-samples.json
+```
+
+صيغة المدخل `{"fps":25,"durationFrames":225,"sampleEvery":2,"cues":[{"frame":0,"pose":[0,0,0,0,0,0,2100]},{"frame":65,"pose":[40,0,22,0,0,0,2100]},{"frame":100,"pose":[1700,0,65,0,0.8,0,2170]},{"frame":224,"pose":[1880,0,20,0,0,0,2100]}]}`. ترتيب pose هو `[x,y,z,rx,ry,rz,zoom]`؛ أول cue عند إطار صفر والأخير عند آخر إطار. ضع علامتين حول القراءة بقيم X قريبة، ثم زد الفرق في فترة العبور. X يجب أن يكون متزايدًا أو ثابتًا. العينات تحمل Frame وTime وPose؛ استوردها كمفاتيح خطية لتجنب easing مزدوج. في المعاينة استعمل نفس العينات وحوّل مشهد AE إلى إحداثيات محرّك Three.js بتحويل صريح للاتجاه والمحاور. يحسب السكربت منحنى الكاميرا فقط؛ ضع طبقات العناصر والدليل والمفاصل على حدة حسب المشهد.
+
+## النسخة العمودية للكواليس
+
+- أعلى الشاشة منفذ هندسي واضح يعرض مسار الكاميرا وموضعها، ومحطات العالم والعمق ومحاور XYZ.
+- الوسط هو نفس تركيب Beauty Pass. احتوِ 16:9 كاملًا داخل 9:16، وثبّت الصوت المعتمد على هذا التركيب مرة واحدة.
+- الأسفل مسارات ملونة بأوقات مأخوذة من المشروع ومؤشر الزمن نفسه. لون التحكم يختلف عن النص، والأصول والصوت. سمِّ الرسم والتايم لاين المشتق بوضوح؛ التسجيل الفعلي لواجهة AE يحتاج التقاطًا حقيقيًا.
+- حافظ على 16:9 المستقل وعلى المعاينة العمودية عند طلب العرضين. إذا طلب العميل فيديو نشر عموديًّا مستقلًا، أعد توزيع تركيب الفن على النسبة العمودية وفق Style G.
+- افحص المشروع عند نقاط القراءة، وأصعب عبور، وإطارات التغيير في الدليل والشفافية. شغّل اختبار المحاور والخط والخروج قبل الإخراج. راجع المعاينة المشفرة في المقاسين، واذكر على حدة ما اختُبر في JSX وما شُغّل فعلًا داخل After Effects.
+
+---
+
+<a id="file-7"></a>
+
 ## references/extendscript-defensive-rules.md
 
 # قواعد ExtendScript الدفاعية ومحرك V8 وتوافق AE 2026 (Defensive Engineering Rules V06)
@@ -931,7 +984,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-7"></a>
+<a id="file-8"></a>
 
 ## references/illustration-depth-and-glass-shine.md
 
@@ -1019,7 +1072,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-8"></a>
+<a id="file-9"></a>
 
 ## references/logo-animation-gallery-ae.md
 
@@ -1199,7 +1252,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-9"></a>
+<a id="file-10"></a>
 
 ## references/logo-animation-production.md
 
@@ -1260,7 +1313,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-10"></a>
+<a id="file-11"></a>
 
 ## references/motion-styles-and-choreography.md
 
@@ -1343,7 +1396,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-11"></a>
+<a id="file-12"></a>
 
 ## references/nasheed-layout-and-i2v.md
 
@@ -1401,7 +1454,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-12"></a>
+<a id="file-13"></a>
 
 ## references/packaging-and-windows-zip-rules.md
 
@@ -1441,7 +1494,7 @@ function resolveAndApplyArabicFont(txtDocProp, doc, familyKey, weightKey, candid
 
 ---
 
-<a id="file-13"></a>
+<a id="file-14"></a>
 
 ## references/prebuild-dialog-and-timed-nasheed.md
 
@@ -1525,7 +1578,7 @@ python scripts/validate_motion_project.py --timing timing.json --jsx Build_Proje
 
 ---
 
-<a id="file-14"></a>
+<a id="file-15"></a>
 
 ## references/reference-ledger-and-render-review.md
 
@@ -1587,7 +1640,7 @@ python scripts/review_motion_render.py renders/final_v01.mp4 --out review/shot02
 
 ---
 
-<a id="file-15"></a>
+<a id="file-16"></a>
 
 ## references/soft-3d-continuous-transitions.md
 
@@ -1700,7 +1753,7 @@ var colors = T.color(startRGB, endRGB, T.smooth(u));
 
 ---
 
-<a id="file-16"></a>
+<a id="file-17"></a>
 
 ## references/spatial-arena-camera-and-ui.md
 
@@ -1839,7 +1892,7 @@ V10 أوسع شرحًا: محطات XYZ، جيمبال مزدوج، انسحاب
 
 ---
 
-<a id="file-17"></a>
+<a id="file-18"></a>
 
 ## templates/mp3_vocal_onset_analyzer.py
 
@@ -1883,7 +1936,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-18"></a>
+<a id="file-19"></a>
 
 ## templates/salman_calligraphy_glass_shine_v08_template.jsx
 
@@ -3011,7 +3064,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-19"></a>
+<a id="file-20"></a>
 
 ## templates/salman_motion_starter_template.js
 
@@ -3387,7 +3440,7 @@ def extract_vocal_envelope(audio_path, sr=16000, hop_sec=0.02):
 
 ---
 
-<a id="file-20"></a>
+<a id="file-21"></a>
 
 ## templates/salman_motion_timing_helpers.js
 
@@ -3470,7 +3523,7 @@ var SalmanMotionTiming = (function () {
 
 ---
 
-<a id="file-21"></a>
+<a id="file-22"></a>
 
 ## templates/salman_prebuild_setup.jsx
 
@@ -3595,7 +3648,7 @@ var SalmanMotionSetup = (function () {
 
 ---
 
-<a id="file-22"></a>
+<a id="file-23"></a>
 
 ## templates/salman_spatial_arena_helpers.js
 
@@ -3774,7 +3827,7 @@ var SalmanSpatialArena = (function () {
 
 ---
 
-<a id="file-23"></a>
+<a id="file-24"></a>
 
 ## templates/stereo_wav_sfx_generator.py
 
@@ -3804,7 +3857,7 @@ def write_stereo_wav(filepath, left_samples, right_samples):
 
 ---
 
-<a id="file-24"></a>
+<a id="file-25"></a>
 
 ## templates/svg_to_ae_bezier_parser.py
 
@@ -3928,7 +3981,7 @@ def parse_svg_path_to_ae_subpaths(d_str, center_x=0.0, center_y=0.0, scale=1.0):
 
 ---
 
-<a id="file-25"></a>
+<a id="file-26"></a>
 
 ## scripts/review_motion_render.py
 
@@ -4048,7 +4101,88 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-26"></a>
+<a id="file-27"></a>
+
+## scripts/sample_editorial_camera.py
+
+```python
+#!/usr/bin/env python3
+"""Sample a continuous editorial camera for After Effects and Three.js."""
+
+import argparse
+import json
+import math
+from pathlib import Path
+
+
+def sample(config):
+    fps = config["fps"]
+    duration = config["durationFrames"]
+    step = config.get("sampleEvery", 2)
+    cues = config["cues"]
+    if not isinstance(fps, (int, float)) or not math.isfinite(fps) or fps <= 0:
+        raise ValueError("fps must be positive and finite")
+    if type(duration) is not int or duration < 2 or type(step) is not int or step < 1:
+        raise ValueError("durationFrames must be at least 2; sampleEvery must be a positive integer")
+    if len(cues) < 2:
+        raise ValueError("Add at least two cues")
+    frames = [cue["frame"] for cue in cues]
+    poses = [cue["pose"] for cue in cues]
+    if any(type(frame) is not int for frame in frames):
+        raise ValueError("Cue frames must be integers")
+    if frames[0] != 0 or frames[-1] != duration - 1:
+        raise ValueError("Cues must cover frame zero through the last frame")
+    if any(len(p) != 7 or not all(isinstance(v, (int, float)) and math.isfinite(v) for v in p)
+           or p[6] <= 0 for p in poses):
+        raise ValueError("Each pose must contain seven finite numbers and a positive zoom")
+    gaps = [b - a for a, b in zip(frames, frames[1:])]
+    if any(gap <= 0 for gap in gaps):
+        raise ValueError("Cue frames must increase strictly")
+    speeds = [(b[0] - a[0]) / gap for a, b, gap in zip(poses, poses[1:], gaps)]
+    if any(speed < 0 for speed in speeds):
+        raise ValueError("Camera X must be nondecreasing")
+    # A monotone cubic preserves reading drift while smoothing speed at the cue joins.
+    slopes = [speeds[0]]
+    for index, (left, right) in enumerate(zip(speeds, speeds[1:])):
+        before, after = gaps[index:index + 2]
+        a, b = 2 * after + before, after + 2 * before
+        slopes.append((a + b) / (a / left + b / right) if left and right else 0)
+    slopes.append(speeds[-1])
+
+    result = []
+    segment = 0
+    for frame in sorted(set(range(0, duration, step)).union(frames)):
+        while frame > frames[segment + 1]:
+            segment += 1
+        gap = gaps[segment]
+        t = (frame - frames[segment]) / gap
+        eased = t * t * (3 - 2 * t)
+        pose = [a + (b - a) * eased for a, b in zip(poses[segment], poses[segment + 1])]
+        pose[0] += gap * (t * (1 - t) ** 2 * slopes[segment] - t * t * (1 - t) * slopes[segment + 1])
+        result.append({"frame": frame, "time": frame / fps, "pose": pose})
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("source", type=Path)
+    parser.add_argument("output", type=Path)
+    args = parser.parse_args()
+    try:
+        config = json.loads(args.source.read_text(encoding="utf-8"))
+        samples = sample(config)
+        args.output.write_text(json.dumps({"fps": config["fps"], "samples": samples}, indent=2) + "\n")
+    except (OSError, KeyError, TypeError, ValueError) as error:
+        parser.exit(2, f"Camera sample error: {error}\n")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+<a id="file-28"></a>
 
 ## scripts/validate_motion_project.py
 
@@ -4204,7 +4338,7 @@ if __name__ == "__main__":
 
 ---
 
-<a id="file-27"></a>
+<a id="file-29"></a>
 
 ## scripts/validate_png_assets.py
 

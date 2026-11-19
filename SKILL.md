@@ -1,19 +1,32 @@
 ---
 name: salman-after-effects-motion
 description: >
-  Salman Motion V19: create editable Arabic motion graphics and Adobe After Effects projects
+  Salman Motion V20: create editable Arabic motion graphics and Adobe After Effects projects
   with ExtendScript JSX, native shapes, SVG/Bezier paths, Arabic typography, camera tours,
   map dives, nasheed timing and stereo SFX. Use for logo/brand animation, motion storyboards,
   brand-consistent scene redesign and open AE project requests. Includes Styles A-G:
   boards, logos, multi-plane scenes, nasheeds, map dives, map roaming and unified spatial
   arenas with two-stage camera gimbals, layer lifecycles, tactile UI and responsive Bento.
+  V20 adds continuous editorial 2.5D collage, an optional vertical process breakdown,
+  editable camera samples, and audio-led nasheed adaptation.
   Retains logo recipes L01-L17, Aqleeat identity, dual-path calligraphy, fill flashes,
   shine ribbons, verse layouts, I2V handoffs, ScriptUI setup, timeline checks,
   soft-3D transitions, gradients, controlled bounce and encoded-video review.
   Includes ES3 rules, lightweight packaging and honest validation limits.
 ---
 
-# Salman After Effects Motion (V19 — الساحة المكانية الموحدة والجيمبال والواجهات الحية)
+# Salman After Effects Motion (V20 — الكولاج التحريري المتصل وكواليس الحركة)
+
+## الكولاج التحريري 2.5D وكواليس الحركة — V20
+
+عند طلب لقطة أفقية متصلة، كولاج وثائقي بعمق متعدد أو Process Breakdown، اقرأ
+[الكولاج المتصل وعرض الكواليس](references/editorial-collage-and-breakdown.md).
+هذا توسيع لـ Style G يجتمع مع Style D للأناشيد. استخرج نقاط القراءة من التسجيل، ثم برمج سرعة المحطات والعلاقة بين العين والكلمة.
+شغّل `scripts/sample_editorial_camera.py` عند الحاجة إلى عينات مسار متزايد على X تشترك فيها معاينة Three.js وطبقات AE.
+وسّط كل PNG بحسب أبعاده أو مفصله المقصود، وأعد قراءة الخط العربي بعد التطبيق. افحص الوصلات والأفق وخروج كل مجموعة من الكادر.
+استخدم لوحة BTS متزامنة عند طلبها، وسمِّ الرسم الهندسي والتايم لاين المشتق بوضوح. راجع الأصل في AE عند توفره.
+لأعمال التدريبات العقلية اقرأ [مرجع الهوية](references/brand-led-scene-review.md) وطابق الألوان مع المرجع المعتمد للمشروع.
+
 
 ## Style G — ساحة موحدة ومحطات وكاميرا ذات مرحلتين — V19
 

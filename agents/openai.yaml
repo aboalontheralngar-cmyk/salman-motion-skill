@@ -1,13 +1,14 @@
 interface:
-  display_name: "مهارة سلمان للموشن جرافيك V19"
-  short_description: "موشن عربي وساحة كاميرا ثلاثية الأبعاد وواجهات حية"
-  default_prompt: "استخدم $salman-after-effects-motion لبناء مشاهد عربية وفق هويتي داخل ساحة موحدة بكاميرا وجيمبال ومحطات وواجهات مدروسة وتحقق واضح."
-  icon_small: "assets/icon.svg"
-  icon_large: "assets/icon.svg"
+  display_name: مهارة سلمان للموشن جرافيك V20
+  short_description: موشن عربي وكولاج 2.5D متصل وكواليس متزامنة
+  default_prompt: استخدم $salman-after-effects-motion لبناء مشاهد عربية وفق هويتي
+    بكاميرا وجيمبال ومحطات ذات عمق حقيقي، مع كواليس متزامنة عند طلبها.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
 policy:
   products:
-    - "chatgpt"
-    - "codex"
-    - "api"
-    - "atlas"
+  - chatgpt
+  - codex
+  - api
+  - atlas
   allow_implicit_invocation: true
